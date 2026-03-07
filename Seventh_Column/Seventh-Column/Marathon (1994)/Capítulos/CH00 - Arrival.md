@@ -9,15 +9,15 @@ aliases:
 # Faixas
 
 ***07 - Arrival***
-![[07_Landing.mp3]]
+![[Seventh_Column/Seventh-Column/Marathon (1994)/Faixas/07_Landing.mp3]]
 
 
 ***08 - Leela*** 
-![[08_Leela.mp3]]
+![[Seventh_Column/Seventh-Column/Marathon (1994)/Faixas/08_Leela.mp3]]
 
 
 ***02 - Fat Man***
-![[02_Fat Man.mp3]]
+![[Seventh_Column/Seventh-Column/Marathon (1994)/Faixas/02_Fat Man.mp3]]
 
 
 # Missões
@@ -30,7 +30,7 @@ Grande parte dos elementos que mais tarde seriam desenvolvidos ao longo da franq
 
 É ali que surge pela primeira vez a frase _**“Somewhere in the heavens… They are waiting.”**_, que, ao lado de _**“Escape will make me God”**_, se tornaria uma das marcas conceituais da série.
 
-A narrativa do manual é apresentada de maneira consideravelmente diferente da forma como o jogo conduz sua história. O ponto de vista em primeira pessoa é fortemente estabelecido: o protagonista — posteriormente revelado como o [[Mjolnir Recon n54]], no segundo terminal da fase _**“Fire! Fire! Fire! Fire! Fire!”**_, conversa consigo mesmo, quase como um fluxo de consciência. Isso cria uma intimidade e uma estranheza que o jogo, por limitações técnicas e estruturais, transmite de outro modo.
+A narrativa do manual é apresentada de maneira consideravelmente diferente da forma como o jogo conduz sua história. O ponto de vista em primeira pessoa é fortemente estabelecido: o protagonista — posteriormente revelado como o [[Seventh_Column/Seventh-Column/Marathon (1994)/História/Personagens/Mjolnir Recon n54 | Mjolnir Recon n54]], no segundo terminal da fase _**“Fire! Fire! Fire! Fire! Fire!”**_, conversa consigo mesmo, quase como um fluxo de consciência. Isso cria uma intimidade e uma estranheza que o jogo, por limitações técnicas e estruturais, transmite de outro modo.
 
 As IAs já aparecem como forças centrais da narrativa. Durandal deixa claro desde o início que não se importa com o jogador. Você é apenas um instrumento. Curiosamente, o manual também introduz o primeiro conflito entre inteligências artificiais: o bote salva-vidas Mirata aparentemente possui uma mini-IA embarcada, sugerindo que até mesmo sistemas secundários carregam algum grau de agência.
 
@@ -43,6 +43,6 @@ Outro fato interessante sobre o manual é que ele também começa com uma coisa 
 
 '***Lessons applicable to the game: Move fast, seize the initiative, wield superior firepower, dive into the melee, anticipate enemy movements, slaughter the defenseless, endure.***'
 
-Segue o link para leitura : [[Marathon_Manual.pdf]]
+Segue o link para leitura : [[Seventh_Column/Seventh-Column/Marathon (1994)/História/Manual/Marathon_Manual.pdf | Marathon_Manual.pdf]]
 
 ### M0 - Arrival
