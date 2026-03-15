@@ -1,85 +1,41 @@
 {
   "main": {
-    "id": "7991b3a75fc7b134",
+    "id": "43e7701c735f2372",
     "type": "split",
     "children": [
       {
-        "id": "86b556ac915e7cfa",
+        "id": "f6295cb21155ec3d",
         "type": "tabs",
         "children": [
           {
-            "id": "c348c84350ae69b7",
+            "id": "aa45e8d9d07a0436",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Seventh_Column/Seventh-Column/Marathon (1994)/Capítulos/CH00 - Arrival.md",
+                "file": "pdj/aula03.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CH00 - Arrival"
-            }
-          },
-          {
-            "id": "0e4e73b2b040f014",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PUC/so/aula04.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "aula04"
-            }
-          },
-          {
-            "id": "c7c146529151cb35",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PUC/pdj/aula04.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "aula04"
-            }
-          },
-          {
-            "id": "0b341c3af448af8c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PUC/ux/aula04.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "aula04"
+              "title": "aula03"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "6997996c80699d81",
+    "id": "015ed2192c0c8396",
     "type": "split",
     "children": [
       {
-        "id": "daae0ee872ac9a22",
+        "id": "d5b31859325f15d0",
         "type": "tabs",
-        "dimension": 70.1195219123506,
         "children": [
           {
-            "id": "6ba4dcd4170ad17e",
+            "id": "d459adf2fbdb416b",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -92,7 +48,7 @@
             }
           },
           {
-            "id": "16525b1ccd2c3fd1",
+            "id": "64b43ad47d02901e",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -109,7 +65,7 @@
             }
           },
           {
-            "id": "869c031d34b24fc5",
+            "id": "e50ef73e685cd8c6",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -121,12 +77,11 @@
         ]
       },
       {
-        "id": "ce851614b599ee60",
+        "id": "d8d0c91997d57735",
         "type": "tabs",
-        "dimension": 29.880478087649404,
         "children": [
           {
-            "id": "4ab974ec33b10d99",
+            "id": "ee8ffb173457bb49",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -139,23 +94,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 375.5
+    "width": 616.5
   },
   "right": {
-    "id": "be6780eba34e47bd",
+    "id": "cc9a19baf92e15e3",
     "type": "split",
     "children": [
       {
-        "id": "8caf85ef0d7134a0",
+        "id": "40cd4478cccbb045",
         "type": "tabs",
         "children": [
           {
-            "id": "26ff940db603bdaf",
+            "id": "2bb0c2853dcf8889",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PUC/pdj/aula02.md",
+                "file": "pdj/aula03.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -165,25 +120,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for aula02"
+              "title": "Backlinks for aula03"
             }
           },
           {
-            "id": "6b233c48b800adcd",
+            "id": "ed942950638124df",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "PUC/pdj/aula02.md",
+                "file": "pdj/aula03.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from aula02"
+              "title": "Outgoing links from aula03"
             }
           },
           {
-            "id": "79f3514b50728194",
+            "id": "3e60085af67b332b",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -198,7 +153,7 @@
             }
           },
           {
-            "id": "922c7ed351d37975",
+            "id": "7648a6be3e2d27fe",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -212,18 +167,18 @@
             }
           },
           {
-            "id": "75ade4f07da3d429",
+            "id": "8052e0cd36dc322a",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "PUC/pdj/aula02.md",
+                "file": "pdj/aula03.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of aula02"
+              "title": "Outline of aula03"
             }
           }
         ]
@@ -241,32 +196,16 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false,
-      "obsidian-kanban:Create new board": false,
-      "obsidian-excalidraw-plugin:New drawing": false
+      "bases:Create new base": false
     }
   },
-  "active": "0b341c3af448af8c",
+  "active": "aa45e8d9d07a0436",
   "lastOpenFiles": [
-    "PUC/pdj/aula04.md",
-    "PUC/so/aula04.md",
-    "PUC/ux/aula04.md",
-    "PUC/so",
-    "PUC/assets/comms.png",
-    "PUC/assets/vejamos.png",
-    "PUC/assets/signos.png",
-    "PUC/assets/signos.excalidraw.md",
-    "PUC/mn/aula04.md",
-    "PUC/ux",
-    "PUC/assets/mud_players.png",
-    "PUC/assets/mda.png",
-    "PUC/Untitled.canvas",
-    "PUC/Untitled.base",
-    "PUC/assets/worthless.png",
-    "Seventh_Column/Seventh-Column/Marathon (1994)/Capítulos/CH00 - Arrival.md",
-    "Seventh_Column/Seventh-Column/Marathon (1994)/História/Personagens/Mjolnir Recon n54.md",
-    "Seventh_Column/Seventh-Column/Marathon (1994)/História/Manual/Marathon_Manual.pdf",
-    "PUC/pdj/aula02.md",
-    "Seventh_Column/Seventh-Column/Marathon (1994)/Mapas/0.gif"
+    "poa/aula03.md",
+    "mn/aula04.md",
+    "es2/aula02.md",
+    "pdj/aula04.md",
+    "Untitled.canvas",
+    "Untitled.base"
   ]
 }
