@@ -22,20 +22,6 @@
             }
           },
           {
-            "id": "c7c146529151cb35",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PUC/pdj/aula04.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "aula04"
-            }
-          },
-          {
             "id": "0b341c3af448af8c",
             "type": "leaf",
             "state": {
@@ -55,16 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/ux/aula04.md",
+                "file": "PUC/pdj/aula05.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula04"
+              "title": "aula05"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -76,7 +62,7 @@
       {
         "id": "daae0ee872ac9a22",
         "type": "tabs",
-        "dimension": 33.89830508474576,
+        "dimension": 67.09956709956711,
         "children": [
           {
             "id": "6ba4dcd4170ad17e",
@@ -123,7 +109,7 @@
       {
         "id": "ce851614b599ee60",
         "type": "tabs",
-        "dimension": 66.10169491525424,
+        "dimension": 32.900432900432904,
         "children": [
           {
             "id": "4ab974ec33b10d99",
@@ -139,7 +125,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 660.5
+    "width": 434.5
   },
   "right": {
     "id": "be6780eba34e47bd",
@@ -246,27 +232,30 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "4ab974ec33b10d99",
+  "active": "0b341c3af448af8c",
   "lastOpenFiles": [
-    "PUC/so/aula04.md",
-    "PUC/assets/pcb.png",
-    "PUC/assets/omg_bruh.gif",
-    "PUC/assets/eventos_processo.png",
-    "PUC/assets/processo.png",
     "PUC/ux/aula04.md",
-    "PUC/pdj/aula04.md",
-    "PUC/so",
-    "PUC/assets/comms.png",
-    "PUC/assets/vejamos.png",
-    "PUC/assets/signos.png",
-    "PUC/assets/signos.excalidraw.md",
+    "PUC/poa/aula03.md",
     "PUC/mn/aula04.md",
+    "PUC/es2/aula02.md",
+    "PUC/so/aula04.md",
+    "PUC/pdj/aula04.md",
+    "PUC/pdj/aula05.md",
+    "PUC/assets/dilema.png",
+    "PUC/assets/portal.jpg",
+    "PUC/assets/go.jpg",
+    "PUC/assets/emergente.png",
+    "PUC/assets/complexo-complexo.png",
+    "PUC/assets/simples-simples.png",
+    "PUC/assets/spore3.jpg",
+    "PUC/assets/spore2.jpg",
+    "PUC/assets/spore1.jpg",
+    "PUC/assets/miyamoto.jpg",
+    "PUC/so",
+    "PUC/assets/signos.excalidraw.md",
     "PUC/ux",
-    "PUC/assets/mud_players.png",
-    "PUC/assets/mda.png",
     "PUC/Untitled.canvas",
     "PUC/Untitled.base",
-    "PUC/assets/worthless.png",
     "Seventh_Column/Seventh-Column/Marathon (1994)/Capítulos/CH00 - Arrival.md",
     "Seventh_Column/Seventh-Column/Marathon (1994)/História/Personagens/Mjolnir Recon n54.md",
     "Seventh_Column/Seventh-Column/Marathon (1994)/História/Manual/Marathon_Manual.pdf",
