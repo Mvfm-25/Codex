@@ -1,5 +1,5 @@
 # Projeto Desenvolvimento de Jogos
-## Professor : **Marcelo Cohen**
+## Professor : **[Marcelo Cohen](https://www.inf.pucrs.br/flash/)**
 ---
 #### Trabalhos
 - [Escolha de grupos para o semestre.](https://moodle.pucrs.br/mod/groupselect/view.php?id=3544907)

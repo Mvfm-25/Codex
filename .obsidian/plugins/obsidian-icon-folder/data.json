@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiAnchor",
       "LiAlertOctagon",
       "LiAlignCenterHorizontal",
       "LiAlbum"
@@ -36,5 +37,6 @@
   "Seventh_Column": {
     "iconName": "LiAlertOctagon",
     "iconColor": "#11ff00"
-  }
+  },
+  "PUC/Index.md": "LiAnchor"
 }

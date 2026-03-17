@@ -14,8 +14,8 @@
 - **Abril**
 	1. [06/04] **Projeto Desenvolvimento de Jogos** - T1
 	2. [09/04] **Experiência Do Usuário** - T1.1	
-	3. [15/04] **Sistemas Operactionais** - T1.1
-	4. [22/04] **Sistemas Operactionais** - T1.2
+	3. [15/04] **Sistemas Operacionais** - T1.1
+	4. [22/04] **Sistemas Operacionais** - T1.2
 	5. [27/04] **Sistemas Operacionais** - P1
 	6. [29/04] **Projeto & Otimização de Algoritmos** - P1
 	7. [30/04] **Experiência Do Usuário** - T1.2
@@ -31,12 +31,12 @@
 	8. [26/05] **Experiência Do Usuário** - T2
 ---
 - **Junho**
-	1. [01/06] **Projeto de Desnvolvimento de Jogos** - T2.2
+	1. [01/06] **Projeto Desenvolvimento de Jogos** - T2.2
 	2. [03/06] **Projeto & Otimização de Algoritmos** - T2.1
 	3. [08/06] **Projeto & Otimização de Algoritmos** - T2.2
 	4. [17/06] **Sistemas Operacionais** - P2
 	5. [18/06] **Métodos Numéricos** - T2
-	6. [26/06] **Projeto De Desenvolvimento de Jogos** - T3.1
+	6. [26/06] **Projeto Desenvolvimento de Jogos** - T3.1
 	7. [29/06] **Sistemas Operacionais** - T2
 	8. [30/06] **Experiência Do Usuário** - T3.1
 ---
@@ -48,4 +48,4 @@
 	4. [03/07] **Engenharia De Software II** - P2
 	5. [06/07] **Sistemas Operacionais** - T2.2
 	6. [09/07] **Experiência Do Usuário** - T3.2
-	7. [10/07] **Projeto De Desenvolvimento De Jogos** - T3.2
+	7. [10/07] **Projeto Desenvolvimento De Jogos** - T3.2
