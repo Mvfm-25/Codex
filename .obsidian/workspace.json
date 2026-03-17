@@ -25,32 +25,30 @@
             "id": "0b341c3af448af8c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "PUC/so/aula04.md",
-                "mode": "preview",
-                "source": false
+                "file": "PUC/assets/pedrinhas.excalidraw.md"
               },
-              "icon": "lucide-file",
-              "title": "aula04"
+              "icon": "excalidraw-icon",
+              "title": "pedrinhas.excalidraw"
             }
           },
           {
-            "id": "5c4d155c6a5f2a96",
+            "id": "10321d402065fa8c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/pdj/aula05.md",
+                "file": "PUC/pdj/pdj-index.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula05"
+              "title": "pdj-index"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -62,7 +60,7 @@
       {
         "id": "daae0ee872ac9a22",
         "type": "tabs",
-        "dimension": 67.09956709956711,
+        "dimension": 55.190133607399794,
         "children": [
           {
             "id": "6ba4dcd4170ad17e",
@@ -109,7 +107,7 @@
       {
         "id": "ce851614b599ee60",
         "type": "tabs",
-        "dimension": 32.900432900432904,
+        "dimension": 44.809866392600206,
         "children": [
           {
             "id": "4ab974ec33b10d99",
@@ -125,7 +123,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 434.5
+    "width": 433.5
   },
   "right": {
     "id": "be6780eba34e47bd",
@@ -232,15 +230,44 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "0b341c3af448af8c",
+  "active": "4ab974ec33b10d99",
   "lastOpenFiles": [
-    "PUC/ux/aula04.md",
+    "PUC/pdj/pdj-index.md",
+    "PUC/pdj/aula02.md",
+    "PUC/pdj/aula03.md",
+    "PUC/es2/trabalhos",
+    "PUC/mn/trabalhos",
+    "PUC/mn/provas",
+    "PUC/ux/trabalhos",
+    "PUC/so/trabalhos",
+    "PUC/so/provas",
+    "PUC/poa/trabalhos",
+    "PUC/poa/provas",
+    "PUC/pdj/provas",
+    "PUC/pdj/trabalhos",
+    "PUC/Index.md",
+    "PUC/calendario.md",
+    "PUC/es2/es2-index.md",
+    "PUC/mn/mn-index.md",
+    "PUC/poa/poa-index.md",
+    "PUC/so/so-index.md",
+    "PUC/ux/ux-index.md",
+    "PUC/voicetree-17-3/tue/1773754449746DRO.md",
+    "PUC/voicetree-17-3/run_me.md",
+    "PUC/voicetree-17-3/welcome_to.md",
+    "PUC/voicetree-17-3/welcome_to_voicetree.md",
+    "PUC/voicetree-17-3/hover_over_me.md",
+    "voicetree-17-3/tue/1773754410047ifT.md",
+    "voicetree-17-3/welcome_to_voicetree.md",
+    "voicetree-17-3/welcome_to.md",
+    "voicetree-17-3/run_me.md",
+    "voicetree-17-3/hover_over_me.md",
     "PUC/poa/aula03.md",
-    "PUC/mn/aula04.md",
-    "PUC/es2/aula02.md",
-    "PUC/so/aula04.md",
-    "PUC/pdj/aula04.md",
+    "PUC/assets/pedrinhas.excalidraw.md",
     "PUC/pdj/aula05.md",
+    "PUC/so/aula04.md",
+    "PUC/ux/aula04.md",
+    "PUC/mn/aula04.md",
     "PUC/assets/dilema.png",
     "PUC/assets/portal.jpg",
     "PUC/assets/go.jpg",
@@ -251,14 +278,6 @@
     "PUC/assets/spore2.jpg",
     "PUC/assets/spore1.jpg",
     "PUC/assets/miyamoto.jpg",
-    "PUC/so",
-    "PUC/assets/signos.excalidraw.md",
-    "PUC/ux",
-    "PUC/Untitled.canvas",
-    "PUC/Untitled.base",
-    "Seventh_Column/Seventh-Column/Marathon (1994)/Capítulos/CH00 - Arrival.md",
-    "Seventh_Column/Seventh-Column/Marathon (1994)/História/Personagens/Mjolnir Recon n54.md",
-    "Seventh_Column/Seventh-Column/Marathon (1994)/História/Manual/Marathon_Manual.pdf",
-    "PUC/pdj/aula02.md"
+    "PUC/Untitled.canvas"
   ]
 }
