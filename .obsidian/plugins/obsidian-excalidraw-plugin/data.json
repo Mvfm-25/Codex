@@ -13,7 +13,7 @@
   "loadJapaneseFonts": false,
   "loadKoreanFonts": false,
   "compress": true,
-  "decompressForMDView": false,
+  "decompressForMDView": true,
   "onceOffCompressFlagReset": true,
   "onceOffGPTVersionReset": true,
   "autosave": true,
@@ -113,7 +113,7 @@
   "library2": {
     "type": "excalidrawlib",
     "version": 2,
-    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.20.6",
+    "source": "https://github.com/zsviczian/obsidian-excalidraw-plugin/releases/tag/2.21.0",
     "libraryItems": []
   },
   "imageElementNotice": true,
