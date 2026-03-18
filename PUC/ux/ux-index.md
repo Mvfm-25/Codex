@@ -12,5 +12,7 @@
 ---
 #### Aulas
 - [Cronograma do semestre](https://moodle.pucrs.br/mod/url/view.php?id=3550609)
-- [Aula 04](./aula04.md)
+- [Aula 04](ux/aula04.md)
 	- Continuação de engenharia cognitiva. 
+- [Aula 05](./aula05.md)
+	- Ciclo de vida de design, dinâmica em aula. 
