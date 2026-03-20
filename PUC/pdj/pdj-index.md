@@ -22,3 +22,5 @@
 	- Conceitos de diversão & jogabilidade.
 - [Aula 05](./aula05.md)
 	- Game Design na prática.
+- [Aula 06](./aula06.md)
+	- Pacing.
