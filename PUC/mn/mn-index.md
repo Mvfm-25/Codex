@@ -17,4 +17,7 @@
 	- [N/a]
 - [Aula05](./aula05.md)
 	- [N/a]
-
+- [Aula06](./aula06.md)
+	- Polinômios
+- [Aula07](./aula07.md)
+	- Secantes
