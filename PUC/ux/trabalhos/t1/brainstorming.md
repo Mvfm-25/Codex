@@ -1,3 +1,4 @@
+
 # Experiência Do Usuário
 ## Etapa de Brainstorming - Anotações em Geral.
 ---
@@ -67,3 +68,16 @@
 - **Pontos Fracos** :
 	- **Beeeeeeeeeeem abraangente.**
 	- As pessoas talvez, & simplesmente, não se importem.
+---
+### Qual o problema que queremos atacar?
+- Qual o problema e como podemos solucioná-los?
+	- Temos uma ideia bem geral de quem vai ter a necessidade dessa nossa plataforma?
+	- E como vai ser essa plataforma?
+- Com isso, termos uma ideia de plataformas similhares, análise competitiva.
+- [?Decidimos] que vamos focar um pouco mais na diretriz **4.3.**, plataforma para jovens adultos / pessoas em vulnerabilidade profissional.
+- **Inspirações**
+	- Plataformas que servem um propósito semelhante.
+		- Udemy
+		- Alura
+		- Gov.br
+		- Duolingo
