@@ -17,4 +17,14 @@
 - [Aula 05](./aula05.md)
 	- Início de algoritmos de **divisão & conquista** 
 	- Problema que cobriu a aula inteira foi a **minimização de operações em potenciação**.
-
+- [Aula 08](./aula08.md)
+	- Algoritmo russo (camponeses russos), multiplicação via **shifts** em assembly.
+- [Aula 11](./aula11.md)
+	- **Karatsuba**, último algoritmo de divisão & conquista do semestre.
+	- Contexto histórico da palestra de Kolmogorov em Moscow.
+- [Aula 12](./aula12.md)
+	- Introdução à **Programação Dinâmica**.
+	- Problema das pedrinhas (relação com **Fibonacci**).
+--
+### Adições IA
+- [Material complementar gerado por IA](./IA/adicoes.md)

@@ -16,3 +16,6 @@
 - [Aula 03](./aula03.md)
 	- Micro-Serviçoes vs. Monolitos
 	- PetClinic.
+---
+### Adições IA
+- [Material complementar gerado por IA](./IA/adicoes.md)

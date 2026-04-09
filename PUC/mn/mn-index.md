@@ -15,9 +15,14 @@
 	- [N/a]
 - [Aula 04](./aula04.md)
 	- [N/a]
-- [Aula05](./aula05.md)
+- [Aula 05](./aula05.md)
 	- [N/a]
-- [Aula06](./aula06.md)
+- [Aula 06](./aula06.md)
 	- Polinômios
-- [Aula07](./aula07.md)
+- [Aula 07](./aula07.md)
 	- Secantes
+- [Aula 09](./aula09.md)
+	- Polinômios de múltiplas raízes, Fractal de Newton, Método de Aberth.
+---
+### Adições IA
+- [Material complementar gerado por IA](./IA/adicoes.md)

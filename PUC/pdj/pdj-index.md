@@ -24,3 +24,8 @@
 	- Game Design na prática.
 - [Aula 06](./aula06.md)
 	- Pacing.
+- [Aula 09](./aula09.md)
+	- Aula de acompanhamento do trabalho, sem conteúdo novo.
+---
+#### Adições IA
+- [Material complementar gerado por IA](./IA/adicoes.md)
