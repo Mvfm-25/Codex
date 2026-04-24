@@ -14,11 +14,9 @@
 - **Abril**
 	1. [06/04] **Projeto Desenvolvimento de Jogos** - T1
 	2. [09/04] **Experiência Do Usuário** - T1.1	
-	3. [15/04] **Sistemas Operacionais** - T1.1
-	4. [22/04] **Sistemas Operacionais** - T1.2
-	5. [27/04] **Sistemas Operacionais** - P1
-	6. [29/04] **Projeto & Otimização de Algoritmos** - P1
-	7. [30/04] **Experiência Do Usuário** - T1.2
+	3. [27/04] **Sistemas Operacionais** - P1
+	4. [29/04] **Projeto & Otimização de Algoritmos** - P1
+	5. [30/04] **Experiência Do Usuário** - T1.2
 ---
 - **Maio**
 	1. [04/05] **Projeto & Otimização de Algoritmos** - T1.1
