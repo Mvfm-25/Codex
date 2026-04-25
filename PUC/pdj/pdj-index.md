@@ -26,6 +26,11 @@
 	- Pacing.
 - [Aula 09](./aula09.md)
 	- Aula de acompanhamento do trabalho, sem conteúdo novo.
+- [Aula 14](./aula14.md)
+	- Aula de introdução a **Godot Engine**
+	- Fundamentos de cenas  & nodos introduzidos junto com exemplo prático.
+- [Aul15](./aula15.md)
+	- Uso da câmera & viewport da engine
 ---
 #### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

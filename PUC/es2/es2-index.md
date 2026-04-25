@@ -16,6 +16,11 @@
 - [Aula 03](./aula03.md)
 	- Micro-Serviçoes vs. Monolitos
 	- PetClinic.
+- [Aula 07](./aula07.md)
+	- Continuação dos fundamentais de micro-serviços
+	- Gateway API
+- [Aula 08](./aula08.md)
+	- Aula de atividades revisão p1
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

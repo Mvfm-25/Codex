@@ -23,6 +23,13 @@
 	- Secantes
 - [Aula 09](./aula09.md)
 	- Polinômios de múltiplas raízes, Fractal de Newton, Método de Aberth.
+- [Aula 12](./aula12.md)
+	- Resolução de exercícios práticos & teóricos no laboratório.
+- [Aula 14](./aula14.md)
+	- Revisão da eliminação de **Gauss**
+- [Aula15](./aula15.md)
+	- Aplicação prática da eliminação de **Gauss**
+	- Problema dos Lemmings do planeta Zorg.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

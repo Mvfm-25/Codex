@@ -25,6 +25,9 @@
 - [Aula 12](./aula12.md)
 	- Introdução à **Programação Dinâmica**.
 	- Problema das pedrinhas (relação com **Fibonacci**).
+- [Aula 14](./aula14.md)
+	- Recursão e porque as odeio
+	- Introdução à memoização e a remoção da recursividade em problemas de programação dinâmica.
 --
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
