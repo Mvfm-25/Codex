@@ -29,7 +29,7 @@
 - [Aula 14](./aula14.md)
 	- Aula de introdução a **Godot Engine**
 	- Fundamentos de cenas  & nodos introduzidos junto com exemplo prático.
-- [Aul15](./aula15.md)
+- [Aula 15](./aula15.md)
 	- Uso da câmera & viewport da engine
 ---
 #### Adições IA
