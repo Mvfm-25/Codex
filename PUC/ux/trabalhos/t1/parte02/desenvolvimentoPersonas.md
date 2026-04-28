@@ -100,3 +100,28 @@
 	2. 100+ (21,1%)
 	3. 20-50 (21,1%)
 ---
+### Observações iniciais
+- Maioria das respostas chegaram de jovens adultos, na faixa de 20 - 24anos com poucas exceções.
+	- Algumas pessoas se confundiram um pouco.
+	- Três respostas escritas diferentemente para a mesma opção : 20 anos de idade.
+		- 20, 20 anos & Vinte anos.
+		![Idades](assets/formularioidades.png)
+- Cerca de 70% dos respondentes estão com seu curos de Ensino superior incompleto.
+	- Levando em consideração a pergunta futura de área de atuação profissional, estou **assumindo** que os cursos seguem a mesma área. Tais cursos servem para aprofundar seus conhecimentos.
+- 35% dos respondentes estão desempregados. 
+	- Novamente, isso reinforça a minha ideia de que esses cursos servem para expandir seus currículos.
+- Incrivelmente, 35% dos respondentes estão satisfeitos com sua carreira atual.
+	- Isso me leva a acreditar que estão, em sua maioria, em busca de acumular conhecimento para oportunidades futuras.
+- 65% dos respondentes querem : "**Crescer na minha área atual.**"
+- 26,3% acredita ter falta de qualificação.
+	- Outros 26,#% nem sabem que área seguir, o que é um pouco assustador.
+- Quase um split 50% 50% na questão de estudos diários/semanais.
+- A resposta dos cursos serem caros demais é *quase* unânime. Cerca de 57,9% dos respondentes.
+- Na questão de o que lhe faltava em cursos que não alcançaram suas expectativas, maioria das respostas coloca ênfase em :
+	- Falta de atividades práticas
+	- Falta de atividades aplicáveis
+	- Falta de conteúdo aprofundado
+	- Falta de suporte da plataforma / professores, mestres.
+- Maioria dos respondentes concorda que uma plataforma **reconhecida**, gera maior confiança.
+	- Assim como aquelas que focam em atividades práticas.
+- Cerca de 57% dos respondentes aceitaria pagar entre R$50 - R$100 para o acesso de tais plataformas.
