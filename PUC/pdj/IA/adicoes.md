@@ -151,3 +151,148 @@ enquanto jogo_está_rodando:
 O **game loop** roda dezenas a centenas de vezes por segundo. Todo sistema de jogo (física, IA, animação, audio) é chamado dentro dele. A frequência determina os FPS. As mecânicas são o que acontece em `atualizar_estado()`. As dinâmicas emergem de como os sistemas interagem nessa função.
 
 **Fixed timestep vs. variable timestep**: física precisa de timestep fixo para ser determinística (mesmo input, mesmo resultado). Rendering usa timestep variável para maximizar FPS. Jogos modernos separam os dois.
+
+---
+
+## Aula 04 — As 4 Chaves da Diversão e a Anatomia do Desafio
+
+### As 4 Keys to Fun (Nicole Lazzaro)
+
+O Bartle classifica *quem* são os jogadores. As **4 Keys to Fun** de Nicole Lazzaro classificam *que tipo de diversão* um jogo oferece — e um bom jogo oferece mais de uma:
+
+| Chave | Nome | Motor emocional | Exemplo |
+|---|---|---|---|
+| Hard Fun | Diversão Desafiadora | **Fiero** — triunfo pessoal após superação | Dark Souls, I Wanna Be The Guy |
+| Easy Fun | Diversão Exploratória | Curiosidade, mistério, surpresa | Breath of the Wild |
+| Serious Fun | Diversão Significativa | Imersão, alteração de estado interno | Journey, Portal |
+| People Fun | Diversão Social | Alegria de conexão, competição, cooperação | CS:GO, Among Us |
+
+**Fiero** (do italiano *orgulho*) é a emoção específica do Hard Fun: a reação física de levantar os braços ao derrotar um chefe. Lazzaro pesquisou que é a emoção mais intensa que videogames produzem — das mais difíceis de alcançar em outros mídias.
+
+Easy Fun não precisa de habilidade: exploração de mundo aberto sem objetivo claro, liberdade de "fazer bobagem". Serious Fun pode não ter vitória definida — o objetivo é *sentir* algo, não ganhar.
+
+---
+
+### A Definição de Jogo de Bernard Suits
+
+> *"Tentativa voluntária de superar obstáculos desnecessários."* — Bernard Suits, *The Grasshopper* (1978)
+
+Cada palavra carrega peso:
+- **Voluntária**: coerção elimina o aspecto lúdico. Um prisioneiro obrigado a jogar não está "jogando" no sentido filosófico.
+- **Obstáculos**: qualquer resistência ao objetivo (inimigos, física, outros jogadores).
+- **Desnecessários**: isso separa jogo de trabalho. Você *poderia* pegar a bandeira com a mão — as regras proíbem. Você aceita a limitação porque quer. Isso é **lusory attitude** (atitude lúdica).
+
+Essa definição explica por que remover obstáculos não torna um jogo melhor: sem obstáculos, não há jogo.
+
+---
+
+### Comunicação no Jogo: Sinais vs. Feedback
+
+O jogo precisa de uma linguagem consistente com o jogador. A distinção fundamental:
+
+- **Sinal**: evento que ocorre *independentemente* da ação do jogador. Alarme ao ser detectado; música mudando ao entrar em combate; cutscene disparada por timer.
+- **Feedback**: resposta direta a uma ação do jogador. Som de hit confirmation ao acertar um golpe; número de dano flutuando; vibração do controle ao coletar item.
+
+O erro mais comum: **feedback ausente ou ambíguo**. Se o jogador faz uma ação e nada acontece visivelmente, ele não sabe se a ação funcionou. Isso quebra o loop de agência — a sensação de que *eu* fiz algo e o mundo respondeu.
+
+---
+
+### Desafio = Obstáculo + Justiça
+
+O desafio só funciona se o jogador **entende o que aconteceu e por quê**:
+
+- **Sem compreensão**: o obstáculo vira frustração. Morrer sem entender o motivo não é diferente de morrer aleatoriamente.
+- **Com compreensão**: o obstáculo vira aprendizado. "Errei o timing" → "Na próxima acerto" → motivação para tentar de novo.
+
+O Dark Souls é frequentemente citado como "difícil" — mas a dificuldade é percebida como *justa* porque cada ataque telegrafará antes de acontecer. A *percepção* de justiça importa mais que a dificuldade objetiva. Jogos com hitboxes invisíveis e dano de fonte desconhecida criam percepção de injustiça mesmo que matematicamente corretos.
+
+---
+
+## Aula 05 — Core Loop, Game Feel e Espaço de Possibilidades
+
+### O Diagrama Central (Core Mechanic)
+
+O diagrama em cebola serve para responder: **qual é a interação fundamental mais repetida no jogo?** É chamado de *core mechanic* ou *core loop*:
+
+- Mario: correr + pular
+- Dark Souls: atacar + esquivar (gerenciando estamina)
+- Tetris: rotacionar + posicionar
+
+Tudo mais no jogo existe para criar variações contextuais desse núcleo. Progressão, narrativa, level design são *embalagens* ao redor do core.
+
+A regra de Miyamoto — "fundamentos sólidos primeiro" — significa: se o core loop não é divertido em si mesmo, nenhuma quantidade de conteúdo extra conserta o jogo.
+
+---
+
+### 30 Seconds of Fun e Game Feel
+
+O conceito vem do design do Halo: a Bungie isolou um loop de combate de ~30 segundos que era divertido de repetir indefinidamente. Toda a estrutura de encontros do jogo são variações desse loop.
+
+**Game Feel** (ou *juice*) é a qualidade tátil das mecânicas — a soma de:
+- Animações responsivas (sem input lag)
+- Sons que confirmam cada ação
+- Feedback visual (screenshake, hit-stop, partículas)
+- Momentum e peso do personagem
+
+Jogos com mau game feel parecem "plástico". A mesma mecânica com bom ou mau game feel cria experiências radicalmente diferentes. É o que o Extra Credits chama de "a alma do jogo": um jogo pode ter mecânicas brilhantes mas game feel ruim e ainda assim falhar.
+
+---
+
+### Espaço de Possibilidades: O Eixo Simplicidade-Emergência
+
+O problema das três configurações:
+
+```
+Muitas regras → espaço grande → caótico e confuso
+Poucas regras → espaço pequeno → entediante e previsível
+Poucas regras + interações ricas → espaço emergente → ideal
+```
+
+A distinção crucial é entre **complexidade complicada** e **complexidade emergente**:
+- **Complicada**: muitas regras independentes para memorizar. Alto esforço, baixa surpresa.
+- **Emergente**: poucas regras que interagem entre si. O contexto muda o resultado da mesma ação.
+
+Teste prático: se você remove uma regra, o jogo simplifica ou desmorona? Em sistemas emergentes, cada regra interage com as outras — remover qualquer uma colapsa o sistema.
+
+---
+
+## Aulas 14, 15, 16 — Godot Engine: Câmera, Nodos e Ciclo de Vida
+
+### O Sistema de Cenas e Nodos do Godot
+
+A arquitetura central do Godot é a **árvore de nodos**:
+- Tudo no jogo é um **nodo** (Node) com propriedades e métodos
+- Nodos se organizam em hierarquia pai-filho
+- Uma **cena** é uma subárvore salva como arquivo `.tscn`, reutilizável e instanciável
+
+Essa hierarquia tem implicações práticas: transformações (posição, rotação, escala) são relativas ao pai. Colocar a Camera2D como filho do sprite do personagem já é Camera Follow — o nodo herda a posição do pai sem uma linha de código.
+
+---
+
+### Camera2D — Viewport, Limites e Smoothing
+
+O mapeamento entre mundo do jogo e tela envolve os mesmos conceitos de CG:
+- **World Space**: coordenadas do mundo (SRU)
+- **Screen Space**: pixels na tela (SRP)
+- **Camera2D** faz essa transformação automaticamente — a mesma regra de três que víamos em CG, abstraída pelo Godot
+
+Os **limites de câmera** (`limit_left`, `limit_right`, etc.) restringem a navegação da viewport — fundamental para não expor área além do nível.
+
+O **smoothing** (delay de acompanhamento) simula um cameraman físico: o sprite se move, a câmera "tenta alcançar". Cria sensação de velocidade em personagens rápidos. **Viewports múltiplas** permitem minimaps e split-screen: cada Viewport renderiza a cena de uma perspectiva diferente.
+
+---
+
+### Ciclo de Vida de Nodos: free() vs queue_free()
+
+```gdscript
+nodo.free()        # Libera imediatamente. Perigoso se outro código ainda referencia o nodo.
+nodo.queue_free()  # Agenda liberação para o fim do frame atual. Seguro, recomendado.
+```
+
+O risco do `free()` imediato: se qualquer outro nodo ainda segura referência e tenta acessá-la no mesmo frame, ocorre use-after-free. `queue_free()` espera o frame terminar, garantindo que ninguém mais usará o nodo.
+
+**VisibleOnScreenNotifier2D** detecta quando um nodo sai da viewport. Combinado com `queue_free()`, é o padrão para destruir projéteis e decals fora de tela — economizando memória e processamento.
+
+### Troca de Cenas
+
+`get_tree().change_scene_to_file()` descarrega a cena atual e carrega uma nova — toda a árvore de nodos é destruída e reconstruída. Para transições suaves com efeitos (fade, preservação de estado), a alternativa é **instanciar cenas dentro de outra cena** ao invés de trocá-las — mais trabalho, mais controle.

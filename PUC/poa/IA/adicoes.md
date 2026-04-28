@@ -122,3 +122,97 @@ O exemplo mais simples é Fibonacci:
 - Com memoização: $O(n)$
 
 O problema do troco de moedas que greedy não resolve, DP resolve em $O(n \times \text{amount})$.
+
+---
+
+## Aula 12 — Programação Dinâmica: Pedrinhas e Fibonacci
+
+### O Problema das Pedrinhas (Tiling)
+
+A construção da estradinha de tamanho $n$ com pedrinhas de $1 \times 2$ é o exemplo introdutório clássico de DP. A recursão emerge naturalmente:
+
+Para cobrir uma estrada de tamanho $n$:
+- Última peça colocada **de pé** (largura 1): restam $n-1$ espaços → $C(n-1)$ maneiras
+- Últimas **duas** peças deitadas (largura 2 total): restam $n-2$ espaços → $C(n-2)$ maneiras
+
+$$C(n) = C(n-1) + C(n-2)$$
+
+Com casos base $C(0) = 1$ e $C(1) = 1$, isso é exatamente **Fibonacci**. A estrada de tamanho 75 tem $F(75) = 2.111.485.077.978.050$ maneiras.
+
+---
+
+### Por que a Recursão Ingênua é Inaceitável
+
+Avaliar $C(75)$ recursivamente sem memoização calcula $C(2)$ centenas de bilhões de vezes. A árvore de recursão tem $O(2^n)$ nodos.
+
+O padrão: para calcular $C(6)$, o algoritmo calcula $C(4)$ duas vezes, $C(3)$ três vezes, $C(2)$ cinco vezes. Cada nível dobra o trabalho desnecessário.
+
+**Memoização** resolve armazenando cada resultado calculado:
+
+```python
+memo = {}
+def C(n):
+    if n <= 1: return 1
+    if n not in memo:
+        memo[n] = C(n-1) + C(n-2)
+    return memo[n]
+```
+
+Custo: $O(n)$ tempo, $O(n)$ espaço. É a "poda" da árvore que o JB mencionou.
+
+---
+
+### A Variante com Pedrinhas Coloridas
+
+Com pedrinhas de duas cores (azul/branca quando de pé, duplas brancas quando deitadas), o espaço de possibilidades cresce mas a estrutura recursiva se mantém:
+
+- Estrada de tamanho 1: 2 configurações
+- Estrada de tamanho 2: 8 configurações
+
+A recorrência $C(n) = f(C(n-1), C(n-2))$ persiste com coeficientes diferentes. A lição: **o esqueleto recursivo é o mesmo; o que muda é o número de possibilidades em cada passo**.
+
+---
+
+## Aula 14 — Rosquinhas: Combinatória Recursiva e o Triângulo de Pascal
+
+### O Problema das Rosquinhas
+
+Distribuir $k$ rosquinhas entre $n$ pessoas onde a ordem não importa — isso é exatamente $\binom{n}{k}$.
+
+A construção recursiva do JB: ao observar a pessoa $n$:
+- Ela **recebe** uma rosquinha: as restantes $k-1$ vão para $n-1$ pessoas → $R(n-1, k-1)$
+- Ela **não recebe**: as $k$ rosquinhas vão para $n-1$ pessoas → $R(n-1, k)$
+
+$$R(n, k) = R(n-1, k-1) + R(n-1, k)$$
+
+Isso é o **Triângulo de Pascal** — cada célula é a soma das duas acima. Os casos base: $R(x, x) = 1$, $R(x, 0) = 1$, $R(x, 1) = x$, $R(x, x-1) = x$.
+
+---
+
+### Por que o JB Não Queria a Fórmula Combinatória
+
+O ponto pedagógico é fundamental: $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ dá a resposta diretamente, mas não explica *de onde vem*. A derivação recursiva mostra:
+
+1. **De onde surge a estrutura** (binária: recebe ou não recebe)
+2. **Por que subproblemas se sobrepõem** (o triângulo de Pascal é um grafo de dependências)
+3. **Como memoização elimina recálculos** (cada célula calculada uma única vez)
+
+A fórmula fechada existe *por causa* da recorrência — ela é a solução analítica da mesma. Entender a recorrência é entender *por que* a fórmula funciona.
+
+---
+
+### Tabela Bottom-Up: DP sem Recursão
+
+A alternativa sem recursão é preencher o Triângulo de Pascal de baixo para cima:
+
+```
+n=0: [1]
+n=1: [1, 1]
+n=2: [1, 2, 1]
+n=3: [1, 3, 3, 1]
+n=4: [1, 4, 6, 4, 1]
+```
+
+$R(n, k)$ é a célula na linha $n$, coluna $k$. Custo: $O(n \cdot k)$ — muito melhor que exponencial.
+
+Esse é o padrão geral de DP: **identificar a recorrência → memoizar top-down OU construir tabela bottom-up**. Os dois são equivalentes em resultado; bottom-up costuma ser mais eficiente em memória (pode descartar linhas antigas).

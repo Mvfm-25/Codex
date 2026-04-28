@@ -126,3 +126,56 @@ Quando uma API REST muda de forma que quebra clientes existentes, precisa de ver
 3. **Query param**: `/users?version=2` — desencorajado.
 
 A regra de ouro: **nunca remova ou renomeie campos de uma versão existente sem criar uma nova versão**. Adicionar campos novos geralmente é seguro (se clientes ignoram campos desconhecidos).
+
+---
+
+## Aula 07 — Backends For Frontends (BFF)
+
+### O Problema que o BFF Resolve
+
+Um API Gateway único para todos os clientes cria um problema: mobile, web e parceiros têm necessidades radicalmente diferentes:
+
+- Mobile tem banda limitada — quer respostas compactas e poucas chamadas
+- Web pode fazer múltiplas requisições paralelas — quer granularidade
+- Parceiros externos têm contratos de API estáveis, diferentes dos internos
+
+Tentar servir todos com um único gateway leva a: payloads grandes demais para mobile, endpoints acoplados a UI específica, ou contratos quebrados quando a UI evolui.
+
+---
+
+### A Solução: Um Gateway por Tipo de Cliente
+
+O padrão **BFF** define um backend específico para cada tipo de frontend:
+
+```
+Mobile App    → BFF Mobile    ┐
+Web App       → BFF Web       ├──→ Microserviços internos
+Parceiros     → BFF Partners  ┘
+```
+
+Cada BFF:
+- Agrega chamadas múltiplas a microserviços em uma única resposta otimizada para aquele cliente
+- Implementa lógica de apresentação específica para aquele cliente (formatar datas, filtrar campos)
+- Evolui independentemente dos outros BFFs — o time mobile muda o BFF mobile sem afetar web
+
+---
+
+### Diferença entre API Gateway e BFF
+
+| | API Gateway | BFF |
+|---|---|---|
+| Responsabilidade | Infraestrutura transversal (auth, rate limit, routing) | Lógica específica de cliente |
+| Escopo | Um para todos | Um por tipo de cliente |
+| Quem mantém | Time de plataforma | Time do produto (junto com o frontend) |
+| Ritmo de mudança | Raro, estável | Frequente, junto com o frontend |
+
+Na prática podem coexistir: o API Gateway fica na frente (autenticação, TLS, logging), os BFFs ficam atrás servindo cada tipo de cliente.
+
+---
+
+### Quando BFF Faz Sentido
+
+- **Múltiplos clientes com requisitos divergentes**: a alternativa é um gateway com lógica condicional crescente — anti-pattern chamado "fat gateway".
+- **Times separados por produto**: autonomia sem acoplamento. O time mobile não espera o time web para evoluir sua API.
+
+Quando **não** faz sentido: poucos clientes com necessidades similares — o overhead de manter múltiplos gateways não compensa.

@@ -157,3 +157,40 @@ As notas mencionam `#define N 5` como diretiva de compilação. A distinção:
 - `int N = 5`: variável modificável. Não serve como tamanho de array em C89.
 
 Para tamanhos de buffer e constantes de sistema, `#define` ainda é comum em código C legado. Em C++ e C moderno (`c99+`), prefere-se `const` ou `constexpr` por segurança de tipos.
+
+---
+
+## Aula 04 — PCB em Detalhe e o Jantar dos Filósofos
+
+### Process Control Block — Por que Cada Campo Existe
+
+O PCB é a estrutura de dados no kernel que *representa* um processo. Cada campo tem razão de ser:
+
+| Campo | Por que existe |
+|---|---|
+| Estado do processo | O escalonador precisa saber se pode (Pronto) ou não (Esperando) escalonar esse processo |
+| Contador de programa (PC) | Para retomar exatamente de onde parou após um context switch |
+| Registradores da CPU | Para restaurar o estado completo da CPU — sem isso o processo retomaria com valores errados |
+| Informação de memória | Tabela de páginas e limites de segmento — o MMU precisa disso para traduzir endereços virtuais |
+| Informações de E/S | Arquivos abertos, buffers, dispositivos em uso |
+| Informações de contabilidade | CPU time usado, limites de recursos (`ulimit` no Linux) |
+
+O PCB é criado no `fork()` e destruído no `exit()`. Em Linux, o PCB corresponde à estrutura `task_struct` — com ~500 campos. É uma das estruturas mais complexas do kernel.
+
+---
+
+### O Jantar dos Filósofos — O Exemplo Clássico de Deadlock
+
+O Jantar dos Filósofos (Dijkstra, 1965) é o exemplo canônico de deadlock com recursos compartilhados:
+
+**Cenário**: 5 filósofos em mesa circular, 5 garfos entre eles. Para comer, cada filósofo precisa dos **dois garfos adjacentes**.
+
+**O deadlock**: se todos pegam o garfo esquerdo simultaneamente, ninguém consegue o garfo direito. Espera circular infinita — as quatro condições de Coffman todas satisfeitas.
+
+**Soluções clássicas**:
+
+1. **Ordenação de recursos**: garfos são numerados; filósofo sempre pega o de menor número primeiro. Quebra a espera circular (condição 4).
+2. **Semáforo central**: no máximo 4 filósofos tentam comer ao mesmo tempo — sempre haverá pelo menos um que consegue os dois garfos.
+3. **Solução do mordomo**: um árbitro controla quem pode tentar pegar garfos.
+
+A conexão com `pthread_mutex`: cada garfo é um mutex. A regra prática mais usada para evitar deadlock em código real é **sempre travar mutexes na mesma ordem em todo o código** — é a solução de ordenação aplicada a sistemas reais.

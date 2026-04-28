@@ -137,3 +137,50 @@ Princípios da Psicologia da Gestalt que explicam como humanos percebem agrupame
 - **Figura-fundo**: o que é percebido como objeto vs. fundo pode ser ambíguo (usado intencionalmente em logos).
 
 Esses princípios são a razão pela qual um design visualmente "limpo" funciona melhor cognitivamente — ele explora a tendência natural do cérebro de organizar e agrupar.
+
+---
+
+## Aula 12 — Personas: Da Pesquisa ao Arquétipo
+
+### As Dimensões de Segmentação
+
+Personas são construídas a partir de dados reais, não de suposições. As dimensões úteis para segmentação:
+
+- **Experiência** com tecnologia ou domínio: iniciante, intermediário, avançado
+- **Atitudes** em relação ao produto: entusiasta, cético, pragmático
+- **Tarefas principais**: o que essa pessoa *realmente faz* com o sistema
+
+**Por que idade não é recomendada como dimensão primária**: dois usuários de 25 e 55 anos podem ter comportamentos idênticos com o produto; dois usuários de 30 anos podem ter comportamentos opostos. Idade correlaciona fracamente com comportamento de uso em contextos de produto — é um atalho que frequentemente leva a estereótipos, não a personas úteis.
+
+---
+
+### O Corte 70/30 e Subgrupos
+
+Quando os dados apresentam um corte 70/30 em alguma dimensão (ex: 70% usam o produto em desktop, 30% em mobile), isso indica dois contextos de uso distintos — possivelmente duas personas.
+
+O ponto mais importante: o subgrupo de 70% frequentemente contém sub-segmentos adicionais. Personas não são simplesmente "maioria vs. minoria" — são padrões de comportamento distintos que justificam **decisões de design diferentes**.
+
+Regra prática: se duas pessoas dentro de um subgrupo tomariam decisões de design opostas para a mesma feature, elas representam personas diferentes, independente do tamanho relativo dos grupos.
+
+---
+
+### Objetivos como Definição Central
+
+A característica mais importante de uma persona bem construída são seus **objetivos** — não suas tarefas:
+
+- **Tarefa**: "Fazer upload de uma foto de perfil"
+- **Objetivo**: "Parecer profissional para recrutadores"
+
+O objetivo explica *por que* a tarefa importa. Design centrado em tarefas otimiza o fluxo; design centrado em objetivos garante que o fluxo resolve o problema real.
+
+O refinamento sucessivo de dados brutos: entrevista revela comportamentos → agrupamento identifica padrões → análise de padrões identifica motivações → motivações formam os objetivos da persona. É iterativo, não linear.
+
+---
+
+### Modelagem de Comportamento
+
+A utilidade prática das personas é conseguir *prever* como uma persona reagiria a uma decisão de design antes de testar com usuários reais.
+
+"A persona Carla usaria esse atalho de teclado?" — se os dados mostram que Carla é iniciante, provavelmente não. Essa pergunta direciona decisões de design sem precisar de novo teste.
+
+Isso não substitui testes com usuários reais, mas reduz o custo de decisões óbvias e foca os testes nas questões genuinamente incertas — que são as mais valiosas de responder.

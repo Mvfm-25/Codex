@@ -183,3 +183,151 @@ O somatório $\sum_{j \neq k} \frac{1}{w_k - w_j}$ é exatamente o **termo de re
 - **Wolfram Alpha** — útil para verificar cálculos de cotas e raízes na mão.
 - [Visualizador de IEEE 754](https://www.h-schmidt.net/FloatConverter/IEEE754.html) — mostra os bits reais de qualquer float.
 - [Fractal de Newton interativo](https://www.chiark.greenend.org.uk/~sgtatham/newton/) — para brincar com os "coloridinhos" do JB.
+
+---
+
+## Aula 06 — Cotas de Lagrange, Cauchy e Fujiwara
+
+### O que são Cotas (Bounds)
+
+Antes de procurar raízes, é útil saber *onde procurar*. As cotas determinam um valor $M$ tal que todas as raízes reais do polinômio estão no intervalo $[-M, M]$. Usam apenas os coeficientes do próprio polinômio.
+
+Para $p(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_0$:
+
+---
+
+### Cota de Lagrange
+
+$$M = \max\!\left\{1,\ \sum_{i=0}^{n-1} \left|\frac{a_i}{a_n}\right|\right\}$$
+
+Soma os módulos de todos os coeficientes divididos pelo coeficiente líder, e toma o máximo com 1.
+
+Para $p(x) = 6x^8 - 4x^7 + 5x^5 + 4x^4 + 12x^3 - x + 10$:
+$$M = \frac{4 + 0 + 5 + 4 + 12 + 0 + 1 + 10}{6} = \frac{36}{6} = 6$$
+
+Todas as raízes estão em $[-6, 6]$.
+
+---
+
+### Cota de Cauchy
+
+$$M = 1 + \max_{0 \le i < n}\!\left|\frac{a_i}{a_n}\right|$$
+
+Em vez de somar, toma o **máximo** dos coeficientes normalizados e adiciona 1.
+
+Para o mesmo polinômio: $\max = |12/6| = 2$, logo $M = 1 + 2 = 3$.
+
+**Cauchy costuma ser mais apertada que Lagrange** (no exemplo: $3 < 6$). Não é garantido para todo polinômio — depende da distribuição dos coeficientes.
+
+---
+
+### Cota de Fujiwara
+
+Mais refinada ainda: cada coeficiente recebe um expoente diferente conforme sua posição.
+
+$$M = 2 \cdot \max_{1 \le i \le n}\!\left|\frac{a_{n-i}}{a_n}\right|^{1/i}$$
+
+No exemplo do JB, Fujiwara retornou $\approx 2{,}29$ — menor que Cauchy ($3$) e muito menor que Lagrange ($6$). A precisão adicional vem de levar em conta a *posição* de cada coeficiente: coeficientes de grau maior influenciam mais onde as raízes podem estar.
+
+No mundo dos complexos, a cota define um **raio** no plano complexo — um disco centrado na origem contém todas as raízes (reais e complexas).
+
+---
+
+## Aula 14 — Eliminação de Gauss e Sistemas Mal-Condicionados
+
+### Sistemas Lineares como Novo Problema
+
+A partir desta aula, o foco muda de **raízes de polinômios** para **sistemas de equações lineares** $Ax = b$. A maioria dos problemas de engenharia e física se reduz a sistemas lineares — simulações, redes de circuitos, elementos finitos.
+
+---
+
+### Eliminação de Gauss
+
+O método de álgebra linear tem um nome formal: **eliminação gaussiana**.
+
+**Procedimento**:
+1. Escrever o sistema como matriz aumentada $[A | b]$
+2. Usar operações elementares de linha para zerar os elementos abaixo da diagonal (forma escalonada)
+3. Resolver de baixo para cima (**back substitution**)
+
+Para $3x + 2y = 6$ e $2x - y = 4$:
+```
+[3  2 | 6]      eliminação      [3    2 | 6]      back-sub
+[2 -1 | 4]   ───────────────→   [0  -7/3 | 0]   ─────────→   y=0, x=2
+```
+
+As operações de linha não alteram o conjunto solução — é o que o JB quis dizer com "tu pode operar, os resultados não se alteram".
+
+---
+
+### Sistemas Mal-Condicionados
+
+Um sistema é **mal-condicionado** quando uma pequena perturbação nos dados causa uma **grande mudança na solução**. Visualmente: dois planos quase paralelos se intersectam em uma linha muito sensível — mover ligeiramente um plano desloca muito a interseção.
+
+O **número de condicionamento** $\kappa(A) = \|A\| \cdot \|A^{-1}\|$ mede isso:
+- $\kappa \approx 1$: bem condicionado
+- $\kappa \gg 1$: mal condicionado
+
+Mal-condicionamento amplifica erros de arredondamento IEEE 754 — a conexão direta com as primeiras aulas.
+
+---
+
+### Pivotamento e Subtração Catastrófica
+
+Gauss ingênuo tem um problema: se o elemento da diagonal (o *pivô*) for próximo de zero, a divisão amplifica erros enormemente.
+
+**Pivotamento parcial**: antes de eliminar a coluna $k$, trocar a linha atual pela linha abaixo que tem o **maior valor absoluto** na coluna $k$. Mantém os pivôs grandes.
+
+**Subtração catastrófica** (*catastrophic cancellation*): quando dois números muito próximos são subtraídos, os bits significativos se cancelam e o resultado perde precisão:
+
+```
+a = 1.000001
+b = 1.000000
+a - b = 0.000001  ← apenas 1 dígito significativo dos 7 originais
+```
+
+Em Gauss, isso acontece ao eliminar linhas com coeficientes parecidos. O pivotamento reduz essa chance ao garantir que o divisor seja grande — a razão $a_{ij}/a_{kk}$ fica com módulo $\le 1$.
+
+---
+
+## Aula 15 — Cadeias de Markov e o Problema dos Lemmings
+
+### O que é uma Cadeia de Markov
+
+O problema dos Lemmings no planeta Zorg é uma **Cadeia de Markov**: um sistema probabilístico onde o **estado futuro depende apenas do estado atual**, não da história passada.
+
+**Propriedade de Markov** (ou "sem memória"):
+$$P(\text{estado}_{t+1} \mid \text{estado}_t, \text{estado}_{t-1}, \ldots) = P(\text{estado}_{t+1} \mid \text{estado}_t)$$
+
+No problema: a probabilidade do Lemming morrer ou atingir felicidade eterna depende apenas de onde ele *está agora*, não de como chegou lá.
+
+---
+
+### Estados Absorventes e Transitórios
+
+- **Absorventes** (`%` morte, `$` felicidade): uma vez que o Lemming entra, nunca mais sai.
+- **Transitórios** (`.` passagem, `A` posição inicial): o Lemming pode entrar e sair.
+
+Para o cenário `%..A*$`:
+- A pergunta fundamental é: dado que começo em `A`, qual a **probabilidade de absorção** em cada estado absorvente?
+
+---
+
+### Resolvendo com Eliminação de Gauss
+
+As equações de probabilidade de absorção formam um **sistema linear** — é por isso que Gauss aparece nessa aula. Para um cenário simples `%..A*`:
+
+Definindo $P_X$ = probabilidade de atingir felicidade partindo do estado $X$:
+
+$$P_A = \frac{1}{2} \cdot P_\% + \frac{1}{2} \cdot P_* = \frac{1}{2}(0) + \frac{1}{2}(1) = 0{,}5$$
+
+Para labirintos maiores com vários estados transitórios, monta-se o sistema $Ax = b$ e resolve-se com Gauss — conectando diretamente os dois conteúdos do semestre.
+
+---
+
+### Aplicações Reais de Cadeias de Markov
+
+Cadeias de Markov aparecem em:
+- **PageRank do Google**: cada página da web é um estado; links são transições probabilísticas; a importância de uma página é sua probabilidade de absorção na cadeia.
+- **Modelos de linguagem (LLMs)**: cada token gerado depende do estado atual da sequência.
+- **Previsão de tempo, análise de crédito, simulação de filas** — qualquer sistema onde "o passado importa apenas pelo estado em que deixou o presente".
