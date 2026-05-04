@@ -41,3 +41,10 @@
 
 ---
 ### Capítulo 03
+- Capítulo começa com o Grace voltando às aulas depois da descoberta do satélite ArcLight. Ele comenta que :
+	"*A situação era desesperadora e mortal, mas também era a realidade.*"
+- O que é incrível lembrar que o livro lançou em 2021. Nada acontece por acaso.
+- O filme começa com mais ou menos essa mesma cena, com o Grace jogando o saquinho de feijões pela turma pra uma sessão relâmpago de perguntas & respostas.
+- A segunda parte dessa 'cena' é, se não semelhante, idêntica ao que acontece no filme, a Stratt enfrenta o Grace e "pede" (as much as the shadow government can) pela assistência dele para analisar o que encontraram na linha de Petrova.
+	- O filme adaptou tão 1:1 a cena que a única coisa que me chamou a atenção foi o fato que a Stratt é revelada posteriormente como Holandesa. No filme ela cita que quando criança cantava no coral de alguma igreja na Alemanha Oriental. O que seria bem engraçdo ter uma personagem principal que tem chance não 0 de ter trabalhado pra **Stasi**.
+- 

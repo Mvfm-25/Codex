@@ -6,103 +6,254 @@
 
 ---
 
-## 1. Visão Geral
+## 1. Introdução
 
-O formulário coletou 20 respostas de jovens adultos com perfis variados. A análise dos dados permitiu identificar três padrões distintos de comportamento e motivação, que fundamentaram a criação das personas Gabriel, Beatriz e Lucas. Este relatório traça a relação direta entre os dados brutos e cada persona.
+Este trabalho integra a disciplina de Experiência do Usuário (UX) da Escola Politécnica da PUCRS e está alinhado à ODS 4 da ONU — Educação de Qualidade. O recorte escolhido pelo grupo investiga as barreiras e motivações de jovens adultos brasileiros no acesso a cursos e qualificações profissionais online.
+
+O objetivo do trabalho é compreender as necessidades, frustrações e expectativas desse público em relação a plataformas de qualificação profissional, a fim de identificar oportunidades de projeto que tornem a educação técnica mais acessível, relevante e confiável.
+
+O sistema a ser investigado é uma **plataforma de qualificação profissional online** voltada a jovens adultos de 18 a 30 anos, em diferentes estágios de carreira — desde quem ainda não ingressou no mercado até quem já atua e busca crescimento técnico. A plataforma deve oferecer cursos técnicos e profissionalizantes com flexibilidade de acesso, conteúdo prático e certificação reconhecida pelo mercado.
 
 ---
 
-## 2. Dados Demográficos e sua Relação com as Personas
+## 2. Consolidação dos Dados Coletados
 
-**Faixa etária dominante: 21–24 anos (maioria com 22 ou 23 anos)**
+### 2.1 Análise dos Dados Coletados
 
-Todas as três personas foram posicionadas nessa faixa. Não é uma escolha arbitrária, 80% das respostas vieram desse recorte. Isso valida a coerência interna de cada perfil.
+A coleta de dados foi realizada por meio de um formulário distribuído pelos membros do grupo via Google Forms. O formulário obteve **20 respostas** de jovens adultos com perfis variados. As perguntas abrangeram dados demográficos, nível de segurança na carreira, motivações para busca de cursos, barreiras enfrentadas e experiências anteriores com plataformas de ensino.
+
+**Faixa etária:** A maioria dos respondentes tem entre 21 e 24 anos, com concentração em 22 e 23 anos (80% das respostas).
 
 **Escolaridade:**
+- 70% cursando ensino superior incompleto
+- 25% com ensino médio completo
+- 5% com outros graus
 
-- 70% com ensino superior incompleto → sustenta Gabriel (Eng. de Software) e Beatriz (Administração)
-- 25% com ensino médio completo → sustenta Lucas, o único sem curso superior
+**Áreas profissionais mencionadas:** Desenvolvedor Fullstack, Engenharia de Software, Data Scientist, Suporte de redes, Administração e B2C.
 
-**Área profissional:** as respostas abertas ("Desenvolvedor Fullstack", "Engenharia de Software", "Data Scientist", "Suporte de redes", "Administração", "B2C") foram distribuídas pelas personas de acordo com o nível técnico e grau de segurança na carreira.
+**Motivações predominantes:**
+- "Quero crescer na minha área" — 65%
+- "Não sei qual carreira seguir" — 20%
+- "Quero mudar de carreira" — 10%
 
----
+**Barreiras relatadas:**
+- Preço alto — 57,9%
+- Falta de tempo — 36,8%
+- Falta de oportunidades — 21,1%
+- Falta de qualificação / clareza sobre a própria carreira — 26,3% cada
 
-## 3. Relação por Persona
+**Experiências anteriores:**
+- 94,7% já buscaram cursos ou formações
+- 77,8% já fizeram um curso que não atendeu às expectativas
+- Principais decepções: superficialidade do conteúdo, falta de exemplos práticos, ausência de suporte profissional
 
-### 3.1 Gabriel Costa — "O Profissional em Ascensão"
+**Confiança em plataformas:**
+- Certificação reconhecida — 36,8%
+- Conteúdo prático — 21,1%
+- "Não sei se vai valer a pena" como barreira antes da compra — 47,4%
 
-**Dados que sustentam esse perfil:**
+**Disposição de pagamento mensal:**
+- Até R$20 — minoria
+- R$20–50 — faixa mais restrita (perfil de menor renda)
+- R$50–100 — 57,9%
+- Acima de R$100 — 21,1%
 
-| Dado do formulário | Expressão na persona |
-|---|---|
-| Segurança na carreira: 4/5 (35% dos respondentes) | Gabriel se sente "razoavelmente seguro" (4/5) |
-| "Quero crescer na minha área" — 65% | Principal motivação explícita do perfil |
-| Falta de qualificação como dúvida — 26,3% | Reconhece que lhe "falta profundidade técnica" |
-| Estudos diários — 57,9% | Gabriel estuda diariamente |
-| Busca cursos no Google — 63,2% | Meio principal de descoberta listado |
-| Curso decepcionante por superficialidade e falta de exemplos práticos | Decepcionou-se com cursos "básicos demais matematicamente e sem exemplos aplicáveis" |
-| Disposição de pagar R$100+/mês — 21,1% | Único perfil com disposição de pagar acima de R$100 |
+**Meios de descoberta de cursos:**
+- Google — 63,2%
+- Redes sociais e indicação de amigos — 42,1%
 
-**Resumo:** Gabriel representa o segmento mais técnico e autodirigido. Os dados confirmam que existe uma parcela de respondentes já inserida no mercado, estudando com frequência e disposta a pagar mais por profundidade.
-
----
-
-### 3.2 Beatriz Mendes — "A Estudante em Transição"
-
-**Dados que sustentam esse perfil:**
-
-| Dado do formulário | Expressão na persona |
-|---|---|
-| Segurança na carreira: 3/5 — 25% | Beatriz tem segurança mediana (3/5) |
-| "Não sei qual carreira seguir" — 20% | Oscila entre não saber e querer mudar |
-| "Quero mudar de carreira" — 10% | Complementa o estado de indecisão |
-| Falta de clareza como dúvida — 26,3% | Principal dúvida de Beatriz explicitada |
-| Redes sociais e indicação de amigos — 42,1% | Como ela descobre cursos |
-| "Não sei se vai valer a pena" — 47,4% | Barreira central antes do compromisso |
-| Falta de clareza e apoio profissional em cursos anteriores | Exatamente o que lhe faltou nas formações passadas |
-| Certificação reconhecida como fator de confiança — 36,8% | Depende de validação externa para confiar |
-| Disposição de pagar R$50–100/mês | Faixa de pagamento de Beatriz |
-
-**Resumo:** Beatriz encapsula a maior parcela de incerteza do grupo. A insegurança sobre retorno sobre investimento (47,4% "não sei se vai valer a pena") é o dado mais revelador para esse perfil, ela precisa de clareza antes do conteúdo.
+A análise dos dados permitiu identificar **três padrões distintos** de comportamento e motivação, que fundamentaram a criação de três personas representativas.
 
 ---
 
-### 3.3 Lucas Oliveira — "O Candidato Competitivo"
+### 2.2 Perfis de Usuário
 
-**Dados que sustentam esse perfil:**
+A partir da análise dos dados foram delimitados três perfis de usuário:
 
-| Dado do formulário | Expressão na persona |
-|---|---|
-| 35% dos respondentes desempregados | Lucas está desempregado ou subempregado |
-| Segurança na carreira: 3/5 ou menos | Segurança baixa, foco em resultado imediato |
-| Falta de oportunidades — 21,1% | Principal obstáculo percebido |
-| Preço alto como dificuldade — 57,9% | Barreira real, não percepção — deixou de fazer cursos por custo |
-| Falta de tempo — 36,8% | Contextualiza a situação de quem trabalha ou busca emprego |
-| Falta de atividades práticas e suporte em cursos anteriores | Exatamente o que lhe faltou nas formações |
-| Certificação reconhecida como critério de confiança | Currículo competitivo depende de certificado reconhecido |
-| Disposição de pagar R$20–50/mês (e R$50–100 no limite) | Faixa mais restrita entre os três perfis |
+**Perfil A — O Profissional em Ascensão**
+Jovem adulto já inserido no mercado de trabalho na área de tecnologia, com ensino superior em andamento, alta frequência de estudo e disposição de pagar mais por conteúdo de qualidade. Sua principal motivação é o crescimento técnico dentro da carreira já escolhida.
 
-**Resumo:** Lucas representa o segmento com maior pressão pragmática. O dado dos 35% desempregados, somado ao custo como barreira predominante (57,9%), ancora diretamente sua caracterização como alguém que precisa de resultado concreto e acessível.
+**Perfil B — A Estudante em Transição**
+Jovem adulto cursando ensino superior, ainda indeciso sobre a trajetória profissional. Descobre cursos por redes sociais e indicações, tem insegurança sobre o retorno do investimento e depende de validação externa (certificações) para tomar decisões. Sua principal necessidade é clareza antes do conteúdo.
+
+**Perfil C — O Candidato Competitivo**
+Jovem adulto com ensino médio completo, desempregado ou subempregado, com restrição financeira real e falta de tempo. Busca resultado concreto e rápido — especialmente um certificado reconhecido que aumente sua competitividade no mercado. Sua principal barreira é o custo.
 
 ---
 
-## 4. Convergências Transversais
+### 2.3 Necessidades dos Usuários
 
-Alguns dados não pertencem a uma única persona — eles atravessam os três perfis e revelam dores comuns à plataforma como um todo:
+**Perfil A — O Profissional em Ascensão:**
+- Conteúdo técnico aprofundado, com exemplos aplicáveis a situações reais
+- Trilhas de aprendizado especializadas por área (não cursos genéricos)
+- Flexibilidade para estudar no próprio ritmo (já estuda diariamente)
+- Plataforma que justifique um investimento acima de R$100/mês
 
-- **77,8% já fizeram um curso que não atendeu às expectativas** — os três perfis refletem isso. A diferença está *no que faltou*: profundidade técnica (Gabriel), clareza e suporte (Beatriz), prática e custo-benefício (Lucas).
+**Perfil B — A Estudante em Transição:**
+- Orientação de carreira integrada ao conteúdo dos cursos
+- Clareza sobre o que o curso oferece e qual resultado esperar antes da compra
+- Certificação reconhecida pelo mercado para gerar confiança na decisão
+- Conteúdo acessível para quem ainda não tem direção definida
 
-- **94,7% já buscaram cursos ou formações** — não é falta de engajamento o problema. O problema está na qualidade e adequação do que existe.
-
-- **57,9% pagaria R$50–100/mês** — faixa coberta por dois dos três perfis (Beatriz e Lucas no limite). Gabriel está acima disso, mas é o menos sensível a preço.
-
-- **Conteúdo prático** aparece como expectativa de confiança em 21,1% e como falha em cursos anteriores em múltiplas respostas abertas — é o atributo mais recorrente e transversal aos três perfis.
+**Perfil C — O Candidato Competitivo:**
+- Custo acessível (idealmente entre R$20 e R$50/mês)
+- Atividades práticas que gerem portfólio ou comprovação de habilidade
+- Certificados reconhecidos pelo mercado de trabalho
+- Formato compatível com pouco tempo disponível (módulos curtos, assíncronos)
 
 ---
 
-## 5. O que os dados confirmam sobre as personas
+## 3. Organização dos Dados
 
-As personas não foram inventadas, foram extraídas de padrões reais. Os dados do formulário sustentam, linha a linha, as escolhas de perfil, motivação, barreira e disposição de pagamento de cada uma. A divisão em três personas responde à heterogeneidade observada: há quem já sabe o que quer (Gabriel), quem ainda não sabe (Beatriz) e quem sabe mas não pode pagar quanto quer (Lucas). Essa tripartição cobre o espectro central das respostas sem forçar um perfil único que seria impreciso para a maioria.
+### 3.1 Descrição das Personas
 
 ---
 
+#### Persona 1 — Gabriel Costa, "O Profissional em Ascensão"
+
+> *"Eu quero ir fundo. Curso raso não me serve — se não vai me fazer melhor tecnicamente, não vale meu tempo nem meu dinheiro."*
+
+**Dados biográficos**
+- 23 anos, Porto Alegre – RS
+- Desenvolvedor Fullstack em uma startup de tecnologia
+- Cursando Engenharia de Software (6º semestre)
+- Solteiro, mora com os pais
+
+**Contexto**
+Gabriel trabalha durante o dia e estuda à noite. Já tem renda própria e trata o aprendizado como investimento profissional. Busca cursos quase exclusivamente pelo Google, avaliando conteúdo, profundidade e credenciais do instrutor antes de comprar.
+
+**Objetivos Pessoais**
+- Tornar-se referência técnica na área de dados e backend
+- Conquistar independência financeira dentro de 3 anos
+- Construir um portfólio sólido que abra portas no exterior
+
+**Objetivos Práticos**
+- Encontrar cursos com exercícios reais, não apenas teoria
+- Ter acesso a conteúdo atualizado com as tecnologias do mercado
+- Progredir em trilhas especializadas sem precisar refazer o básico
+
+**Frustrações**
+- Cursos "básicos demais matematicamente e sem exemplos aplicáveis"
+- Plataformas que empacotam conteúdo raso em volume alto
+- Instrutores sem experiência real de mercado
+
+**Comportamento com tecnologia**
+Usuário avançado. Pesquisa reviews técnicos, assiste aulas gratuitas antes de comprar e cancela rápido quando o conteúdo decepciona.
+
+**Disposição de pagamento:** acima de R$100/mês
+
+---
+
+#### Persona 2 — Beatriz Mendes, "A Estudante em Transição"
+
+> *"Eu quero aprender, mas tenho medo de investir em algo que não vai me levar a lugar nenhum."*
+
+**Dados biográficos**
+- 22 anos, Canoas – RS
+- Cursando Administração (4º semestre)
+- Estagiária em empresa de e-commerce
+- Solteira, mora com a família
+
+**Contexto**
+Beatriz está no meio de uma graduação que não a entusiasma completamente. Cogita migrar para marketing digital ou gestão de produto, mas ainda não tem clareza. Descobre cursos principalmente por redes sociais e indicações de amigos. Antes de comprar, pesquisa muito — e frequentemente desiste por insegurança sobre o retorno.
+
+**Objetivos Pessoais**
+- Encontrar uma área que combine seu perfil analítico com criatividade
+- Construir uma identidade profissional antes de se formar
+- Sentir que está evoluindo, não apenas acumulando certificados
+
+**Objetivos Práticos**
+- Entender claramente o que um curso entrega antes de pagar
+- Ter suporte ou mentoria durante o aprendizado
+- Obter certificação reconhecida que valorize seu currículo
+
+**Frustrações**
+- Cursos que prometem transformação mas entregam teoria solta
+- Falta de orientação profissional integrada ao conteúdo
+- Sensação de que "todo mundo sabe o que quer, menos eu"
+
+**Comportamento com tecnologia**
+Usuária intermediária. Usa redes sociais com intensidade, consome muito conteúdo educacional gratuito no YouTube e Instagram antes de considerar compra.
+
+**Disposição de pagamento:** R$50–100/mês
+
+---
+
+#### Persona 3 — Lucas Oliveira, "O Candidato Competitivo"
+
+> *"Eu não tenho tempo nem dinheiro pra errar. Preciso de um curso que realmente me coloque no mercado."*
+
+**Dados biográficos**
+- 22 anos, São Leopoldo – RS
+- Ensino médio completo
+- Atualmente desempregado, realizando bicos esporádicos na área de suporte de redes
+- Mora com a mãe e contribui com as despesas da casa
+
+**Contexto**
+Lucas aprendeu informática de forma autodidata e tem habilidades práticas, mas sem certificação formal não consegue avançar em processos seletivos. Tentou um curso online mas abandonou pelo custo e pela falta de atividades práticas. Tem pouco tempo disponível — quando não está em bicos, está procurando emprego.
+
+**Objetivos Pessoais**
+- Conseguir um emprego formal na área de TI até o final do ano
+- Gerar renda suficiente para ter independência financeira
+- Provar para si mesmo que é capaz mesmo sem diploma universitário
+
+**Objetivos Práticos**
+- Obter certificado reconhecido no mercado com o menor custo possível
+- Ter acesso a atividades práticas que possam compor seu portfólio
+- Estudar em módulos curtos, compatíveis com sua disponibilidade irregular
+
+**Frustrações**
+- Plataformas caras que não oferecem planos acessíveis
+- Cursos sem atividades práticas — "só teoria não me coloca no emprego"
+- Falta de suporte quando trava em algum exercício
+
+**Comportamento com tecnologia**
+Usuário intermediário/avançado em hardware e redes, mas com menos familiaridade com plataformas de ensino online. Pesquisa muito no YouTube antes de qualquer compra.
+
+**Disposição de pagamento:** R$20–50/mês (limite absoluto: R$100)
+
+---
+
+## 4. Considerações Finais
+
+O processo de coleta e análise revelou um público mais heterogêneo do que se esperava inicialmente. Embora a faixa etária seja relativamente homogênea (21–24 anos), as motivações, barreiras e capacidades financeiras divergem de forma significativa — o que tornou necessária a criação de três personas ao invés de duas.
+
+A maior dificuldade enfrentada foi garantir que as personas não fossem arquétipos genéricos, mas perfis com base real nos dados coletados. A seção de análise deste relatório documenta explicitamente essa relação dado-a-dado para cada persona.
+
+Uma limitação relevante é o tamanho amostral: 20 respondentes, majoritariamente da região de Porto Alegre e do meio universitário, o que reduz a representatividade nacional do estudo. Para um projeto real, a coleta deveria ser ampliada e diversificada geograficamente.
+
+O grupo avalia positivamente a experiência: o exercício de derivar personas a partir de dados reais — e não de intuição — evidenciou a importância do método e a diferença que dados concretos fazem na fundamentação de decisões de design.
+
+---
+
+## Apêndice — Processo de Coleta e Análise
+
+Não foi utilizada nenhuma ferramenta de inteligência artificial neste trabalho. O processo foi conduzido integralmente pela equipe, conforme descrito abaixo.
+
+**Coleta de dados**
+O instrumento de coleta utilizado foi um formulário estruturado criado no Google Forms, desenvolvido na Etapa 1 do trabalho. A distribuição do formulário foi realizada de forma compartilhada pelos cinco membros do grupo: cada integrante foi responsável por divulgar o link em suas redes de contato (grupos de WhatsApp, redes sociais, colegas de curso e de trabalho), de modo a ampliar o alcance da amostra e reduzir o viés de uma única rede de contatos. Ao final, foram coletadas 20 respostas válidas.
+
+**Análise dos dados**
+Após o encerramento da coleta, o grupo se reuniu para revisar as respostas individualmente e em conjunto. Os dados quantitativos (escalas, múltipla escolha) foram tabulados manualmente e transformados em percentuais. As respostas abertas foram lidas por todos os membros e agrupadas por similaridade temática (motivações, barreiras, decepções com cursos anteriores).
+
+**Identificação dos perfis**
+A partir dos agrupamentos temáticos, o grupo identificou três padrões recorrentes de comportamento e necessidade. Cada padrão foi discutido em relação aos dados que o sustentavam antes de ser formalizado como persona.
+
+**Construção das personas**
+Com os padrões definidos, cada persona foi construída coletivamente, associando os dados demográficos e comportamentais a um perfil fictício coerente. Os nomes, contextos e citações foram criados pelo grupo para representar os padrões de forma humanizada, respeitando os dados de origem.
+
+---
+
+## Anexo — Termo de Consentimento
+
+Você está sendo convidado(a) a participar de uma pesquisa relacionada à disciplina de Experiência do Usuário, da Escola Politécnica da PUCRS, ministrada em 2026/1.
+
+O objetivo desta pesquisa é conhecer as experiências e as percepções dos participantes em relação a plataformas de estudos técnicos/profissionais. Você deve ler as informações abaixo e, se você não entender ou tiver mais alguma dúvida, pode entrar em contato pelo e-mail leonardo.pasa@edu.pucrs.br antes de decidir se irá ou não participar.
+
+É possível que aconteçam os seguintes desconfortos ou riscos: cansaço, aborrecimento ou outros sentimentos durante a resposta ao questionário. Além dos desconfortos que você possa sentir em virtude das respostas a este questionário, é possível que, infelizmente, sua conexão falhe ou apresente certa lentidão ou que você tenha dúvidas em como salvar suas respostas. A menos que seu computador seja desligado ou você feche a página do questionário antes de concluí-lo, suas informações continuarão disponíveis para edição. Nestes casos, não hesite em contatar o pesquisador responsável por essa pesquisa pelo e-mail anteriormente indicado.
+
+Você não receberá nenhuma recompensa financeira por isso. Mas os benefícios que esperamos com esse estudo é compreender melhor o cenário em questão.
+
+Você levará cerca de 5–8 minutos para conclusão da pesquisa. Destacamos que nenhuma informação de identificação sobre você será incluída em publicações que possam resultar dessa pesquisa. Além disto, esta pesquisa é voluntária e você tem o direito de não responder qualquer item e também de interromper sua participação a qualquer momento por qualquer razão.
+
+Ao dar continuidade a esta pesquisa, você concorda que qualquer dúvida que você tinha foi adequadamente esclarecida e que você concorda em participar deste estudo.
