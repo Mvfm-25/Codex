@@ -212,6 +212,140 @@ Aplicar bisecção separadamente em $[2,\;3]$, $[3,\;4]$ e $[4,\;5]$.
 
 ---
 
+### Q5 — Raiz Quadrada pelo Método de Newton
+
+**Questão:** Implemente uma função baseada no método de Newton para encontrar a raiz quadrada de um número $p$.
+
+**Conexão com `adicoes.md`:** Seção *Série de Taylor — A fórmula que estava por trás do gráfico* (de onde vem a fórmula de Newton), *Método de Newton — Quando ele falha* (casos de borda) e tabela de taxas em *Método da Secante — Taxa de convergência*.
+
+#### Raciocínio
+
+**De onde vem a fórmula — derivação pelo zero da linearização:**
+
+$\sqrt{p}$ é por definição o $x > 0$ tal que $x^2 = p$. Reescreve-se como problema de raiz:
+
+$$f(x) = x^2 - p = 0$$
+
+A seção *Série de Taylor* de `adicoes.md` mostra que qualquer função suave pode ser aproximada localmente por um polinômio. Truncando em primeira ordem ao redor de $x_k$:
+
+$$f(x) \approx f(x_k) + f'(x_k)\,(x - x_k)$$
+
+Zerando essa reta para encontrar onde ela cruza o eixo — ou seja, encontrando $x_{k+1}$:
+
+$$0 = f(x_k) + f'(x_k)\,(x_{k+1} - x_k) \implies \boxed{x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}}$$
+
+Para $f(x) = x^2 - p$, $f'(x) = 2x$. Substituindo e simplificando algebricamente:
+
+$$x_{k+1} = x_k - \frac{x_k^2 - p}{2x_k} = \frac{2x_k^2 - x_k^2 + p}{2x_k} = \frac{x_k^2 + p}{2x_k}$$
+
+$$\boxed{x_{k+1} = \frac{1}{2}\!\left(x_k + \frac{p}{x_k}\right)}$$
+
+Esta fórmula tem nome próprio: **Método de Herão** (ou Método Babilônico). Tablets cuneiformes sumérios de 3700 anos atrás mostram este mesmo cálculo para $\sqrt{2}$. Newton redescobre o mais antigo algoritmo numérico da história ao linearizar $f$.
+
+**Intuição geométrica:** Se $x_k$ subestima $\sqrt{p}$, então $p/x_k$ a superestima — os dois erros se cancelam na média. A cada passo, o novo erro é proporcional ao *quadrado* do erro anterior: metade fica de um lado, metade do outro, e o centro converge em velocidade exponencialmente crescente.
+
+---
+
+**Iterações para $p = 2$, $x_0 = 1{,}0$ (valor exato: $\sqrt{2} = 1{,}41421356237\ldots$):**
+
+| $k$ | $x_k$ | Erro $\lvert x_k - \sqrt{2}\rvert$ | Razão $e_k / e_{k-1}^2$ |
+|---|---|---|---|
+| 0 | $1{,}000\;000\;000\;000$ | $4{,}142 \times 10^{-1}$ | — |
+| 1 | $1{,}500\;000\;000\;000$ | $8{,}579 \times 10^{-2}$ | $0{,}500$ |
+| 2 | $1{,}416\;666\;666\;667$ | $2{,}453 \times 10^{-3}$ | $0{,}333$ |
+| 3 | $1{,}414\;215\;686\;275$ | $2{,}124 \times 10^{-6}$ | $0{,}353$ |
+| 4 | $1{,}414\;213\;562\;375$ | $1{,}594 \times 10^{-12}$ | $0{,}354$ |
+| 5 | $1{,}414\;213\;562\;373$ | $< 10^{-15}$ (limite do `double`) | — |
+
+A coluna *Razão* converge para $\approx 0{,}354$. Isso não é coincidência — é a **constante de convergência quadrática**, calculável diretamente da função:
+
+$$C = \frac{f''(x^*)}{2f'(x^*)} = \frac{2}{2 \cdot 2\sqrt{2}} = \frac{1}{2\sqrt{2}} \approx 0{,}354$$
+
+Cada iteração **dobra o número de casas decimais corretas**: 0 → 1 → 3 → 6 → 12 → 15. Em 5 passos, atingiu a precisão máxima de `double` (15–16 dígitos), partindo de um chute que erra por 41%. Por comparação, bisecção precisaria de $\log_2(1/10^{-15}) \approx 50$ iterações para o mesmo resultado.
+
+---
+
+**Implementação:**
+
+```python
+def newton_sqrt(p, tol=1e-10):
+    if p < 0:
+        raise ValueError("sqrt de negativo é complexa")
+    if p == 0:
+        return 0.0
+    x = p / 2.0
+    while True:
+        x_next = (x + p / x) / 2.0
+        if abs(x_next - x) < tol * x:   # critério relativo, não absoluto
+            return x_next
+        x = x_next
+```
+
+O critério `tol * x` em vez de `tol` puro é fundamental: um critério absoluto de $10^{-10}$ seria grosseiro para $p = 10^{-20}$ (erro relativo de 100%) e jamais seria atingido para $p = 10^{30}$.
+
+**Casos de falha (direto da seção *Quando Newton falha* de `adicoes.md`):**
+
+| Situação | O que acontece |
+|---|---|
+| $p < 0$ | $\sqrt{p} \notin \mathbb{R}$; a iteração diverge ou oscila entre reais |
+| $p = 0$ | Raiz múltipla em $x = 0$; convergência cai para **linear** — tratar separado |
+| $x_0 = 0$ | Divisão por zero na primeira iteração; $x_0$ nunca pode ser zero |
+| $p > 0$, qualquer $x_0 > 0$ | **Sempre converge** — $f(x) = x^2 - p$ é estritamente convexa em $(0, \infty)$, garantia global de Newton-Kantorovich |
+
+**Conclusão:** Newton transforma um problema de raiz em uma recorrência de médias. Para $f(x) = x^2 - p$, a fórmula resultante é o Método Babilônico — 3700 anos de história encapsulados em uma linearização de Taylor. A convergência quadrática faz com que a precisão cresça tão rápido que 5 iterações bastam onde bisecção precisaria de 50. A única condição que garante convergência global é a convexidade de $f$ — propriedade que desaparece nos casos mais gerais e explica por que Newton "costuma sair passeando" quando $f$ tem inflexões.
+
+---
+
+### Q6 — Raiz Cúbica pelo Método de Newton
+
+**Questão:** Implemente um método para encontrar a raiz cúbica de um número $p$.
+
+**Conexão com `adicoes.md`:** Seção *Método de Newton — Quando ele falha* (derivada zero, raiz com sinal negativo) e *Série de Taylor*.
+
+#### Raciocínio
+
+**Derivação — mesmo molde de Q5:**
+
+$\sqrt[3]{p}$ é o zero de $f(x) = x^3 - p$, com $f'(x) = 3x^2$. Aplicando a fórmula de Newton:
+
+$$x_{k+1} = x_k - \frac{x_k^3 - p}{3x_k^2} = \frac{3x_k^3 - x_k^3 + p}{3x_k^2} = \frac{2x_k^3 + p}{3x_k^2}$$
+
+$$\boxed{x_{k+1} = \frac{1}{3}\!\left(2x_k + \frac{p}{x_k^2}\right)}$$
+
+A estrutura é análoga: $\frac{2}{3}x_k$ (peso na estimativa atual) $+\;\frac{1}{3}\frac{p}{x_k^2}$ (correção baseada no erro). Onde Q5 fazia a média de dois termos com peso $\tfrac{1}{2}$, Q6 pondera $2:1$ — refletindo que $x^3$ é mais "rígida" que $x^2$ próximo da raiz.
+
+---
+
+**Iterações para $p = 8$, $x_0 = 1{,}0$ (valor exato: $\sqrt[3]{8} = 2{,}000\ldots$):**
+
+| $k$ | $x_k$ | Erro $\lvert x_k - 2\rvert$ |
+|---|---|---|
+| 0 | $1{,}000\;000$ | $1{,}000 \times 10^{0}$ |
+| 1 | $3{,}000\;000$ | $1{,}000 \times 10^{0}$ |
+| 2 | $2{,}259\;259$ | $2{,}593 \times 10^{-1}$ |
+| 3 | $2{,}019\;169$ | $1{,}917 \times 10^{-2}$ |
+| 4 | $2{,}000\;091$ | $9{,}09 \times 10^{-5}$ |
+| 5 | $2{,}000\;000\;000\;002$ | $\approx 2 \times 10^{-12}$ |
+
+Na iteração 1, Newton "ultrapassa" — $x_1 = 3 > 2$ porque a reta tangente em $x_0 = 1$ ainda aponta longe da raiz. A partir de $x_1$ a convergência quadrática se estabelece.
+
+**Novo cuidado:** $f(x) = x^3 - p$ não é convexa para todo $x$ — tem ponto de inflexão em $x = 0$. Isso cria duas situações que Q5 não tinha:
+
+- $x_0 = 0$: $f'(0) = 3 \cdot 0^2 = 0$ → **divisão por zero imediata**. Newton falha pela primeira causa listada em `adicoes.md`.
+- $p < 0$: a raiz real é negativa ($\sqrt[3]{-8} = -2$). Newton converge para ela **desde que $x_0 < 0$** — um chute com sinal errado pode pular para o lado positivo e nunca encontrar a raiz.
+
+**Generalização — raiz $n$-ésima:**
+
+Para $f(x) = x^n - p$, $f'(x) = nx^{n-1}$:
+
+$$x_{k+1} = \frac{1}{n}\!\left((n-1)\,x_k + \frac{p}{x_k^{n-1}}\right)$$
+
+Uma única linha de código, derivada automaticamente pela linearização de Taylor, generaliza para qualquer $n$ — incluindo frações (raízes racionais) com a ressalva de que $f$ pode deixar de ser convexa.
+
+**Conclusão:** Q6 confirma que Newton é um **gerador sistemático de algoritmos**: especificar $f$ é suficiente para produzir a recorrência. A raiz cúbica introduz o novo perigo da não-convexidade — a garantia global de Q5 desaparece, e o sinal do chute inicial importa. A tabela de convergência mostra que, após o "pulo" inicial da iteração 1, o método recupera comportamento quadrático e converge em 4 passos adicionais com precisão de 12 dígitos.
+
+---
+
 ### Q7 — Método de Horner
 
 **Questão:** Para $p(x) = x^5 + 18x^3 + 34x^2 - 493x + 1431$, o que o algoritmo abaixo imprime?
