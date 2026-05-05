@@ -290,6 +290,91 @@ Em Gauss, isso acontece ao eliminar linhas com coeficientes parecidos. O pivotam
 
 ---
 
+## Aula 16 — Gauss-Jacobi, Dominância Diagonal e Raio Espectral
+
+### Gauss-Jacobi — A Fórmula Explícita
+
+O método é iterativo: dado um sistema $Ax = b$, isola-se cada variável $x_i$ na sua própria equação e usa-se os valores do passo anterior para calcular o próximo passo.
+
+Para o sistema genérico de $n$ equações:
+
+$$x_i^{(k+1)} = \frac{1}{a_{ii}} \left( b_i - \sum_{\substack{j=1 \\ j \neq i}}^{n} a_{ij} x_j^{(k)} \right)$$
+
+O superscrito $(k)$ indica a iteração atual. A **chave**: todos os $x_j^{(k)}$ usados no cálculo de $x_i^{(k+1)}$ ainda são do passo anterior — nenhuma atualização é usada dentro da mesma iteração. Isso é diferente de Gauss-Seidel, como veremos.
+
+**Exemplo do exemplo da aula** — Sistema $3x - 4y + 7z = 8$, $6x + y + 2z = 5$, $x + 2y - z = 4$:
+
+$$x^{(k+1)} = \frac{8 + 4y^{(k)} - 7z^{(k)}}{3} \qquad y^{(k+1)} = 5 - 6x^{(k)} - 2z^{(k)} \qquad z^{(k+1)} = -4 + x^{(k)} - 2y^{(k)}$$
+
+Iniciando com $(3, 8, 4)$ (chute da aluna): a iteração produz novos valores que substituem os anteriores, e o processo repete até convergir — ou divergir.
+
+---
+
+### Convergência — A Condição Formal da Dominância Diagonal
+
+O JB disse "se a matriz for diagonalmente dominante, o sistema converge." A definição precisa:
+
+Uma matriz $A$ é **estritamente diagonalmente dominante** se, para todo $i$:
+
+$$|a_{ii}| > \sum_{\substack{j=1 \\ j \neq i}}^{n} |a_{ij}|$$
+
+O módulo do elemento da diagonal deve ser **estritamente maior** que a soma dos módulos de todos os outros elementos da mesma linha.
+
+**Por que isso garante convergência?** Intuitivamente: se $|a_{ii}|$ domina, a equação $x_i = (\ldots) / a_{ii}$ faz o denominador "absorver" os erros dos outros termos. A cada iteração, o erro encolhe por um fator menor que 1 — convergência garantida.
+
+A manobra de **reordenar linhas** para conseguir dominância diagonal funciona porque as equações de um sistema linear têm posição intercambiável. Trocar $\text{linha}_i$ e $\text{linha}_j$ não altera o conjunto solução.
+
+---
+
+### Auto-Vetores & Auto-Valores — O que são Formalmente
+
+Dado uma matriz quadrada $A$ de ordem $n$, um **auto-vetor** $\mathbf{v} \neq \mathbf{0}$ e um **auto-valor** $\lambda$ satisfazem:
+
+$$A\mathbf{v} = \lambda\mathbf{v}$$
+
+Multiplicar $A$ pelo vetor $\mathbf{v}$ retorna o mesmo vetor — apenas escalonado por $\lambda$. A direção não muda, apenas o comprimento (e possivelmente o sentido, se $\lambda < 0$).
+
+- Se $|\lambda| < 1$: o vetor encolhe a cada multiplicação por $A$.
+- Se $|\lambda| > 1$: o vetor cresce a cada multiplicação por $A$.
+- Se $|\lambda| = 1$: o vetor mantém o módulo.
+
+**Por que são caros de encontrar?** Os auto-valores de $A$ são as raízes do **polinômio característico** $\det(A - \lambda I) = 0$, que tem grau $n$. Para $n$ grande, resolver esse polinômio é exatamente o problema que o JB passou o semestre inteiro estudando — e que, para $n \geq 5$, não tem fórmula fechada. Por isso métodos iterativos (como o Método da Potência) são usados na prática.
+
+---
+
+### Raio Espectral — A Segunda Condição Mágica Formalmente
+
+O **raio espectral** $\rho(A)$ de uma matriz é o módulo do maior auto-valor:
+
+$$\rho(A) = \max_i |\lambda_i|$$
+
+A condição de convergência de Gauss-Jacobi é:
+
+$$\rho(G_J) < 1$$
+
+onde $G_J$ é a **matriz de iteração de Jacobi**: $G_J = -D^{-1}(L + U)$, sendo $D$ a diagonal de $A$ e $L, U$ as partes triangulares inferior e superior.
+
+**Por que $< 1$ garante convergência?** O erro na iteração $k$ é proporcional a $G_J^k \cdot \mathbf{e}_0$. Se $\rho(G_J) < 1$, as potências $G_J^k \to 0$ — o erro vai a zero. Se $\rho(G_J) \geq 1$, pelo menos um componente do erro cresce ou oscila sem convergir.
+
+Dominância diagonal estrita implica $\rho(G_J) < 1$ — mas a recíproca não é verdadeira. O raio espectral é condição **mais geral**: uma matriz não diagonalmente dominante ainda pode ter Jacobi convergindo se $\rho(G_J) < 1$.
+
+---
+
+### Gauss-Seidel — A Diferença com Jacobi
+
+O JB anunciou Gauss-Seidel para a próxima aula. A diferença fundamental:
+
+| | Jacobi | Gauss-Seidel |
+|---|---|---|
+| Valores usados | Todos do passo anterior $x^{(k)}$ | Mistura: usa $x_i^{(k+1)}$ assim que calculado |
+| Atualização | Simultânea (todos de uma vez) | Sequencial (cada $x_i$ usa os mais recentes disponíveis) |
+| Convergência | Mais lenta | Geralmente mais rápida (2× em casos típicos) |
+| Condição | Mesma ($\rho < 1$ para convergência) | Garante mais com matrizes simétricas definidas positivas |
+
+Na prática, a atualização sequencial de Gauss-Seidel é implementada naturalmente com um único array — sem precisar de um array separado para os valores do passo anterior.
+
+---
+
 ## Aula 15 — Cadeias de Markov e o Problema dos Lemmings
 
 ### O que é uma Cadeia de Markov

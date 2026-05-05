@@ -31,6 +31,8 @@
 	- Fundamentos de cenas  & nodos introduzidos junto com exemplo prático.
 - [Aula 15](./aula15.md)
 	- Uso da câmera & viewport da engine
+- [Aula 16](./aula16.md)
+	- Destruição de nodos no **Godot** (`free()` & `queue_free()`) e troca de cenas.
 ---
 #### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

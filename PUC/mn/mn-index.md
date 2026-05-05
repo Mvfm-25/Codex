@@ -30,6 +30,8 @@
 - [Aula 15](./aula15.md)
 	- Aplicação prática da eliminação de **Gauss**
 	- Problema dos Lemmings do planeta Zorg.
+- [Aula 16](./aula16.md)
+	- Método iterativo **Gauss-Jacobi**, condição de dominância diagonal e introdução a **auto-vetores & raio espectral**.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

@@ -21,6 +21,8 @@
 	- **Fork()**, threads e POSIX Threads.
 - [Aula 12](./aula12.md)
 	- Retorno ao prédio 32, atividades de múltipla escolha.
+- [Aula 17](./aula17.md)
+	- Aula de contexto — P1 cancelada de véspera, entrega do T1.
 ---
 #### Atividades
 - [Respostas — Revisão P1](./atividades/respostas-revisaoP1.md)
