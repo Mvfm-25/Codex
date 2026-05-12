@@ -19,18 +19,19 @@ banner: "![[32banner.webp]]"
 	1. [06/04] **Projeto Desenvolvimento de Jogos** - T1
 	2. [09/04] **Experiência Do Usuário** - T1.1	
 	3. [29/04] **Projeto & Otimização de Algoritmos** - P1
+	4. [27/04] **Sistemas Operacionais** - T1
 	4. [30/04] **Experiência Do Usuário** - T1.2
 ---
 - **Maio**
 	1. [04/05] **Projeto & Otimização de Algoritmos** - T1.1
 	2. [05/05] **Métodos Numéricos** - P1
-	3. [06/06] **Sistemas Operacionais** - P1
 	4. [06/05] **Projeto & Otimização de Algoritmos** - T1.2
 	5. [08/05] **Engenharia De Software II** - P1
-	6. [14/05] **Métodos Numéricos** - T1
-	7. [14/05] **Experiência Do Usuário** - T2
-	8. [22/05] **Projeto Desenvolvimento De Jogos** - T2.1
-	9. [26/05] **Experiência Do Usuário** - T2
+	6. [13/05] **Sistemas Operacionais** - P1
+	7. [14/05] **Métodos Numéricos** - T1
+	8. [14/05] **Experiência Do Usuário** - T2
+	9. [22/05] **Projeto Desenvolvimento De Jogos** - T2.1
+	10. [26/05] **Experiência Do Usuário** - T2
 ---
 - **Junho**
 	1. [01/06] **Projeto Desenvolvimento de Jogos** - T2.2
