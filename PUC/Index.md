@@ -29,7 +29,7 @@ banner: "![[32banner.webp]]"
 	5. [08/05] **Engenharia De Software II** - P1
 	6. [13/05] **Sistemas Operacionais** - P1
 	7. [14/05] **Métodos Numéricos** - T1
-	8. [14/05] **Experiência Do Usuário** - T2
+	8. [14/05] **Experiência Do Usuário - Checkpoint** - T2
 	9. [22/05] **Projeto Desenvolvimento De Jogos** - T2.1
 	10. [26/05] **Experiência Do Usuário** - T2
 ---
