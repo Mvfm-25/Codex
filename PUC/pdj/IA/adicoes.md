@@ -296,3 +296,143 @@ O risco do `free()` imediato: se qualquer outro nodo ainda segura referência e 
 ### Troca de Cenas
 
 `get_tree().change_scene_to_file()` descarrega a cena atual e carrega uma nova — toda a árvore de nodos é destruída e reconstruída. Para transições suaves com efeitos (fade, preservação de estado), a alternativa é **instanciar cenas dentro de outra cena** ao invés de trocá-las — mais trabalho, mais controle.
+
+---
+
+## Aula 02 — Multidisciplinaridade e Controle de Versão em Jogos
+
+### Por Que Jogos São o Produto Mais Complexo de Fazer
+
+As notas capturam "multidisciplinar, muita gente". O dado concreto: um AAA moderno envolve 500-3000 pessoas e custa $200-500M. A razão é que jogos são simultaneamente software de tempo real (engine, networking, rendering), obra de arte (arte, música, narrativa), produto de entretenimento (game design, UX, monetização) e experiência performática (voice acting, motion capture). Cada área tem cultura, ferramentas e vocabulário diferentes — a integração é o principal desafio.
+
+### Por Que Perforce Domina o Mercado AAA
+
+Git foi projetado para código-fonte textual. Um projeto AAA tem terabytes de texturas, modelos 3D e áudios. Git armazena todo histórico de cada arquivo — inviável para assets que mudam frequentemente e pesam gigabytes cada.
+
+**Git LFS** (Large File Storage) é a solução moderna para projetos menores: armazena ponteiros no git, arquivos grandes em servidor separado. Para projetos Godot de tamanho médio, Git + LFS é suficiente. Perforce (*Helix Core*) foi projetado desde o início para binários grandes — daí sua dominância em estúdios grandes.
+
+---
+
+## Aula 03 — Pitch de Jogo, High-Concept e Scope Creep
+
+### O Que Torna um High-Concept Eficaz
+
+"Uma boa ideia que cabe em duas linhas" (Cohen) tem estrutura formal:
+
+> *[Gênero/referência conhecida] + [twist diferenciador]*
+
+Exemplos:
+- "Dark Souls mas cooperativo desde o início" → *It Takes Two*
+- "Metroid mas com roguelike" → *Returnal*
+- "GTA mas pirata" → *Skull and Bones* (vendeu mal — o twist não era interessante o suficiente)
+
+O high-concept serve ao **pitch** (convencer um produtor), não ao design. O design real começa depois. O erro é tentar que o high-concept seja também um documento de design.
+
+### Por Que "Não Dá Tempo" É a Frase Mais Importante
+
+O conceito formal é **scope creep**: o escopo tende a crescer continuamente durante o desenvolvimento porque adicionar é sempre mais fácil que cortar. A solução é design **subtrativo**: começar com a ideia completa e cortar tudo que não é core. O que sobra após os cortes é o MVP do jogo.
+
+---
+
+## Aula 06 — Pacing Dinâmico e o Algoritmo do Diretor do Left 4 Dead
+
+### O Que o Diretor Monitora
+
+O Diretor do Left 4 Dead é um dos exemplos mais estudados de pacing dinâmico. Ele monitora continuamente: HP total do time, munição disponível, itens coletados, tempo sem evento de tensão, distância até o objetivo. Com esses inputs, ajusta: spawn de infectados, localização de itens (medkits, ammo) e ativação de eventos especiais (tank, witch).
+
+O objetivo é manter a **curva de tensão** dentro de uma banda — nem muito fácil, nem impossível. Implementação prática do flow state de Csikszentmihalyi aplicado sistemicamente.
+
+### Tension Graph: A Ferramenta por Trás do "Tempo X Tensão"
+
+Um **tension graph** visualiza o arco emocional planejado:
+
+```
+Tensão
+ ↑     /\      /\      /\/\
+ |    /  \    /  \    /
+ |   /    \  /    \  /
+ └──/──────\/──────\/───────→ Tempo
+```
+
+Cada pico é confronto ou revelação; cada vale é alívio ou exploração. Sem alternância: dessensibilização (todos picos) ou tédio (todos vales). A cena da girafa de The Last of Us é um **valley** deliberado no Ato 2 — alívio emocional antes do próximo pico.
+
+### Weenies: Guiar sem Dizer
+
+Os exemplos de Disney que Cohen menciona são **weenies**: landmarks visuais que atraem o olhar e guiam o movimento sem instrução explícita. O Castelo da Cinderela no centro do Magic Kingdom é o exemplo original de Walt Disney. Em jogos: pilares de luz, janelas iluminadas, corredores com perspectiva convergente.
+
+---
+
+## Aula 09 — Acompanhamento do T1: O Que Juízes Avaliam em Pitches
+
+### Critérios de Avaliação em Pitches de Jogo
+
+Aula de acompanhamento sem conteúdo novo. O contexto: o T1 é um pitch de jogo. Em pitches formais na indústria os critérios são:
+
+1. **Clareza do conceito**: o ouvinte entende o jogo em 30 segundos?
+2. **Diferenciação**: por que este jogo e não outro que já existe?
+3. **Viabilidade**: é realizável com os recursos disponíveis?
+4. **Apresentação**: slides, linguagem, confiança do apresentador
+
+Para pitches acadêmicos, clareza é o critério mais importante — juízes veem dezenas de pitches e penalizam os que demandam esforço para entender.
+
+### O Documento por Trás do Pitch: GDD
+
+O **GDD (Game Design Document)** é o artefato formal que segue o pitch aprovado. Especifica mecânicas, narrativa, arte conceitual, sistemas de áudio, UI e metas de performance. Em estúdios modernos ele vive em wikis (Confluence, Notion) em vez de PDF estático, pois muda constantemente durante o desenvolvimento.
+
+---
+
+## Aula 17 — Áudio em Godot: AudioStreamPlayer e Effects Chain
+
+### AudioStreamPlayer vs. AudioStreamPlayer2D vs. AudioStreamPlayer3D
+
+| Nodo | Quando usar |
+|---|---|
+| `AudioStreamPlayer` | Música, ambiance, UI sounds — sem posição no espaço |
+| `AudioStreamPlayer2D` | Sons com posição no mundo 2D (passos, efeitos locais) |
+| `AudioStreamPlayer3D` | Sons posicionais em 3D |
+
+O `AudioStreamPlayer2D` ajusta volume e panning automaticamente com a distância entre o nodo e o `AudioListener2D` (geralmente a câmera). Um som de coleta de moeda sai diferente de cada lado da tela — sem nenhum código adicional.
+
+### Audio Bus e Effects Chain
+
+O painel de áudio do Godot funciona como DAW simplificado. Cada `AudioStreamPlayer` envia para um **bus** (Master por padrão). Effects são adicionados ao bus:
+
+```
+AudioStreamPlayer → Bus "SFX" → [Compressor] → [Reverb] → Master → Hardware
+```
+
+O **low-pass filter** que Cohen usou é um efeito de bus: corta frequências altas, dando sensação de distância ou de áudio chegando de trás de uma parede. Colocar no bus SFX afeta todos os sons do grupo; no bus específico, apenas aquele stream.
+
+### Audacity para Game Audio
+
+Casos de uso práticos:
+- **Normalizar** volume de samples (todas ao mesmo peak para consistência de mixagem)
+- **Loop points**: cortar samples para que início e fim casem perfeitamente em loop
+- **Noise reduction**: remover ruído de fundo de gravações próprias
+- **Export**: converter WAV para OGG (formato preferido do Godot por compressão)
+
+---
+
+## Aula 18 — Tilesets e Tilemaps: Arquitetura e Performance
+
+### A Diferença entre Tileset e Tilemap
+
+- **Tileset**: a *biblioteca* — textura grande (spritesheet) com todos os tiles organizados em grid. É o recurso (`.png` + metadados de colisão, animação, etc.).
+- **Tilemap** (`TileMapLayer`): o *mapa* — especifica qual tile vai em cada posição da grade. Usa o tileset como referência.
+
+Um único tileset pode ser reutilizado por múltiplos tilemaps (diferentes fases), e um tilemap pode ter múltiplas camadas (fundo, decoração, colisão, foreground) usando o mesmo tileset.
+
+### Batching: Por Que Tilemap é Mais Performático que Sprites Individuais
+
+Desenhar 1000 sprites individuais resulta em 1000 draw calls para a GPU. `TileMapLayer` agrupa todos os tiles em um **mesh** único e envia em **um único draw call**. Em mobile, a diferença é perceptível; em mundos grandes, é necessária.
+
+Isso explica por que jogos 2D clássicos usavam tilemaps mesmo quando poderiam usar sprites individuais — o batching era obrigatório dadas as limitações de hardware.
+
+### Tiles de Física: Collision Shapes por Tile
+
+No editor de tileset do Godot, cada tile pode ter sua própria **collision shape**:
+- Tiles de chão: retângulo full
+- Tiles de rampa: triângulo
+- Tiles decorativos: sem collision
+
+O `TileMapLayer` gera automaticamente um corpo de física composto pela união das shapes de todos os tiles — o personagem colide com o mapa inteiro via um único `StaticBody2D`, eficiente e sem código manual.

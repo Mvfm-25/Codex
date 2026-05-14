@@ -34,6 +34,10 @@
 - [Aula 14](./aula14.md)
 	- Recursão e porque as odeio
 	- Introdução à memoização e a remoção da recursividade em problemas de programação dinâmica.
+- [Aula 19](./aula19.md)
+	- Introdução ao **Backtracking** e o problema das **N-rainhas**.
+- [Aula 20](./aula20.md)
+	- Revisão do T1 (divisão & conquista) e partição de conjuntos via **Backtracking**.
 --
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

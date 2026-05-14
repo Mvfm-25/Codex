@@ -44,4 +44,3 @@
 	- Tu basicamente só testa metade do quadro.
 	- Dos testes feitos pelo JB, ele só precisou colocar a primeira rainha no primeiro e segundo pilar.
 	- Independente da rotação, tu ainda vai usar uma das soluções já encontradas.	
-- 

@@ -216,3 +216,138 @@ n=4: [1, 4, 6, 4, 1]
 $R(n, k)$ é a célula na linha $n$, coluna $k$. Custo: $O(n \cdot k)$ — muito melhor que exponencial.
 
 Esse é o padrão geral de DP: **identificar a recorrência → memoizar top-down OU construir tabela bottom-up**. Os dois são equivalentes em resultado; bottom-up costuma ser mais eficiente em memória (pode descartar linhas antigas).
+
+---
+
+## Aula 03 — Exchange Argument: A Estrutura Formal das Provas Greedy
+
+### Exchange Argument
+
+A prova do rock-jumping e da máquina de fitas usam um padrão chamado **exchange argument**:
+
+1. Assuma que existe uma solução ótima $OPT$ que não segue a regra gulosa.
+2. Identifique o primeiro ponto onde $OPT$ difere da solução gulosa $GRD$.
+3. Mostre que trocar essa decisão para seguir $GRD$ não piora o custo.
+4. Repita até $OPT = GRD$ — a solução gulosa é tão boa quanto qualquer ótima.
+
+Para a máquina de fitas: custo com $a$ antes de $b$ é menor que com $b$ antes de $a$ por exatamente $b - a > 0$. Logo, se $OPT$ coloca $b$ antes e $b > a$, a troca melhora — contradição.
+
+### Quando Greedy Falha
+
+O contra-exemplo clássico: troco com moedas $\{1, 3, 4\}$ e alvo $6$. Greedy: $4+1+1 = 3$ moedas. Ótimo: $3+3 = 2$ moedas. O problema não tem propriedade gulosa — a escolha local ótima não leva ao global.
+
+---
+
+## Aula 05 — Potenciação Rápida: Recorrência e Tratamento do Caso Ímpar
+
+### A Recorrência Exata
+
+O algoritmo de potenciação por quadração tem recorrência $T(n) = T(n/2) + O(1)$. Pelo Teorema Mestre com $a=1$, $b=2$, $f(n) = O(1)$: $T(n) = O(\log n)$.
+
+Para $n$ par: $x^n = (x^{n/2})^2$ — um subproblema, quadrado do resultado.
+Para $n$ ímpar: $x^n = x \cdot (x^{(n-1)/2})^2$ — um subproblema par mais uma multiplicação.
+
+O $x^{n/2}$ é calculado **uma única vez** e reutilizado — memoização implícita, o mesmo insight da DP.
+
+### A Propriedade Recursiva do JB
+
+$$x^n = \begin{cases} (x^{n/2})^2 & n \text{ par} \\ x \cdot (x^{(n-1)/2})^2 & n \text{ ímpar} \end{cases}$$
+
+Para $x^{10}$: $(x^5)^2$; para $x^5$: $x \cdot (x^2)^2$; para $x^2$: $(x^1)^2$. Total: 4 multiplicações em vez de 9.
+
+---
+
+## Aula 08 — Algoritmo Russo: O Mapeamento para Instruções de Máquina
+
+### Por Que É Eficiente em Assembly
+
+O loop usa três operações:
+- Verificar se `b` é ímpar: `AND 1` (lê o bit menos significativo — 1 ciclo)
+- `a = a * 2`: `SHL a, 1` (shift left — 1 ciclo)
+- `b = b / 2`: `SHR b, 1` (shift right — 1 ciclo)
+
+Uma multiplicação de hardware pode levar 3-10 ciclos; shifts levam 1. Para contextos embarcados ou SIMD, a versão em shifts é genuinamente mais rápida.
+
+### A Prova de Correção
+
+Cada iteração lê um bit de $b$ (o menos significativo). Quando o bit é 1 ($b$ ímpar), acumula $a$; quando é 0 ($b$ par), pula. Enquanto isso, $a$ dobra a cada passo.
+
+É a expansão binária de $b$: $b = \sum_k b_k \cdot 2^k$, logo $a \cdot b = \sum_k b_k \cdot (a \cdot 2^k)$ — soma apenas os pesos cujo bit correspondente em $b$ é 1.
+
+---
+
+## Aula 11 — Karatsuba: Generalização e Contexto Histórico Completo
+
+### Além de Karatsuba
+
+Karatsuba reduziu multiplicação de $O(n^2)$ para $O(n^{1.585})$. A generalização:
+
+- **Toom-Cook** (3 partes): $O(n^{1.465})$
+- **Schönhage-Strassen** (FFT): $O(n \log n \log \log n)$ — usado em GMP para números de bilhões de dígitos
+- **Harvey-Hoeven (2019)**: $O(n \log n)$ — acredita-se ser ótimo; ainda não usado na prática
+
+Python usa Karatsuba para inteiros grandes (CPython). GMP troca automaticamente entre algoritmos conforme o tamanho dos operandos.
+
+### O Contexto Histórico Completo
+
+Kolmogorov conjecturou em sua palestra de 1960 que multiplicação de $n$ dígitos exigiria $\Omega(n^2)$. **Karatsuba** refutou a conjectura **na mesma semana**. Kolmogorov ficou tão impressionado que interrompeu a publicação de um artigo próprio para dar espaço ao resultado de Karatsuba.
+
+---
+
+## Aula 19 — Backtracking: Estrutura Formal e N-Rainhas
+
+### O Que É Backtracking Formalmente
+
+**Backtracking** é busca exaustiva com **poda** (*pruning*). A estrutura geral:
+
+```
+backtrack(estado_parcial):
+    se estado é solução completa:
+        registrar/retornar
+    para cada extensão possível:
+        se extensão não viola restrições:
+            aplicar extensão
+            backtrack(novo_estado)
+            desfazer extensão        ← o "back"
+```
+
+A diferença com força bruta: abandona-se um ramo **inteiro** assim que uma restrição é violada. É DFS sobre a árvore de decisão com poda antecipada.
+
+### N-Rainhas: Modelagem e Redução do Espaço
+
+**Problema**: posicionar $n$ rainhas em $n \times n$ sem que nenhuma ataque outra.
+
+Força bruta ingênua: $\binom{64}{8} \approx 4.4 \times 10^9$ para $n=8$. Com uma rainha por linha obrigatório: $8^8 = 16.777.216$. Com backtracking e poda de coluna/diagonal: $\approx 2000$ nós explorados — fator de poda de mais de $8000\times$.
+
+Para $n = 4$: apenas 2 soluções. JB as encontrou explorando apenas colunas 1 e 2 para a primeira rainha — por simetria, as soluções da coluna 3 e 4 são reflexos das anteriores.
+
+### Constraint Propagation: A Extensão Natural
+
+Quando uma rainha é colocada, marcam-se imediatamente todas as casas atacadas. Isso é **constraint propagation** — candidatos inválidos nunca são tentados. O algoritmo **AC-3** generaliza isso para qualquer CSP (Constraint Satisfaction Problem), base de solvers como Google OR-Tools.
+
+---
+
+## Aula 20 — Partição de Conjuntos e Backtracking como DFS
+
+### O Problema de Partição
+
+Dividir $S$ em dois grupos com soma igual é o **Partition Problem** — NP-completo (Karp, 1972).
+
+**Condição necessária**: $\text{sum}(S)$ deve ser par. Se a soma da sala for ímpar, é matematicamente impossível dividir igualmente — não é falha do algoritmo.
+
+### Backtracking como DFS Binário
+
+Para cada elemento, decide-se: grupo A ou B. Isso é DFS em uma árvore binária de profundidade $n$:
+
+```
+e1 → [A: soma_A + e1]  → e2 → ...
+   → [B: soma_B + e1]  → e2 → ...
+```
+
+A poda `somaRestante + somaAtual < alvo` é um **lower bound**: se mesmo somando todos os elementos restantes não atingimos o alvo, o ramo é inviável.
+
+**Por que DFS e não BFS**: DFS usa $O(n)$ de memória (apenas o caminho atual). BFS exigiria armazenar toda a fronteira — potencialmente $O(2^n)$ nós. O ganho real vem da poda, não da ordem de busca.
+
+### Backtracking vs DP para Partição
+
+Backtracking é exponencial no pior caso ($O(2^n)$). DP resolve partição em $O(n \cdot \text{sum}/2)$ — pseudopolinomial, muito melhor em casos típicos. O JB descreve backtracking como "mais fraco" exatamente por isso: sem poda boa, é força bruta disfarçada.

@@ -416,3 +416,135 @@ Cadeias de Markov aparecem em:
 - **PageRank do Google**: cada página da web é um estado; links são transições probabilísticas; a importância de uma página é sua probabilidade de absorção na cadeia.
 - **Modelos de linguagem (LLMs)**: cada token gerado depende do estado atual da sequência.
 - **Previsão de tempo, análise de crédito, simulação de filas** — qualquer sistema onde "o passado importa apenas pelo estado em que deixou o presente".
+
+---
+
+## Aula 03 — Formatos Decimais e a Origem do IEEE 754
+
+### Formatos Decimais vs. Binários
+
+Além dos formatos binários (binary32, binary64 — os que aparecem em sala), o IEEE 754 define formatos **decimais**: decimal32, decimal64, decimal128. Eles representam números em base 10.
+
+O problema fundamental: $0.1$ em binário é uma dízima periódica ($0.0\overline{0011}$). Somá-lo dez vezes não resulta exatamente em $1.0$. Em aplicações financeiras (onde $0.10 \times 10 = 1.00$ é um requisito legal), o formato decimal é necessário. Calculadoras físicas usam decimal; processadores de propósito geral usam binário — daí a distinção que JB menciona.
+
+### Por Que o Padrão foi Necessário em 1985
+
+Antes do IEEE 754, cada fabricante implementava ponto flutuante à sua maneira. O mesmo programa em um VAX e em um IBM 360 produzia resultados diferentes. O padrão garante **portabilidade bit-a-bit**: dado o mesmo input, qualquer hardware compatível produz exatamente os mesmos bits de saída.
+
+---
+
+## Aula 04 — FPU Status Word: Cada Bit e o Que Ele Protege
+
+### Estrutura Detalhada dos 5 Bits de Exceção
+
+O registrador mencionado nas notas (5 bits, sem variável associada) é parte do status register do x87 FPU:
+
+| Bit | Nome | Quando é setado |
+|---|---|---|
+| **IE** | Invalid Operation | `0/0`, `sqrt(-1)`, NaN como operando |
+| **DE** | Denormal | Um operando é número subnormal |
+| **ZE** | Zero Divide | Divisão por zero exato |
+| **OE** | Overflow | Resultado excede `MAX_FLOAT` |
+| **UE** | Underflow | Resultado é menor que o menor normal |
+| **PE** | Precision | Resultado foi arredondado |
+
+O programador pode **mascarar** cada bit individualmente. Código numérico de produção frequentemente mascara **PE** (arredondamento é inevitável) mas deixa **IE** e **ZE** não mascarados para detectar erros reais e disparar interrupções de hardware.
+
+---
+
+## Aula 05 — Por Que Grau Ímpar Garante Raíz Real
+
+O resultado que as notas mencionam tem prova direta pelo **Teorema do Valor Intermediário**:
+
+Para $p(x) = a_n x^n + \ldots$ com $n$ ímpar e $a_n > 0$:
+- $\lim_{x \to -\infty} p(x) = -\infty$
+- $\lim_{x \to +\infty} p(x) = +\infty$
+
+Como $p$ é contínua em $\mathbb{R}$ e assume valores de ambos os sinais, existe $c \in \mathbb{R}$ com $p(c) = 0$ — pelo Teorema de Bolzano. Para grau par, ambos os limites têm o mesmo sinal: $p(x) = x^2 + 1$ tem grau par e zero raízes reais.
+
+### Raízes Complexas Conjugadas e o Plano Complexo
+
+Quando o JB "desce o $10$" e as quatro raízes imaginárias vão se tornando reais, o que ocorre geometricamente: dois pares de raízes conjugadas $(a + bi, a - bi)$ se movem no plano complexo em direção ao eixo real. Quando $b \to 0$, as raízes "colidem" no eixo real e tornam-se duas raízes reais (possivelmente coincidentes). Isso é o mecanismo por trás de "desce de dois em dois".
+
+---
+
+## Aula 07 — Derivação da Fórmula da Secante e o Limite para Newton
+
+### Por Que a Fórmula tem Aquele Formato
+
+Reta passando por $(a, f(a))$ e $(b, f(b))$:
+$$\ell(x) = f(a) + \frac{f(b) - f(a)}{b - a}(x - a)$$
+
+Para $\ell(c) = 0$, isolando $c$:
+$$c = a - f(a) \cdot \frac{b - a}{f(b) - f(a)} = \frac{b \cdot f(a) - a \cdot f(b)}{f(a) - f(b)}$$
+
+Isso é exatamente o resultado final nas notas. **Newton é o caso limite**: quando $b \to a$, a razão $\frac{f(b) - f(a)}{b - a}$ converge para $f'(a)$ — a secante vira tangente, e o método usa só um ponto.
+
+---
+
+## Aula 09 — Por Que o Resultado foi 0.000000
+
+### Subnormais e a Armadilha do `%f`
+
+O exercício 1 do laboratório imprimiu `0.000000`. Isso não é zero aritmético — é um número muito pequeno impresso com `%f`, que exibe apenas 6 casas decimais. Se o resultado é $3.7 \times 10^{-12}$, aparece como `0.000000`.
+
+Para inspecionar o valor real: `printf("%.15e\n", x)` mostra notação científica com 15 dígitos. O resultado aparecendo "três vezes" confirma que IEEE 754 é **determinístico**: dado o mesmo hardware e compilador, a mesma sequência produz os mesmos bits.
+
+---
+
+## Aula 12 — Laboratório: Matrizes Aumentadas e Regra de Descartes
+
+### Matrizes Aumentadas em Código C
+
+A estrutura natural para Gauss em C:
+
+```c
+double aug[N][N+1];  // última coluna é b
+for (int k = 0; k < N; k++) {
+    for (int i = k+1; i < N; i++) {
+        double m = aug[i][k] / aug[k][k];
+        for (int j = k; j <= N; j++)   // <= N inclui a coluna b
+            aug[i][j] -= m * aug[k][j];
+    }
+}
+```
+
+O `j <= N` (e não `j < N`) garante que a eliminação se aplica também ao vetor $b$. Esquecer isso zera a matriz mas não propaga os efeitos para $b$, produzindo sistema inconsistente — erro silencioso e comum.
+
+### Regra de Descartes Aplicada ao Exercício 2
+
+Para $p(x) = 6x^5 + 18x^3 - 34x^2 - 493x + 1431$ (coeficientes ignorando zeros): $+6, +18, -34, -493, +1431$ → trocas de sinal: $(+18 \to -34)$ e $(-493 \to +1431)$ → **2 raízes positivas**.
+
+Para raízes negativas, aplica-se a $p(-x)$: coeficientes $-6, -18, -34, +493, +1431$ → uma troca → **1 raíz negativa** (garantida, pois número ímpar).
+
+---
+
+## Aula 19 — Decomposição LU: Gauss para Múltiplos Sistemas
+
+### O Problema que LU Resolve
+
+Gauss custa $O(n^3)$ por sistema. Em simulações (o exemplo dos parquinhos), resolve-se $Ax = b_1, \ldots, Ax = b_m$ com a **mesma** $A$ e $m$ vetores $b$ diferentes. Custo ingênuo: $O(m \cdot n^3)$. Com LU: fatoriza-se $A = LU$ uma vez em $O(n^3)$, cada sistema adicional custa $O(n^2)$.
+
+### Como a Fatoração Funciona
+
+A decomposição produz:
+- **L** (*Lower*): triangular inferior, diagonal de 1s (implícita — não armazenada)
+- **U** (*Upper*): triangular superior — resultado da eliminação de Gauss
+
+Os elementos de L são os **multiplicadores** que Gauss usaria para zerar cada posição. O programa `LU.awk` do JB não os descarta: armazena-os exatamente onde os zeros foram criados. L e U cabem na mesma memória que $A$.
+
+### Resolução em Dois Passos
+
+Para $Ax = b$ com $A = LU$:
+
+**1. Substituição progressiva** — $Ly = b$ (diagonal de L são 1s, trivial):
+$$y_i = b_i - \sum_{j=1}^{i-1} l_{ij} \, y_j \qquad O(n^2)$$
+
+**2. Substituição regressiva** — $Ux = y$ (back substitution padrão):
+$$x_i = \frac{1}{u_{ii}}\!\left(y_i - \sum_{j=i+1}^{n} u_{ij} \, x_j\right) \qquad O(n^2)$$
+
+### O Pivotamento e a Matriz de Permutação
+
+Se o pivô $a_{kk} = 0$ durante a fatoração, o multiplicador explode. **LU com pivotamento parcial** fatoriza $PA = LU$, onde $P$ é uma **matriz de permutação** que registra as trocas de linha. Resolver $Ax = b$ vira: $LUx = Pb$ — as substituições são as mesmas, mas $b$ é reordenado por $P$ primeiro.
+
+**Quando LU não existe**: se $A$ é singular (determinante zero), a fatoração falha — o maior pivô disponível é exatamente zero. Isso detecta sistemas sem solução única.

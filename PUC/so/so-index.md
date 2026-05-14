@@ -23,6 +23,8 @@
 	- Retorno ao prédio 32, atividades de múltipla escolha.
 - [Aula 17](./aula17.md)
 	- Aula de contexto — P1 cancelada de véspera, entrega do T1.
+- [Aula 20](./aula20.md)
+	- Atividades de revisão para P1 — Threads & Processos, colinha permitida (A4 uma face).
 ---
 #### Atividades
 - [Respostas — Revisão P1](./atividades/respostas-revisaoP1.md)

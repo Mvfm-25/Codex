@@ -194,3 +194,136 @@ O Jantar dos Filósofos (Dijkstra, 1965) é o exemplo canônico de deadlock com 
 3. **Solução do mordomo**: um árbitro controla quem pode tentar pegar garfos.
 
 A conexão com `pthread_mutex`: cada garfo é um mutex. A regra prática mais usada para evitar deadlock em código real é **sempre travar mutexes na mesma ordem em todo o código** — é a solução de ordenação aplicada a sistemas reais.
+
+---
+
+## Aula 08 — Escalonamento: Preempção, Starvation e HRRN
+
+### Classificação Formal dos Algoritmos
+
+A tabela que as notas listam sem classificar:
+
+| Algoritmo | Preemptivo | Starvation |
+|---|---|---|
+| FIFO/FCFS | Não | Não |
+| SJF não-preemptivo | Não | Sim (jobs longos) |
+| SRTF | Sim | Sim (jobs longos) |
+| HRRN | Não | Não |
+| Round Robin | Sim | Não |
+| Priority estático | Ambos | Sim (baixa prioridade) |
+| Priority com Aging | Ambos | Não |
+
+### HRRN — Prevenção de Starvation sem Preempção
+
+**Highest Response Ratio Next** seleciona o processo com maior razão:
+
+$$\text{Response Ratio} = \frac{\text{tempo de espera} + \text{tempo de serviço esperado}}{\text{tempo de serviço esperado}}$$
+
+Quanto mais tempo um processo espera, maior sua razão — e maior sua prioridade. **Aging** implícito sem mecanismo explícito: um processo de baixa prioridade nunca morre de starvation porque seu numerador cresce continuamente.
+
+O Linux moderno usa o **CFS (Completely Fair Scheduler)**: distribui CPU proporcionalmente ao peso (*nice value*) de cada processo, usando árvore rubro-negra para eficiência $O(\log n)$ nas operações de fila.
+
+---
+
+## Aula 10 — Diretivas de Compilação e Armadilhas do `#define`
+
+### `#define` vs. `const` vs. `enum`
+
+```c
+#define N 5       // substituição textual — sem tipo, sem escopo, invisível ao debugger
+const int N = 5;  // variável tipada, visível ao debugger, ocupa memória
+enum { N = 5 };   // constante inteira sem memória, com tipo
+```
+
+Para tamanhos de arrays em C89, apenas `#define` ou `enum` funcionam (VLAs — variable-length arrays — só existem a partir do C99). Em C11 e C++, `constexpr` é a opção preferida.
+
+### Por Que `#define` é Perigoso em Expressões
+
+```c
+#define SQUARE(x) x * x        // perigoso
+SQUARE(1 + 2)                  // expande para 1 + 2 * 1 + 2 = 5, não 9
+#define SQUARE(x) ((x) * (x))  // correto: parênteses em tudo
+```
+
+Ou melhor: `static inline int square(int x) { return x * x; }` — função inline sem overhead e com segurança de tipos.
+
+---
+
+## Aula 11 — fork() em Profundidade e POSIX Threads
+
+### Copy-on-Write: Por Que fork() é Barato
+
+As notas dizem "o filho herda uma cópia do espaço de memória do pai". A implementação real:
+
+**Copy-on-Write (CoW)**: após `fork()`, pai e filho compartilham as mesmas páginas físicas, marcadas como *read-only*. Somente quando um dos dois tenta **escrever** em uma página, o SO copia aquela página específica. Páginas nunca modificadas nunca são copiadas.
+
+Consequência: `fork()` + `exec()` imediato é extremamente barato — o espaço do filho é descartado antes que qualquer escrita ocorra. É assim que shells criam processos.
+
+### API POSIX Threads: Os Protótipos Essenciais
+
+```c
+int pthread_create(pthread_t *tid, const pthread_attr_t *attr,
+                   void *(*func)(void *), void *arg);
+int pthread_join(pthread_t tid, void **retval);
+int pthread_mutex_lock(pthread_mutex_t *mutex);
+int pthread_mutex_unlock(pthread_mutex_t *mutex);
+```
+
+O `NULL` como segundo argumento de `pthread_create` usa atributos padrão (stack de ~8MB, política SCHED_OTHER). A criação é "100× mais rápida que fork()" porque não aloca nova tabela de páginas — threads compartilham o espaço de endereçamento do processo.
+
+---
+
+## Aula 12 — Atividades de Múltipla Escolha: Padrões de Questão
+
+### Como Abordar Questões de Escalonamento
+
+Para questões que pedem tempo médio de espera: montar o **diagrama de Gantt** (linha do tempo de execução) antes de calcular. Exemplo para FIFO com processos chegando em $t=0$:
+
+```
+P1 (burst=4): [0----4]
+P2 (burst=2):           [4--6]
+P3 (burst=3):                  [6-----9]
+Espera: P1=0, P2=4, P3=6 → média = (0+4+6)/3 = 3.33
+```
+
+Para SJF com os mesmos processos: P2 primeiro → tempo médio de espera menor.
+
+### Como Contar Processos Criados por fork()
+
+Cada `fork()` dobra o número de processos. Com $n$ `fork()` em série (sem condicionais): $2^n$ processos total.
+
+Com condicional `if (fork() > 0)`: apenas o pai faz a próxima chamada → $n+1$ processos. Problemas de prova frequentemente pedem exatamente essa contagem.
+
+---
+
+## Aula 17 — Consolidação: Processos vs. Threads
+
+Aula de contexto (P1 cancelada, entrega do T1). Boa oportunidade de consolidar os dois conceitos centrais do primeiro módulo:
+
+**Processo**: unidade de isolamento. Espaço de endereçamento privado. Comunicação exige IPC explícita (pipes, shared memory, sockets). Criado via `fork()`.
+
+**Thread**: unidade de concorrência. Compartilha código, dados e arquivos do processo pai. Comunicação é implícita (variáveis compartilhadas) mas exige sincronização (mutexes, semáforos). Criada via `pthread_create()`.
+
+**Quando usar qual**:
+- **Processos**: isolamento de falha (se um processo trava, os outros continuam), execução de programas diferentes (`exec()`).
+- **Threads**: performance com dados compartilhados (sem overhead de IPC), paralelismo dentro de um mesmo programa.
+
+---
+
+## Aula 20 — Revisão P1: O Que Estudar e Como Usar a Colinha
+
+### Escopo Confirmado da P1
+
+Gerência de Memória foi explicitamente excluída. O foco é: processos, threads, sincronização POSIX — exatamente o que o T1 de benchmark exercitou.
+
+### Hierarquia de Conteúdo para a Colinha (A4 frente única)
+
+1. **Algoritmos de escalonamento**: diagrama de Gantt para FIFO, SJF e Round Robin com exemplos numéricos. Mais provável de aparecer em questão de cálculo.
+2. **Condições de Coffman** para deadlock: exclusão mútua, hold and wait, sem preempção, espera circular.
+3. **API POSIX**: protótipos de `fork()`, `pthread_create()`, `pthread_mutex_lock()`, `shmget()`, `sem_open()`.
+4. **Estados de processo** e transições: diagrama dos 5 estados.
+5. **Race condition e seção crítica**: definição, exemplo com contador, solução com mutex.
+
+### O Que Colinha não Substitui
+
+Colinha ajuda em fórmulas e protótipos de API. Não substitui entender **quando aplicar** cada conceito — questões de múltipla escolha frequentemente pedem raciocínio, não memorização.

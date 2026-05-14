@@ -184,3 +184,174 @@ A utilidade prática das personas é conseguir *prever* como uma persona reagiri
 "A persona Carla usaria esse atalho de teclado?" — se os dados mostram que Carla é iniciante, provavelmente não. Essa pergunta direciona decisões de design sem precisar de novo teste.
 
 Isso não substitui testes com usuários reais, mas reduz o custo de decisões óbvias e foca os testes nas questões genuinamente incertas — que são as mais valiosas de responder.
+
+---
+
+## Aula 04 — Engenharia Cognitiva e os Gulfs de Norman
+
+### Os Dois Gulfs de Don Norman
+
+As notas mencionam "engenharia cognitiva" como tema de continuação. O conceito central que fundamenta UX é o modelo de Donald Norman dos **dois gulfs** (*gulfs of execution and evaluation*):
+
+- **Gulf of Execution**: distância entre o que o usuário *quer fazer* e as ações disponíveis no sistema. Interface confusa = gulf largo.
+- **Gulf of Evaluation**: distância entre o estado real do sistema após uma ação e a *percepção* que o usuário tem desse estado. Feedback ausente = gulf largo.
+
+Design de UX é, fundamentalmente, **encolher ambos os gulfs**. As notas descrevem exatamente esses problemas ("não se consegue prever o que o usuário consegue interpretar") — é o Gulf of Evaluation em palavras informais.
+
+### Os 7 Estágios da Ação
+
+Norman desdobra a interação em 7 estágios: formar o objetivo → planejar → especificar a ação → executar → perceber o estado → interpretar → avaliar se atingiu o objetivo. Estágios 1-4 pertencem ao Gulf of Execution; 5-7 ao Gulf of Evaluation. Interface "intuitiva" minimiza o esforço cognitivo em todos os 7.
+
+---
+
+## Aula 05 — Ciclos de Design e o Custo da Descoberta Tardia
+
+### Por Que Todos os Modelos São Iterativos
+
+Os modelos da aula (simples, estrela, Mayhew, contextual) compartilham iteração como princípio. A razão é econômica:
+
+O custo de corrigir um problema cresce com o avanço do desenvolvimento:
+- Descoberto em pesquisa: custo $1\times$
+- Descoberto em prototipagem: custo $10\times$
+- Descoberto em desenvolvimento: custo $100\times$
+- Descoberto em produção: custo $1000\times$
+
+Isso justifica todos os ciclos curtos e dinâmicas de aula: **descobrir cedo é barato**.
+
+### Design Thinking (Stanford d.school)
+
+O modelo mais influente atualmente:
+1. **Empatizar** — pesquisa com usuários reais
+2. **Definir** — enunciar o problema a partir dos dados
+3. **Idealizar** — geração de ideias sem julgamento
+4. **Prototipar** — construir para aprender
+5. **Testar** — com usuários, voltar ao início
+
+A diferença do modelo em cascata: não há fase "definir requisitos" que encerra antes de prototipar. Requisitos emergem através do processo.
+
+---
+
+## Aula 07 — Card Sorting: Análise e Dendrogramas
+
+### O Que Se Faz com os Dados
+
+Com múltiplos participantes, os resultados do card sorting são analisados estatisticamente:
+
+- **Matriz de similaridade**: quantas vezes cada par de cards foi agrupado junto. Cards agrupados em 90%+ dos participantes têm relação forte no modelo mental.
+- **Dendrograma**: árvore que mostra quais cards se agrupam mais fortemente. Cortar o dendrograma em diferentes alturas produz diferentes granularidades de organização.
+
+A estrutura de informação final (menus, navegação) é derivada do dendrograma — não inventada pelo designer.
+
+### Open vs. Closed Card Sorting
+
+O que a aula fez foi **open card sorting** (grupos criados pelos alunos). A sequência típica:
+
+1. **Open** (15-20 participantes): descobrir agrupamentos mentais dos usuários
+2. **Closed** (20-30 participantes): validar a estrutura proposta — participantes só alocam cards em categorias pré-definidas
+
+Ferramentas digitais: **OptimalSort**, **Maze**, **Useberry** — aplicam card sorting remotamente com dezenas de participantes.
+
+---
+
+## Aula 08 — Questionários de UX e o SUS
+
+### O Que Torna um Questionário Útil
+
+Um questionário para UX deve usar **escalas Likert** (1-5 ou 1-7) para intensidade de atitudes, perguntas neutras que não sugerem a resposta esperada, e um **teste piloto** com 3-5 pessoas antes da aplicação em larga escala.
+
+O **SUS (System Usability Scale)** é o instrumento padronizado mais usado — 10 perguntas alternando afirmações positivas e negativas, pontuação de 0 a 100. Uma pontuação acima de 68 é considerada boa; abaixo de 51, crítica. Benchmarks bem estabelecidos permitem comparar produtos de domínios diferentes.
+
+### Por Que Média Esconde Informação
+
+Uma média de 3.0 em Likert pode vir de: 50% marcando 1 e 50% marcando 5 (bimodalidade — opiniões divididas) ou de 100% marcando 3 (neutralidade unânime). São situações radicalmente diferentes que exigem respostas de design opostas. Sempre inspecionar a **distribuição de frequências**, não só a média.
+
+---
+
+## Aula 09 — Brainstorming: Divergência Antes de Convergência
+
+### As Quatro Regras do Brainstorming (Osborn, 1953)
+
+1. **Sem crítica**: julgamento suspenso durante a geração. Avaliar vem depois.
+2. **Quantidade sobre qualidade**: quanto mais ideias, maior a chance de uma boa aparecer.
+3. **Ideias inusitadas são bem-vindas**: o improvável hoje pode ser o inovador amanhã.
+4. **Combine e aprimore**: ideias dos outros são pontos de partida, não propriedade.
+
+O erro mais comum: violar a regra 1 — alguém critica uma ideia ainda na fase de geração, silenciando os participantes menos assertivos.
+
+### Brainstorming 6-3-5
+
+Variante estruturada: 6 pessoas, cada uma escreve 3 ideias em 5 minutos, a folha passa para o próximo, que adiciona 3 mais. 30 minutos → até 108 ideias. Útil quando o grupo tende a convergir prematuramente em torno de uma ideia dominante.
+
+---
+
+## Aula 14 — Coleta de Dados: Análise Qualitativa e Quantitativa
+
+### Análise de Dados de Questionário
+
+Para dados quantitativos (Likert): calcular média e desvio padrão por item. Para respostas abertas:
+
+- **Codificação temática**: ler todas as respostas e identificar temas recorrentes. Atribuir um código curto a cada tema ("dificuldade de navegação", "confusão com ícones").
+- **Saturação**: quando novas respostas não produzem novos códigos, o modelo mental do grupo está mapeado — a coleta pode parar.
+
+### O Problema da Interpretação Afirmada vs. Comportamento Real
+
+O princípio fundamental de pesquisa com usuários: **o que usuários dizem** e **o que usuários fazem** frequentemente divergem. Questionários capturam percepção e motivação declaradas; testes de usabilidade e analytics capturam comportamento real.
+
+Para o T2, os dados do formulário revelam *intenções e percepções* — úteis para design de conteúdo e hierarquia. O comportamento real dos mesmos usuários interagindo com protótipos revelaria *problemas de interação* — uma dimensão diferente, que questionários não capturam.
+
+---
+
+## Aula 17 — Prototipação: Tipos, Fidelidade e a Hipótese por Trás de Cada Protótipo
+
+### A Pergunta que Define o Tipo de Protótipo
+
+A questão central: **qual hipótese estou testando?**
+
+| Hipótese | Tipo de protótipo | Fidelidade |
+|---|---|---|
+| "Esse fluxo faz sentido?" | Papel, wireframe | Baixa |
+| "Essa mecânica de interação funciona?" | Protótipo clicável (Figma) | Média |
+| "O visual comunica a identidade?" | Mockup de alta fidelidade | Alta |
+
+Protótipo de papel antes de abrir o Figma poupa horas — falhas de fluxo são detectadas em 10 minutos com post-its. Alta fidelidade prematura desperdiça tempo em pixels que serão descartados.
+
+### O Que Distingue Cada Tipo das Notas
+
+- **Horizontal**: cobre toda a interface superficialmente. Avalia navegabilidade e arquitetura da informação. Não permite completar tarefas reais.
+- **Vertical**: cobre um único fluxo completamente. Permite avaliar uma task end-to-end.
+- **Alta fidelidade**: pixels corretos, tipografia final, interações reais. Necessário para validar visual e microinterações.
+- **Baixa fidelidade**: velocidade máxima, feedback rápido. A perda de informação estética é vantagem em estágio inicial — não contamina o feedback com preferências visuais.
+
+### Storyboard no UX vs. no Cinema
+
+No cinema, storyboard mostra sequência de cenas. Em UX, mostra **a jornada do usuário**: a pessoa em contexto, usando o sistema, antes e depois. Inclui emoções e pensamentos, não apenas telas. O objetivo é humanizar o design — há uma pessoa real com contexto real do outro lado.
+
+---
+
+## Aula 19 — Sketches, Revisões de Design e o Ciclo de Feedback
+
+### Sketches: Baixa Fidelidade com Alta Intenção
+
+Um sketch de interface bem feito contém:
+1. O **layout**: posição aproximada de elementos, hierarquia visual
+2. **Anotações**: explicações do que não é evidente no desenho — intenção, comportamento, estado alternativo
+3. **Flow**: setas mostrando transições entre estados
+
+As anotações têm mais valor que o desenho em si. Um sketch sem anotações obriga o observador a inferir intenção — inferências erradas alimentam discussões improdutivas em reviews.
+
+### Os Quatro Tipos de Revisão: Quando Usar Cada Um
+
+| Tipo | Contexto | Duração |
+|---|---|---|
+| **Elevator Pitch** | Ideia muito inicial | 2-5 min |
+| **Desktop Review** | Trabalho em andamento | 15-30 min |
+| **Meeting** | Checkpoint periódico | ~1h |
+| **Design Crit** | Entregável formal | 1-2h + preparação |
+
+O **Design Crit** apresenta não só o que funcionou, mas o que *não* funcionou e por quê. O post-mortem de jogos mencionado nas notas é equivalente: honestidade sobre falhas é o que torna a revisão útil para o próximo projeto.
+
+### Quando Simplificar o Storyboard Significa Simplificar a Interface
+
+As notas citam: "se se embananam com storyboards ramificados, reconsiderem suas interfaces." A razão formal: cada ramificação é um ponto onde o usuário pode se perder.
+
+A heurística de Nielsen n.3 (controle e liberdade) e n.5 (prevenção de erros) frequentemente conflitam com interfaces de múltiplos caminhos. Simplificar o storyboard geralmente é o mesmo que simplificar a interface — e ambos reduzem a carga cognitiva do usuário.

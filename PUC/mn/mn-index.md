@@ -32,6 +32,8 @@
 	- Problema dos Lemmings do planeta Zorg.
 - [Aula 16](./aula16.md)
 	- Método iterativo **Gauss-Jacobi**, condição de dominância diagonal e introdução a **auto-vetores & raio espectral**.
+- [Aula 19](./aula19.md)
+	- **Decomposição LU** — fatoração de sistemas lineares em matrizes triangulares **L** e **U** para resolver múltiplas instâncias com custo amortizado.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

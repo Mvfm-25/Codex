@@ -179,3 +179,71 @@ Na prática podem coexistir: o API Gateway fica na frente (autenticação, TLS, 
 - **Times separados por produto**: autonomia sem acoplamento. O time mobile não espera o time web para evoluir sua API.
 
 Quando **não** faz sentido: poucos clientes com necessidades similares — o overhead de manter múltiplos gateways não compensa.
+
+---
+
+## Aula 02 — HTTP em Profundidade: Cabeçalhos e Negociação de Conteúdo
+
+### Cabeçalhos que Definem o Contrato
+
+Além dos verbos HTTP, os **cabeçalhos** especificam o protocolo real da comunicação:
+
+- `Content-Type: application/json` — formato do corpo enviado
+- `Accept: application/json` — formato que o cliente aceita receber
+- `Authorization: Bearer <token>` — credencial de autenticação
+- `Cache-Control: no-cache` — instrui proxies sobre caching
+- `X-Request-Id: <uuid>` — identificador de rastreamento distribuído
+
+Em microserviços, o `X-Request-Id` (ou `Trace-Id`) é essencial para **distributed tracing** — sem ele, rastrear uma requisição que passa por 5 serviços é impossível. Ferramentas como Jaeger e Zipkin usam esse header.
+
+### URI vs URL vs URN
+
+- **URI** (Uniform Resource Identifier): identificador genérico. Superconjunto dos outros dois.
+- **URL** (Locator): diz *onde* o recurso está. `https://api.exemplo.com/users/42`
+- **URN** (Name): identifica *o quê* o recurso é, independente de localização. `urn:isbn:978-85-7522-271-2`
+
+REST usa URLs. A regra de ouro: URLs identificam **recursos** (substantivos), não ações (verbos). `/users/42` é correto; `/getUser?id=42` é anti-pattern.
+
+---
+
+## Aula 03 — Service Mesh e Circuit Breaker
+
+### O Problema da Comunicação em Escala
+
+Com dezenas de microserviços, implementar retry, timeout e circuit breaking em cada serviço individualmente é insustentável. A solução moderna é o **service mesh**:
+
+```
+Serviço A → [Sidecar Proxy] → rede → [Sidecar Proxy] → Serviço B
+```
+
+Um **sidecar proxy** (Envoy, Linkerd) fica ao lado de cada serviço e intercepta todo tráfego. O service mesh centraliza: TLS mútuo, retry automático, circuit breaker, telemetria — o serviço em si não implementa nada disso.
+
+### Circuit Breaker: A Proteção Que as Desvantagens dos Microserviços Exigem
+
+Se o Serviço B está lento, o Serviço A fica com threads travadas esperando resposta — podendo derrubar A também. O **circuit breaker** resolve:
+
+- **Fechado** (normal): requisições passam normalmente
+- **Aberto** (falha): após N falhas, rejeita imediatamente sem tentar B
+- **Semi-aberto** (recuperação): permite uma requisição de teste; se funcionar, fecha o circuito
+
+É exatamente a promessa das notas ("falha em um serviço não impacta os demais") — o mecanismo que a garante.
+
+---
+
+## Aula 08 — Revisão P1: Conceitos Centrais e Armadilhas
+
+### O Ponto de Confusão Mais Comum: Stateless
+
+**Stateless** não significa que a aplicação não tem estado. Significa que o **servidor** não armazena estado de sessão entre requisições. O estado existe — mas vive no cliente (token JWT) ou no banco de dados, não na memória do processo HTTP.
+
+Consequência: qualquer instância do servidor pode atender qualquer requisição. Escalabilidade horizontal trivial: sobe mais instâncias atrás de um load balancer, sem sincronização de sessão.
+
+### Idempotência na Prova
+
+Uma questão frequente: "qual método HTTP é idempotente?"
+
+- `GET`, `PUT`, `DELETE`: idempotentes (chamar N vezes = chamar uma vez)
+- `POST`: não idempotente (cada chamada pode criar um novo recurso)
+- `PATCH`: geralmente não idempotente (depende da semântica da operação)
+
+**Idempotência importa para retries**: se a rede falha após `PUT /users/42`, o cliente pode re-enviar com segurança. Se falha após `POST /users`, re-enviar pode criar duplicatas.

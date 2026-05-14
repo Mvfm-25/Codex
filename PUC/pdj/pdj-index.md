@@ -33,6 +33,10 @@
 	- Uso da câmera & viewport da engine
 - [Aula 16](./aula16.md)
 	- Destruição de nodos no **Godot** (`free()` & `queue_free()`) e troca de cenas.
+- [Aula 17](./aula17.md)
+	- Recursos de **áudio & imagem** no Godot (Spritesheet Cutter, nodos de áudio espacial, Audacity).
+- [Aula 18](./aula18.md)
+	- Fundamentos de **Tilesets e Tilemaps** no Godot Engine.
 ---
 #### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

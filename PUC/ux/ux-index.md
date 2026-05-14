@@ -31,6 +31,10 @@
 	- Acompanhamento do desenvolvimento do T1.
 - [Aula 14](./aula14.md)
 	- Acompanhamento do desenvolvimento do T2.
+- [Aula 17](./aula17.md)
+	- Tipos e técnicas de **prototipação** (horizontal/vertical, baixa/alta fidelidade, wireframe, storyboard, mock-up).
+- [Aula 19](./aula19.md)
+	- **Sketches** de interface e técnicas de revisão de design (Elevator Pitch, Desktop Review, Design Crit).
 ---
 #### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
