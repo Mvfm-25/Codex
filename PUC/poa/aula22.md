@@ -1,0 +1,24 @@
+# Projeto & Otimização de Algoritmos
+## [01-06-2026][mvfm]
+---
+### Pós-Solução de Sudoku's
+- Cadu & Edu explicam seu algoritmo de solução para tabuleiros de Sudoku, que basicamente se resume a jogar como uma pessoa normal joga Sudoku.
+	- Onde cada célulazinha guarda em si as possibilidades de elemento e simplesmente checava em si que elemento inserir.
+- Tanto o Cadu & Wide comentam que as suas implementações & soluções não necessariamente cabiam ao tipo de tabuleiro de Sudoku que o JB tinha determinado.
+	- O tabuleiro específico do JB não segue, aparentemente, a convenção de tabuleiros Sudoku; em que se existe apenas uma única resposta correta.
+- Isso parece bem presente entre os algoritmos propostos.
+- " Quem tem um sudoku que funciona? "
+	- Uma pergunta bem terrível de acordo com o JB.
+	- Ninguém levantou a mão, mas o Paulo comenta que apesar de ter demorado seu algoritmo, ele conseguiu tabuleiros corretos.
+- JB comenta que a solução dele pode decepcionar muitos.
+	- Foi justamente o que eu tinha comentado, que ele fez backtracking puro.
+	- Não pensa, curte teu sábado.
+	- Mas pelo menos o programinha dele tem um render bem bonitinho
+- Ele valida linha, coluna & quadrante, quando possível coloca o menor número 1 - 9.
+- " É besta? É. Não é como um humano jogaria. "
+
+### De um até 47
+- 'Escreva um programa que escreva esses número de maneira que a soma de um pro outro dá um quadrado.'
+- Uma linha sequencial de números, que a pessoa teria que organizar a sequência de 1 -> 47 com os quadrados.
+- 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+- Backtracking puro funcionaria? Acredito que valeria a pena testar.
