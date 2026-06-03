@@ -37,6 +37,8 @@
 	- Recursos de **áudio & imagem** no Godot (Spritesheet Cutter, nodos de áudio espacial, Audacity).
 - [Aula 18](./aula18.md)
 	- Fundamentos de **Tilesets e Tilemaps** no Godot Engine.
+- [Aula 21](./aula21.md)
+	- **Checkpoint do T2** — apresentação do estado do projeto e editor de níveis; entrega do jogo definida para 01/06.
 ---
 #### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

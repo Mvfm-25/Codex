@@ -436,3 +436,71 @@ No editor de tileset do Godot, cada tile pode ter sua própria **collision shape
 - Tiles decorativos: sem collision
 
 O `TileMapLayer` gera automaticamente um corpo de física composto pela união das shapes de todos os tiles — o personagem colide com o mapa inteiro via um único `StaticBody2D`, eficiente e sem código manual.
+
+---
+
+## Aula 21 — Checkpoint T2: Level Editors, Data-Driven Design e Condições de Vitória
+
+### Level Editor como Ferramenta de Desenvolvimento
+
+Construir a ferramenta antes do jogo é decisão de design chamada **tool-first development**. O benefício: o jogo torna-se **data-driven** — os níveis são dados, não código. Alterações de nível não exigem recompilação. A estrutura descrita nas notas (editor que gera JSON com propriedades de entidades) é a base de todo engine profissional:
+
+- **Unity**: cenas salvas como YAML/JSON interno
+- **Godot**: cenas em `.tscn` (formato texto)
+- **Unreal**: blueprints + assets `.uasset` binários com metadados
+
+A diferença entre um jogo e um motor de jogo é exatamente isso: quando designers criam conteúdo sem tocar em código, o motor está pronto.
+
+---
+
+### JSON para Configuração de Entidades
+
+O padrão de *entity config* em JSON é ubíquo na indústria:
+
+```json
+{
+  "entities": [
+    { "id": "goblin", "hp": 30, "damage": 5, "speed": 120, "ai": "patrol" }
+  ]
+}
+```
+
+**Vantagens sobre valores hard-coded**:
+- Balanceamento sem recompilar: ajustar `damage` é editar um número
+- Game designers sem código podem modificar
+- Facilita testes A/B (carregar configs diferentes para testar variações)
+
+**Limitação**: JSON não tem tipos complexos, referências circulares ou lógica. Para dados mais ricos, Godot usa **Recursos** (`.tres`) — arquivos texto com schema definido, diretamente integrados ao editor.
+
+---
+
+### Condições de Vitória e Derrota: Estrutura Formal
+
+A exigência do Cohen ("jogador deve conseguir ganhar e perder") mapeia para o **game loop de estado**:
+
+```gdscript
+enum GameState { PLAYING, WIN, LOSE }
+var state = GameState.PLAYING
+
+func _process(delta):
+    if state != GameState.PLAYING:
+        return
+    check_win_condition()
+    check_lose_condition()
+```
+
+A separação entre **estado do jogo** e **lógica do jogo** é a arquitetura mínima necessária. Sem ela, as condições de vitória e derrota interferem com a atualização normal do jogo.
+
+---
+
+### Python → GDScript: As Diferenças que Importam
+
+| Python | GDScript |
+|---|---|
+| `def func(self):` | `func nome():` |
+| `self.variavel` | `variavel` (implícito no nodo) |
+| `import modulo` | `preload()` / `load()` |
+| `None` | `null` |
+| `isinstance(x, Tipo)` | `x is Tipo` |
+
+O que muda estruturalmente: GDScript é event-driven — lógica vive em `_ready()`, `_process()`, `_input()` em vez de um loop explícito. A lógica Python de simulação de jogo (estado, entidades, colisões) porta quase diretamente; input e rendering precisam ser adaptados para o paradigma de nodos e sinais do Godot.

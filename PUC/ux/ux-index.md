@@ -35,6 +35,12 @@
 	- Tipos e técnicas de **prototipação** (horizontal/vertical, baixa/alta fidelidade, wireframe, storyboard, mock-up).
 - [Aula 19](./aula19.md)
 	- **Sketches** de interface e técnicas de revisão de design (Elevator Pitch, Desktop Review, Design Crit).
+- [Aula 20](./aula20.md)
+	- Acompanhamento do T2 — padrões de design **IHC** e critérios pendentes do enunciado (Módulo 02).
+- [Aula 21](./aula21.md)
+	- Aula de acompanhamento do trabalho, sem conteúdo novo.
+- [Aula 24](./aula24.md)
+	- Introdução à **avaliação de interfaces** — expectativas do desenvolvedor vs. percepção real do usuário.
 ---
 #### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

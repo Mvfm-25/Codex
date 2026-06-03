@@ -38,6 +38,10 @@
 	- Introdução ao **Backtracking** e o problema das **N-rainhas**.
 - [Aula 20](./aula20.md)
 	- Revisão do T1 (divisão & conquista) e partição de conjuntos via **Backtracking**.
+- [Aula 21](./aula21.md)
+	- Revisão de algoritmos de escadaria (busca por largura vs. profundidade) e missão de implementar solver de **Sudoku** via Backtracking.
+- [Aula 22](./aula22.md)
+	- Revisão das soluções de **Sudoku** por Backtracking puro e novo problema de organizar 1→47 com somas quadradas.
 --
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

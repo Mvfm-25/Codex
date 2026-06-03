@@ -548,3 +548,71 @@ $$x_i = \frac{1}{u_{ii}}\!\left(y_i - \sum_{j=i+1}^{n} u_{ij} \, x_j\right) \qqu
 Se o pivô $a_{kk} = 0$ durante a fatoração, o multiplicador explode. **LU com pivotamento parcial** fatoriza $PA = LU$, onde $P$ é uma **matriz de permutação** que registra as trocas de linha. Resolver $Ax = b$ vira: $LUx = Pb$ — as substituições são as mesmas, mas $b$ é reordenado por $P$ primeiro.
 
 **Quando LU não existe**: se $A$ é singular (determinante zero), a fatoração falha — o maior pivô disponível é exatamente zero. Isso detecta sistemas sem solução única.
+
+---
+
+## Aula 20 — Método dos Mínimos Quadrados
+
+### Mínimos Quadrados Ordinários (OLS) — O Método Formal
+
+O que JB derivou em quadro é o **Método dos Mínimos Quadrados Ordinários** (Ordinary Least Squares, OLS) — desenvolvido por Gauss e Legendre independentemente no início do século XIX. A formulação matricial compacta usa a **matriz de design** $\Phi$:
+
+Para $m$ observações e uma função modelo $f(x;\mathbf{a}) = a_1\phi_1(x) + \cdots + a_p\phi_p(x)$:
+
+$$\Phi = \begin{bmatrix} \phi_1(x_1) & \cdots & \phi_p(x_1) \\ \vdots & & \vdots \\ \phi_1(x_m) & \cdots & \phi_p(x_m) \end{bmatrix}$$
+
+Minimizar $\sum(f(x_i) - y_i)^2$ é equivalente a minimizar $\|\Phi\mathbf{a} - \mathbf{y}\|^2$. A solução satisfaz as **equações normais**:
+
+$$\Phi^T\Phi\,\mathbf{a} = \Phi^T\mathbf{y}$$
+
+O sistema $4\times4$ que JB formou derivando em $a$, $b$, $c$ e $d$ é exatamente isso — mas construído "na mão", sem escrever a matriz de design explicitamente. $\Phi^T\Phi$ é sempre **simétrico e positivo semi-definido**, o que garante que Gauss encontra solução.
+
+---
+
+### Por Que Quadrático e Não Absoluto
+
+A escolha $\sum(f(x_i) - y_i)^2$ em vez de $\sum|f(x_i) - y_i|$ não é arbitrária:
+
+1. **Diferenciabilidade**: $|x|$ não é diferenciável em zero — derivar e igualar a zero não funciona diretamente. $(x-y)^2$ é suave em todo domínio.
+2. **Linearidade do sistema resultante**: a derivada de uma soma de quadrados de funções lineares nos coeficientes produz um **sistema linear** — resolúvel com Gauss. A derivada de uma soma de absolutos produz um problema de **programação linear**, muito mais caro.
+3. **Propriedades estatísticas**: quando os erros de medição seguem distribuição Normal, o estimador OLS é o **BLUE** (Best Linear Unbiased Estimator) — Teorema de Gauss-Markov.
+
+---
+
+### Condição para Solução Única
+
+O sistema $\Phi^T\Phi\,\mathbf{a} = \Phi^T\mathbf{y}$ tem solução única se e somente se $\Phi$ tem **posto completo por colunas** — as funções-base $\phi_1,\ldots,\phi_p$ são linearmente independentes nos pontos de dado. O cosseno no modelo do JB é "no achismo total" — mas válido quando se suspeita de periodicidade. Se os dados forem puramente $x^3$, o coeficiente $d$ convergirá para zero.
+
+---
+
+## Aula 21 — Cadeias de Markov
+
+### Definição Formal e Propriedade Markoviana
+
+Uma **Cadeia de Markov discreta e homogênea** é um processo estocástico $\{X_t\}$ onde:
+
+$$P(X_{t+1} = j \mid X_t = i,\, X_{t-1} = i_{t-1},\ldots) = P(X_{t+1} = j \mid X_t = i) = p_{ij}$$
+
+O futuro depende **apenas do presente** — não da história. A **matriz de transição** $M$ tem $m_{ij} = p_{ij}$. Na convenção do JB, colunas são origens e cada **coluna** soma 1 (*left stochastic matrix*).
+
+---
+
+### Distribuição Estacionária
+
+O fenômeno que as notas observaram ("as probabilidades se estabilizam") é a **distribuição estacionária** $\pi$:
+
+$$M\pi = \pi$$
+
+Ou seja, $\pi$ é **auto-vetor de $M$ com auto-valor 1**. O Teorema de Perron-Frobenius garante que toda matriz estocástica positiva tem esse auto-valor e que o auto-vetor correspondente é único (após normalização). Para calcular $\pi$: resolve-se o sistema $(M - I)\pi = \mathbf{0}$ com a restrição $\sum_i \pi_i = 1$ — literalmente Gauss de novo.
+
+---
+
+### Convergência — Quando "Não Importa de Onde Começas"
+
+A convergência para $\pi$ independente do estado inicial acontece quando a cadeia é **ergódica**: **irredutível** (de qualquer estado existe caminho para qualquer outro) e **aperiódica** (sem ciclos forçados). Formalmente:
+
+$$M^k \to \pi\mathbf{1}^T \quad \text{quando } k \to \infty$$
+
+Todas as colunas de $M^k$ convergem para $\pi$ — independente da coluna inicial. É matematicamente exato o que JB demonstrou empiricamente com o vetor $S$ variando o ponto de início.
+
+**Quando falha**: "mas pode se tornar falso" nas notas ocorre em cadeias com **estados absorventes** (como nos Lemmings) ou quando a cadeia é periódica — alternâncias forçadas entre dois estados nunca convergem para equilíbrio estático.

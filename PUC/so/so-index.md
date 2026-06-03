@@ -25,6 +25,12 @@
 	- Aula de contexto — P1 cancelada de véspera, entrega do T1.
 - [Aula 20](./aula20.md)
 	- Atividades de revisão para P1 — Threads & Processos, colinha permitida (A4 uma face).
+- [Aula 21](./aula21.md)
+	- **Gerência de memória** — importância histórica do recurso escasso e seu impacto na engenharia de software.
+- [Aula 22](./aula22.md)
+	- Entrega do enunciado do **T2** — simulação de algoritmos de substituição de páginas com código-modelo em Python.
+- [Aula 26](./aula26.md)
+	- **Hardware de E/S** — porta, barramento, controlador, registradores de porta e conceito de Polling.
 ---
 #### Atividades
 - [Respostas — Revisão P1](./atividades/respostas-revisaoP1.md)

@@ -351,3 +351,69 @@ A poda `somaRestante + somaAtual < alvo` é um **lower bound**: se mesmo somando
 ### Backtracking vs DP para Partição
 
 Backtracking é exponencial no pior caso ($O(2^n)$). DP resolve partição em $O(n \cdot \text{sum}/2)$ — pseudopolinomial, muito melhor em casos típicos. O JB descreve backtracking como "mais fraco" exatamente por isso: sem poda boa, é força bruta disfarçada.
+
+---
+
+## Aula 21 — BFS vs. DFS e Sudoku como CSP
+
+### Busca por Largura vs. Profundidade — Análise Formal
+
+As duas abordagens discutidas para o algoritmo da escadaria exploram o mesmo espaço de estados com estratégias opostas:
+
+| | BFS | DFS |
+|---|---|---|
+| Estrutura de dados | Fila (FIFO) | Pilha / Recursão |
+| Memória | $O(b^d)$ — cresce com a fronteira | $O(b \cdot d)$ — apenas o caminho atual |
+| Encontra caminho mais curto? | **Sim** — garante mínimo de passos | Não — pode encontrar caminho longo primeiro |
+| Integração com poda | Difícil | Natural — desfaz ao retroceder |
+
+$b$ = fator de ramificação, $d$ = profundidade da solução. Para o problema da escadaria, BFS garante o mínimo de passos; DFS pode encontrar uma solução mais rápido mas sem garantia de otimalidade. A ideia de JB de alimentar o resultado fácil-rápido (DFS) no verificador do ótimo (BFS) é o padrão **iterative deepening**: usa memória de DFS e garantia de BFS.
+
+---
+
+### Sudoku como CSP — Constraint Satisfaction Problem
+
+O Sudoku é o exemplo textbook de **CSP (Constraint Satisfaction Problem)**:
+
+- **Variáveis**: as 81 células do tabuleiro 9×9
+- **Domínio**: $\{1,\ldots,9\}$ por célula
+- **Restrições**: cada linha, coluna e bloco 3×3 contém cada dígito exatamente uma vez
+
+Backtracking para CSP:
+1. Escolher uma variável não atribuída (célula vazia)
+2. Tentar cada valor do domínio
+3. Verificar se viola restrição
+4. Se não viola: recursão; se viola ou sem opções: backtrack
+
+---
+
+### Por Que o Tabuleiro do JB Pode Ter Múltiplas Soluções
+
+Um Sudoku bem formado tem **exatamente uma solução**. O mínimo de pistas para unicidade em Sudoku 9×9 é **17** — provado por McGuire et al. (2012) com computação exaustiva de seis meses. Com menos de 17 pistas, múltiplas soluções quase sempre existem. O algoritmo backtracking puro encontra *uma* solução (lexicograficamente menor, se tenta 1 antes de 9) — não todas — o que explica os algoritmos "incorretos" para o tabuleiro específico do JB.
+
+---
+
+## Aula 22 — Backtracking Puro e o Problema 1→47
+
+### Backtracking Puro para Sudoku: Correto, sem Heurística
+
+A solução do JB — menor número possível em cada célula, backtrack quando viola — é o **algoritmo de backtracking ingênuo**. Prova de correção:
+
+1. Explora **todas as atribuições válidas** sistematicamente
+2. O espaço de busca é finito ($9^{81}$ teórico, muito menor com restrições)
+3. Se solução existe, será encontrada; se não, todos os ramos são explorados
+
+**Complexidade**: $O(9^n)$ no pior caso onde $n$ = células vazias. Na prática as restrições tornam o problema muito mais tratável — Sudokus típicos são resolvidos em microssegundos. A crítica de JB ("não pensa, curte teu sábado") é de design, não de correção: solvers modernos adicionam **constraint propagation** antes de cada tentativa e resolvem qualquer instância em milissegundos.
+
+---
+
+### O Problema 1→47: Caminho Hamiltoniano em Grafo de Soma-Quadrado
+
+Organizar 1 a 47 de forma que cada par consecutivo some um quadrado perfeito é equivalente a encontrar um **Caminho Hamiltoniano** no grafo $G$:
+
+- **Vértices**: $\{1,\ldots,47\}$
+- **Arestas**: existe aresta $(i,j)$ se $i+j \in \{4,9,16,25,36,49,64,81\}$
+
+O Caminho Hamiltoniano é **NP-completo** em geral. Para $n=47$, o grafo tem estrutura suficientemente restrita (grau médio baixo) para que backtracking funcione rapidamente.
+
+**Generalização**: para quais $n$ o caminho existe? Para $n \geq 25$ soluções são conhecidas. Para $n=15$, $23$ e $25$ também. A questão geral permanece aberta para todos os $n$.

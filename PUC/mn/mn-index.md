@@ -34,6 +34,10 @@
 	- Método iterativo **Gauss-Jacobi**, condição de dominância diagonal e introdução a **auto-vetores & raio espectral**.
 - [Aula 19](./aula19.md)
 	- **Decomposição LU** — fatoração de sistemas lineares em matrizes triangulares **L** e **U** para resolver múltiplas instâncias com custo amortizado.
+- [Aula 20](./aula20.md)
+	- **Método dos Mínimos Quadrados** — ajuste de funções a nuvens de pontos via minimização de erros quadráticos e resolução como sistema linear.
+- [Aula 21](./aula21.md)
+	- **Cadeias de Markov** — matriz de transição probabilística e vetor de estados para modelar sistemas estocásticos sem memória.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

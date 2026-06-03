@@ -355,3 +355,116 @@ O **Design Crit** apresenta não só o que funcionou, mas o que *não* funcionou
 As notas citam: "se se embananam com storyboards ramificados, reconsiderem suas interfaces." A razão formal: cada ramificação é um ponto onde o usuário pode se perder.
 
 A heurística de Nielsen n.3 (controle e liberdade) e n.5 (prevenção de erros) frequentemente conflitam com interfaces de múltiplos caminhos. Simplificar o storyboard geralmente é o mesmo que simplificar a interface — e ambos reduzem a carga cognitiva do usuário.
+
+---
+
+## Aula 20 — Padrões de Design em IHC
+
+### O Que São Padrões de Design em IHC
+
+O conceito de **padrão de design** em IHC tem origem no trabalho do arquiteto Christopher Alexander (*A Pattern Language*, 1977): capturar soluções recorrentes para problemas recorrentes em um formato reutilizável. Em IHC, um padrão documenta:
+
+- **Problema**: a situação recorrente de design
+- **Contexto**: quando o padrão se aplica
+- **Solução**: a abordagem que funciona
+- **Consequências**: trade-offs do uso
+
+A diferença dos padrões GoF (software): padrões de IHC são sobre **interação e percepção do usuário**, não sobre estrutura de código.
+
+---
+
+### Padrões IHC Essenciais para o T2
+
+O site [ui-patterns.com](https://ui-patterns.com/patterns) que as notas referenciam cataloga os mais usados. Os mais relevantes para uma interface de aplicativo:
+
+| Padrão | Problema | Solução |
+|---|---|---|
+| **Progressive Disclosure** | Muita informação simultânea sobrecarrega | Mostrar só o necessário; revelar detalhes sob demanda |
+| **Breadcrumb** | Usuário perdido em hierarquia profunda | Trilha mostrando o caminho percorrido |
+| **Confirmation Dialog** | Ação destrutiva ou irreversível | Pedir confirmação explícita antes de executar |
+| **Empty State** | Interface sem dados (primeira vez) | Explicar o estado + ação para populá-lo |
+| **Skeleton Screen** | Conteúdo carregando cria sensação de quebrado | Placeholder visual durante carregamento |
+
+O **critério 2.3 do enunciado** ("especificar quais padrões foram escolhidos, justificando a escolha") pede: nome do padrão + contexto onde aparece no design + por que foi escolhido em vez de alternativas.
+
+---
+
+### Diretrizes vs. Padrões: A Distinção que o Enunciado Mistura
+
+**Diretriz**: princípio de design amplo e qualitativo. Ex: "use linguagem do usuário, não jargão técnico" (Nielsen #2).
+**Padrão**: solução específica e instanciável. Ex: "use breadcrumb em hierarquias com mais de 2 níveis".
+
+Para o relatório: diretrizes justificam decisões de alto nível; padrões descrevem como a interface é estruturada. Usá-los em seções separadas evita o relatório ficar vago demais.
+
+---
+
+## Aula 21 — Acompanhamento de T2: Validar Antes de Escrever
+
+### Armadilha da Justificativa Circular
+
+Aula sem conteúdo novo — mas o momento do ciclo é importante. Na fase de "fundamentações" (Módulo 02), o erro mais comum em relatórios de UX é a **justificativa circular**:
+
+> "Escolhemos o padrão X porque nossa interface usa X."
+
+O que o relatório deve mostrar:
+1. **Dado de pesquisa** que revela o problema de design
+2. **Padrão/diretriz** que resolve esse tipo de problema
+3. **Aplicação específica**: como o padrão se manifesta nas telas do protótipo
+
+A sequência correta é: dado → problema → solução. A sequência errada: solução → justificativa post-hoc.
+
+---
+
+### Critérios de Fundamentação de Protótipos
+
+Fundamentar esboços não é descrever o que as telas fazem — é explicar **por que** cada decisão foi tomada em termos de princípios estabelecidos. Para cada componente relevante:
+
+- Qual **heurística de Nielsen** ou diretriz se aplica?
+- Qual **padrão de IHC** foi usado e por quê aqui especificamente?
+- Qual dado da pesquisa do T1 motivou esta decisão?
+
+Três perguntas, três parágrafos curtos por componente. O relatório fica mais coeso que uma descrição narrativa livre.
+
+---
+
+## Aula 24 — Avaliação de Interfaces: Métodos Formais
+
+### Avaliação Heurística vs. Teste de Usabilidade
+
+As notas introduzem o problema da avaliação. Dois métodos principais com trade-offs opostos:
+
+**Avaliação Heurística (Nielsen, 1990)**:
+- Realizada por **especialistas** (3-5 avaliadores), não usuários reais
+- Cada avaliador analisa a interface solo contra as 10 heurísticas
+- Resultados mesclados em lista de problemas com severidade (1-4)
+- Detecta ~75% dos problemas com 5 avaliadores; custo baixo
+- **Falha**: detecta problemas que usuários reais nunca teriam — e perde problemas que só aparecem em uso real
+
+**Teste de Usabilidade**:
+- Usuários reais realizam tarefas específicas enquanto são observados
+- Métricas: taxa de conclusão, tempo na tarefa, número de erros, SUS
+- **Regra dos 5 Usuários** de Nielsen: 5 participantes detectam ~85% dos problemas de usabilidade — mais que isso tem retorno decrescente
+
+---
+
+### O Gulf of Evaluation — Formalizando o Problema das Notas
+
+O que as notas descrevem ("expectativas do desenvolvedor vs. o que o usuário tem de concreto") é o **Gulf of Evaluation** de Donald Norman:
+
+> A distância entre o estado real do sistema e a percepção que o usuário forma desse estado.
+
+O Gulf de Evaluation é por isso que developers não encontram os problemas testando o próprio software — sabem o que o sistema faz, então percepção e estado real coincidem. Um usuário novo não tem essa ancoragem. A imagem das notas é o Gulf de Evaluation puro. Avaliar é medir sistematicamente o tamanho desse gap.
+
+---
+
+### Escala de Severidade em Avaliação Heurística
+
+| Nível | Descrição | Ação |
+|---|---|---|
+| 0 | Não é problema de usabilidade | Ignorar |
+| 1 | Cosmético | Corrigir se houver tempo |
+| 2 | Menor | Baixa prioridade |
+| 3 | Maior | Alta prioridade — impede completar a tarefa |
+| 4 | Catastrófico | Urgente — bloqueia completamente |
+
+Para um protótipo acadêmico: focar em severidade 3-4 nas iterações iniciais. Severidade 1-2 é refinamento pós-validação de fluxo.

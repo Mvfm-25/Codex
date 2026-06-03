@@ -327,3 +327,114 @@ Gerência de Memória foi explicitamente excluída. O foco é: processos, thread
 ### O Que Colinha não Substitui
 
 Colinha ajuda em fórmulas e protótipos de API. Não substitui entender **quando aplicar** cada conceito — questões de múltipla escolha frequentemente pedem raciocínio, não memorização.
+
+---
+
+## Aula 21 — Gerência de Memória: Hierarquia e Espaço Virtual
+
+### Por Que a Memória Sempre Foi Escassa
+
+As notas capturam a anedota histórica. O dado técnico por trás é a **hierarquia de memória**: não é possível ter grande quantidade de memória rápida a custo acessível:
+
+| Nível | Velocidade | Capacidade típica |
+|---|---|---|
+| Registradores | ~1 ciclo | Dezenas de bytes |
+| Cache L1 | 3-5 ciclos | 32-64 KB |
+| Cache L2/L3 | 10-40 ciclos | 256 KB – 32 MB |
+| RAM | 100-300 ciclos | 4-128 GB |
+| SSD | ~100.000 ciclos | 256 GB – 4 TB |
+
+Em microcontroladores modernos, 64 KB de RAM é comum — o "espaço escarso" da anedota histórica ainda existe em 2026, só que em contexto embarcado.
+
+---
+
+### Espaço de Endereçamento Virtual
+
+Cada processo acredita ter acesso a toda a memória do sistema — isso é o **espaço de endereçamento virtual**. O SO mantém uma **tabela de páginas** por processo que mapeia endereços virtuais para físicos. Isso garante:
+
+1. **Isolamento**: processo A não escreve no espaço de processo B — mesmo usando o mesmo endereço virtual
+2. **Abstração**: o processo não sabe onde fisicamente está na RAM
+3. **Capacidade além da RAM**: páginas não usadas podem estar no disco (*swap*)
+
+O endereço `0x7fff...` do topo da stack é igual em todo processo Linux, mas mapeado para páginas físicas diferentes.
+
+---
+
+### Fragmentação: O Problema que a Paginação Resolve
+
+- **Fragmentação interna**: o processo recebe mais memória que pediu (por alinhamento de página) — desperdiçada dentro do bloco
+- **Fragmentação externa**: blocos livres suficientes no total, mas nenhum **contíguo** grande o suficiente
+
+**Paginação** resolve fragmentação externa: o SO aloca páginas físicas não contíguas e as mapeia como contíguas no espaço virtual. O processo nunca sabe a diferença.
+
+---
+
+## Aula 22 — Substituição de Páginas: Os Algoritmos do T2
+
+### Page Fault e o Ciclo de Vida de uma Página
+
+Quando um processo acessa um endereço cuja página não está na RAM (**page fault**), o SO:
+
+1. Bloqueia o processo (estado Esperando)
+2. Seleciona uma **página vítima** para remover da RAM
+3. Se modificada (*dirty bit* = 1), escreve no disco antes
+4. Carrega a nova página; atualiza a tabela de páginas; retoma o processo
+
+**Thrashing**: quando o sistema passa mais tempo tratando page faults do que executando código. Ocorre quando o working set do processo é maior que a RAM disponível.
+
+---
+
+### Os Algoritmos de Substituição
+
+**FIFO**: remove a página que está na RAM há mais tempo. Simples; sofre da **Anomalia de Belady** — mais frames de RAM podem causar *mais* page faults. Único algoritmo com esse comportamento contra-intuitivo.
+
+**LRU (Least Recently Used)**: remove a página usada há mais tempo ("mais fria"). Boa aproximação do ótimo. Implementação exata exige hardware especializado; na prática usa-se **Clock** como aproximação.
+
+**Algoritmo Ótimo (Belady/OPT)**: remove a página que será usada **mais tarde no futuro**. Impossível de implementar em tempo real — serve como **lower bound** para comparação. Qualquer algoritmo real terá pelo menos tantos faults quanto OPT.
+
+**Segunda Chance (Clock)**: cada página tem um *reference bit* setado ao ser acessada. Ao remover: percorre a fila; se bit é 1, zera e passa; se é 0, remove. Aproxima LRU com overhead mínimo.
+
+O código Python do Filipo provavelmente fornece a estrutura do simulador (carga de sequência de referências, contagem de faults) — deixando os algoritmos para implementar.
+
+---
+
+## Aula 26 — Hardware de E/S: Polling, Interrupções e DMA
+
+### Polling vs. Interrupções: O Trade-off Central
+
+**Polling** (busy-wait): o host lê o bit *busy* repetidamente até ficar zero. Problema formal: **espera ocupada** — o processador gasta ciclos verificando status sem fazer trabalho útil.
+
+**Interrupções** resolvem isso:
+1. Host emite comando e continua executando outro processo
+2. Dispositivo, ao terminar, envia **interrupção** para a CPU
+3. CPU pausa, executa o **ISR (Interrupt Service Routine)**, retoma o processo anterior
+
+| | Polling | Interrupção |
+|---|---|---|
+| CPU ocupada esperando? | **Sim** | Não |
+| Latência de resposta | Muito baixa | Depende do overhead do ISR |
+| Quando preferido | Dispositivos ultrarrápidos (< µs) | Disco, rede, teclado — qualquer coisa lenta |
+
+Polling ainda é preferido para SSDs NVMe e redes de alta velocidade: a operação completa antes de ~20 iterações de polling, e o overhead de interrupção seria maior que o tempo economizado.
+
+---
+
+### DMA — Liberar a CPU do Trabalho Pesado
+
+Para transferir 1 MB de disco, interrupção por byte geraria 1.048.576 interrupções. A solução é **DMA (Direct Memory Access)**:
+
+1. CPU programa o controlador DMA: origem, destino, tamanho
+2. DMA assume o barramento e transfere dados diretamente entre dispositivo e RAM
+3. Ao terminar, DMA envia **uma única interrupção**
+
+A CPU é liberada durante toda a transferência — tempo suficiente para executar centenas de milhares de instruções.
+
+---
+
+### Mapeamento de E/S: Port-Mapped vs. Memory-Mapped
+
+Dois modelos para endereçar os registradores descritos nas notas (Data-In, Data-Out, Status, Control):
+
+**Port-Mapped I/O**: dispositivos têm espaço de endereçamento separado da RAM; instruções especiais `IN`/`OUT` em x86 para acessar portas. Padrão histórico do IBM PC.
+
+**Memory-Mapped I/O**: registradores de dispositivo mapeados em endereços RAM normais; CPU usa as mesmas instruções de leitura/escrita da memória. Domina em arquiteturas RISC (ARM) e em todo hardware moderno. Em Linux, `mmap()` sobre `/dev/mem` é a base dos drivers que acessam registradores — é MMIO exposto ao userspace.
