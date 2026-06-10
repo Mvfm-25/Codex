@@ -8,75 +8,49 @@
         "type": "tabs",
         "children": [
           {
-            "id": "bb3b53495256a605",
+            "id": "0db994bc72efcd0c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/poa/provas/p1/revisaoP1.md",
+                "file": "PUC/mn/aula21.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "revisaoP1"
+              "title": "aula21"
             }
           },
           {
-            "id": "80238aada83e2945",
+            "id": "da49053cdb5df263",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/poa/provas/p1/solucaoLista.md",
+                "file": "PUC/mn/aula24.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "solucaoLista"
+              "title": "aula24"
             }
           },
           {
-            "id": "78f74f5741f200b5",
+            "id": "f53ea495bde4cec2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/ux/trabalhos/t1/parte02/desenvolvimentoPersonas.md",
+                "file": "PUC/pdj/IA/adicoes.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "desenvolvimentoPersonas"
-            }
-          },
-          {
-            "id": "62a9ac4b0d16ec90",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "PUC/mn/atividades/exlab-resolucao.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "exlab-resolucao"
-            }
-          },
-          {
-            "id": "71b0c6447873ac8f",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "PUC/ux/trabalhos/t1/parte02/persona-marta.png"
-              },
-              "icon": "lucide-image",
-              "title": "persona-marta"
+              "title": "adicoes"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -97,7 +71,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -151,7 +125,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 571.5
+    "width": 254.5
   },
   "right": {
     "id": "be6780eba34e47bd",
@@ -186,12 +160,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "PUC/pdj/aula02.md",
+                "file": "PUC/Index.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from aula02"
+              "title": "Outgoing links from Index"
             }
           },
           {
@@ -238,7 +212,8 @@
               "title": "Outline of aula02"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -255,56 +230,58 @@
       "command-palette:Open command palette": false,
       "bases:Create new base": false,
       "obsidian-kanban:Create new board": false,
-      "obsidian-excalidraw-plugin:New drawing": false
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "pexels-banner:🚩 Pixel Banner Menu": false
     }
   },
-  "active": "4ab974ec33b10d99",
+  "active": "f53ea495bde4cec2",
   "lastOpenFiles": [
-    "PUC/mn/atividades/exlab-resolucao.md",
-    "PUC/mn/atividades/exlab2.pdf",
-    "PUC/mn/IA/adicoes.md",
-    "PUC/mn/atividades/exlab3.pdf",
-    "PUC/mn/atividades/exlab4.pdf",
-    "PUC/mn/atividades/lista.pdf",
-    "Informes/Index.md",
-    "Informes/Vidya/vidya-index.md",
-    "PUC/ux/ux-index.md",
-    "PUC/mn/mn-index.md",
-    "PUC/mn/aula16.md",
-    "PUC/ux/trabalhos/t1/parte02/perfisAprofundados.md",
-    "PUC/ux/trabalhos/t1/parte02/persona-marta.png",
-    "PUC/ux/trabalhos/t1/parte02/personas.md",
-    "PUC/ux/trabalhos/t1/parte02/relatorio.md",
-    "PUC/ux/trabalhos/t1/parte02/relatorio.pdf",
-    "PUC/ux/trabalhos/t1/parte02/desenvolvimentoPersonas.md",
-    "PUC/poa/provas/p1/lista.pdf",
+    "PUC/mn/aula24.md",
+    "PUC/mn/aula23.md",
+    "PUC/mn/aula25.md",
     "PUC/Index.md",
-    "PUC/poa/provas/p1/solucaoLista.md",
-    "PUC/poa/provas/p1/revisaoP1.md",
-    "PUC/poa/poa-index.md",
     "PUC/poa/IA/adicoes.md",
-    "PUC/poa/provas/solucaoLista.md",
-    "PUC/poa/provas/revisaoP1.md",
-    "PUC/poa/provas/p1",
-    "PUC/poa/provas/lista.pdf",
-    "PUC/assets/pedrinhas.excalidraw.md",
-    "PUC/poa/aula11.md",
-    "PUC/pedrinhas01.excalidraw.md",
-    "PUC/assets/nomeclatura.excalidraw.md",
-    "Untitled Kanban.md",
-    "Untitled.base",
-    "Informes/Livros/Project_Hail_Mary.md",
+    "PUC/so/IA/adicoes.md",
+    "PUC/ux/IA/adicoes.md",
+    "PUC/es2/IA/adicoes.md",
+    "PUC/mn/IA/adicoes.md",
+    "PUC/pdj/IA/adicoes.md",
+    "PUC/pdj/pdj-index.md",
+    "PUC/ux/aula26.md",
+    "PUC/so/aula28.md",
+    "PUC/so/sudo",
+    "PUC/poa/trabalhos/t2/enunciado.pdf",
+    "PUC/so/aula27.md",
+    "PUC/so/aula26.md",
+    "PUC/so/aula22.md",
+    "PUC/poa/aula22.md",
+    "PUC/pdj/IA/adicoes.md.tmp.4880.9778f22cf6ac",
+    "PUC/so/IA/adicoes.md.tmp.4880.eb028b0eeb5a",
+    "PUC/ux/IA/adicoes.md.tmp.4880.1732331b9a2e",
+    "PUC/ux/aula24.md",
+    "PUC/poa/IA/adicoes.md.tmp.4880.95dad0e73ed8",
+    "PUC/mn/IA/adicoes.md.tmp.4880.df40b004e4fd",
+    "PUC/assets/polling.png",
+    "PUC/assets/reges.png",
+    "PUC/assets/barramento.png",
+    "PUC/poa/aula21.md",
+    "PUC/assets/interfaces.png",
+    "PUC/es2/aula07.md",
+    "PUC/so/trabalhos/t2/enunciado.pdf",
+    "PUC/so/trabalhos/t2/explica.pdf",
+    "PUC/so/trabalhos/t2",
+    "PUC/assets/appjb.excalidraw.md",
+    "PUC/mn/aula21.md",
+    "PUC/ux/aula19.md",
+    "PUC/ux/aula21.md",
+    "PUC/ux/aula20.md",
+    "PUC/so/aula21.md",
+    "PUC/assets/gerenciamentomemoria.png",
+    "PUC/ux/trabalhos/t1/parte02/persona-marta.png",
     "PUC/assets/mergesort.webp",
-    "PUC/poa/aula08.md",
-    "penguosis/prog/PUC/MN/atividades",
     "coldCuts/viewingFailed.png",
     "PUC/assets/godotnodes.png",
     "PUC/assets/gateway.png",
-    "PUC/assets/formularioidades.png",
-    "Informes/Livros/assets/hailmaryoriginal.webp",
-    "Informes/Livros/assets/hailmarynova.webp",
-    "PUC/assets/dilema.png",
-    "PUC/assets/portal.jpg",
     "PUC/Untitled.canvas"
   ]
 }
