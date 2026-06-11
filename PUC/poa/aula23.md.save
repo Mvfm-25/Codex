@@ -1,0 +1,57 @@
+# Projeto & Otimização de Algoritmos
+## [10-06-2026][mvfm]
+---
+### Introdução à Branch & Bound
+- Ou, pelo menos, é o que está no moodle.
+	- Vai saber.
+- JB começa a aula com uma pequena revisão do T2, e sua implementação '*bobinha*' para encontrar a quantidade de possibilidades de layout.
+- Pelo o que ele tinha comentado antes, é bem possível que o algoritmo escolhido por ele é puramente Backtracking, aplicando simplesmente as regras de '*Tem que estar olhando pelo menos outros dois*' & '*Membros da mesma gangue não podem estar se olhando*'.
+	- Sempre códigos em awk, até hoje não entendo muito bem a razão.
+- Outra coisa que ele comenta é que ele não conseguiu encontrar uma maneira prática de otimização. Foi o que ele indicou pro Cadu, segunda-feira passada pelo o que eu lembro.
+	- Por prático ele define que otimizações até existem, mas a sua implementação não valeria à pena.
+- A versão desse problema com três gangues é '*ridiculamente fácil de fazer*'. É só colocar uma peçinha à mais.
+	- No, really.
+- Vimos, em ordem :
+	1. Gulosos
+	2. Divisão & Conquista
+	3. Programação Dinâmica
+	4. Backtracking
+	- Estamos ficando cada vez mais infelizes, de acordo com o JB.
+	- Cada vez mais próximo à força-bruta, os problemas estão ficando cada vez mais  complicados.
+ 
+### Os Iguais & Mais Iguais
+- '*Quem conseguiu entender backtracking vai entender Branch & Bound.*'
+- Branch & Bound serve como uma pequena adaptação de Backtracking. 
+	- B&B categoriza respostas. Ou seja, não basta simplesmente estar correto, queremos a **melhor** resposta possível.
+	- Branch -> Leva a pensar em árvores. Sempre voltamos para árvores, só em gulosos que não consideramos isso.
+	- Bound -> Limite. That's it!
+- Knapsack. É basicamente o único problema de Branch & Bound que eu lembro.
+	- Uma mochila, com uma medida de peso máximo e vários itens com um valor (em $) e um peso (em Kg).
+- A maneira mais estúdpida possível : '*Testa todas as possibilidades que não excedem os 20kg da mochila e verifica a mais valiosa.*'
+	- O T2 do Sor que terminou sua execução em **15 dias**.
+
+### E se Tentássemos Ser Um Pouco Mais Inteligentes?
+- A ideia de **proporções** é levantada.
+	- Uma proporção entre peso & valor. Dividir o valor / peso <- max. As coisas mais valiosas por Kilo.
+	- Pega na ordem do maior para o menor.
+- Isso é um algoritmo Guloso.
+	- Funciona?
+- Pode parecer muito boa, mas não temos a garantia que é a **melhor** das melhores.
+	- Por sorte, o JB já sabe da resposta.
+	- E a resposta é : **NÃO  É O MELHOR DO MELHOR.**
+- Problemas  NP-Completo são levantados para a conversa. O problema do Knapsack é um NP-Completo.
+	- Ou seja, a sugestão de uma simples divisão não basta.
+	- Estamos fazendo isso faz 60 anos.
+
+### Heurísiticas
+- '*Não tem a garantia de ser a melhor do universo MAS, pô, entregou alguma coisa.*' 
+- É uma árvore bem simples : **Coloco o item ou não na mochila**.
+	- Pra esquerda eu coloco o item, pra direita eu não coloco. Estamos levando em consideração também o peso restante na mochila.
+- Outra coisa que foi levantada agora é que : antes mesmo de colocarmos sequer um item na mochila, o conjunto de itens possíveis para roubar tem um valor (em $) '*potencial*'
+	- Podemos usar esse valor potencial para melhorar nossa comparação de uma solução '*ótima, melhor & incrível.*'
+	- Se o valor que tenho na mochila mais o valor potencial **NÃO** ganha da melhor resposta encontrada até agora, desiste do ramo.
+		- Desista de seus sonhos & esperanças mano. Não lhe sobra nada.
+- Voltamos para 'usar um algoritmo guloso rapidinho como tesoura de corte inicial.'	
+	- Me entrega uma reposta boa o suficiente & depois usamos o B&B para refinar e encontrar a melhor de todas.
+	- **AINDA ASSIM**, por mais que exista uma estrela do norte, estamos lidando com um tipo de problema que possuí um espaço de possibilidades absolutamente giga-enorme.
+
