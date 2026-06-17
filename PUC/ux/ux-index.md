@@ -41,6 +41,43 @@
 	- Aula de acompanhamento do trabalho, sem conteúdo novo.
 - [Aula 24](./aula24.md)
 	- Introdução à **avaliação de interfaces** — expectativas do desenvolvedor vs. percepção real do usuário.
+- [Aula 25](./aula25.md)
+	- **Extração da opinião dos usuários** — entrevistas, questionários, grupos de foco, estudos de campo, diários e investigação contextual, com vantagens & desvantagens.
+- [Aula 26](./aula26.md)
+	- Palestra de **acessibilidade digital** (Bruna Salton) — modelos médico vs. social de deficiência, quebra de barreiras e tecnologia assistiva.
+---
+#### Arquivos
+**Trabalhos — T1 (Parte 01)**
+- [Enunciado](./trabalhos/t1/parte01/enunciado.pdf)
+	- Enunciado da primeira parte do T1.
+- [Brainstorming](./trabalhos/t1/parte01/brainstorming.md)
+	- Anotações da escolha do tema (ODS 4 da ONU) e da diretriz 4.3 — educação técnica/profissional acessível.
+- [Etapa 01](./trabalhos/t1/parte01/etapa01.md)
+	- Especificação — introdução, escopo e recorte no ODS 4.3.
+- [Etapa 02](./trabalhos/t1/parte01/etapa02.md)
+	- Brainstorm das diretrizes e análise competitiva (Udemy, Alura, Gov.br, Duolingo).
+- [Etapa 03](./trabalhos/t1/parte01/etapa03.md)
+	- Plano de coleta — público-alvo, questionário, questões éticas (TCLE/LGPD).
+- [Termo de Consentimento](./trabalhos/t1/parte01/consentimento.md)
+	- TCLE apresentado aos participantes da pesquisa.
+**Trabalhos — T1 (Parte 02)**
+- [Enunciado](./trabalhos/t1/parte02/enunciado.pdf)
+	- Enunciado da segunda parte do T1 (T1.2).
+- [Análise dos Dados](./trabalhos/t1/parte02/desenvolvimentoPersonas.md)
+	- Consolidação das 20 respostas do formulário e observações iniciais.
+- [Perfis Aprofundados](./trabalhos/t1/parte02/perfisAprofundados.md)
+	- Cruzamento das respostas em três perfis recorrentes de usuário.
+- [Personas](./trabalhos/t1/parte02/personas.md)
+	- Especificação final das três personas (Gabriel, Beatriz, Lucas).
+- [Relatório T1.2](./trabalhos/t1/parte02/relatorio.md)
+	- Relatório de entrega — dados, perfis e personas fundamentadas nos dados coletados.
+**Trabalhos — T2**
+- [Enunciado](./trabalhos/t2/t2.pdf)
+	- Enunciado do segundo trabalho (prototipação).
+- [Relatório T2](./trabalhos/t2/relatorio.md)
+	- Prototipação das telas no Figma — heurísticas de **Nielsen**, **Material Design** e padrões de IHC por persona.
+- [Script da Apresentação](./trabalhos/t2/gerar_apresentacao.py)
+	- Script Python que gera a apresentação `.pptx` do T2.
 ---
 #### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

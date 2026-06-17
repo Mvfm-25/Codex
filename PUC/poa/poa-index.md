@@ -42,6 +42,19 @@
 	- Revisão de algoritmos de escadaria (busca por largura vs. profundidade) e missão de implementar solver de **Sudoku** via Backtracking.
 - [Aula 22](./aula22.md)
 	- Revisão das soluções de **Sudoku** por Backtracking puro e novo problema de organizar 1→47 com somas quadradas.
---
+---
+### Arquivos
+**Trabalhos**
+- [T1 — Enunciado](./trabalhos/t1/t.pdf)
+	- Enunciado do primeiro trabalho (divisão & conquista).
+- [T1 — Caso de Teste](./trabalhos/t1/caso01.txt)
+	- Conjunto de 26 pontos em grade 100×100 para teste do algoritmo.
+- [T2 — Enunciado](./trabalhos/t2/enunciado.pdf)
+	- Enunciado do segundo trabalho — problema "standoff" do salão via **Backtracking**.
+- [T2 — Standoff](./trabalhos/t2/standoff.pdf)
+	- Material complementar/descrição do problema standoff.
+- [T2 — salao.java](./trabalhos/t2/salao.java)
+	- Solução em Java por backtracking: conta as configurações válidas de Bigodes & Capetas no tabuleiro.
+---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

@@ -40,5 +40,18 @@
 - [Aula 21](./aula21.md)
 	- **Checkpoint do T2** — apresentação do estado do projeto e editor de níveis; entrega do jogo definida para 01/06.
 ---
+#### Arquivos
+**Trabalhos — T1**
+- [Pitch](./trabalhos/t1/pitch.md)
+	- Pitch do jogo *coldCuts* — roguelike de terminal com masmorras procedurais (autômatos celulares) persistidas em disco.
+- [Apresentação do Pitch](./trabalhos/t1/coldCuts_pitch.pptx)
+	- Slides de apresentação do pitch do jogo.
+- [Entidades](./trabalhos/t1/entidades/)
+	- Definições das entidades do jogo (`adversarios.json`, `items.json`) e referência de uso de itens.
+- [Imagens](./trabalhos/t1/imagens/)
+	- Capturas do protótipo e arte (criação de mapa/personagem, glossário, inimigos).
+- [Inspirações](./trabalhos/t1/inspo/)
+	- Referências visuais do gênero (Rogue, Dwarf Fortress, Ultima Underworld, Wizardry, Castle of the Winds).
+---
 #### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

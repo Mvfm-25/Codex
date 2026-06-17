@@ -11,17 +11,38 @@
             "id": "aa45e8d9d07a0436",
             "type": "leaf",
             "state": {
+              "type": "mx-welcome",
+              "state": {},
+              "icon": "home",
+              "title": "Onboarding - Media Extended"
+            }
+          },
+          {
+            "id": "31ef97b429736f5c",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "pdj/aula03.md",
+                "file": "so/trabalhos/t2/resumo.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula03"
+              "title": "resumo"
+            }
+          },
+          {
+            "id": "d0c1824d05a3bf6d",
+            "type": "leaf",
+            "state": {
+              "type": "3d-graph-view-global",
+              "state": {},
+              "icon": "orbit",
+              "title": "Global 3D Graph"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -94,7 +115,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 616.5
+    "width": 456.5
   },
   "right": {
     "id": "cc9a19baf92e15e3",
@@ -191,16 +212,37 @@
   "left-ribbon": {
     "hiddenItems": {
       "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
       "canvas:Create new canvas": false,
+      "graph:Open graph view": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "pexels-banner:🚩 Pixel Banner Menu": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "media-extended:Open media library": false,
+      "media-extended:Open media quick switcher": false,
+      "3d-graph-new:Global 3D Graph": false
     }
   },
-  "active": "aa45e8d9d07a0436",
+  "active": "1fef64acbed75899",
   "lastOpenFiles": [
+    "Index.md",
+    "so/trabalhos/t2/resumo.md",
+    "pdj/aula14.md",
+    "pdj/aula06.md",
+    "poa/poa-index.md",
+    "ux/aula26.md",
+    "ux/ux-index.md",
+    "so/trabalhos/t2/explica.pdf",
+    "so/trabalhos/t2/enunciado.pdf",
+    "so/trabalhos/t2/Rep-Sor/entrada.txt.tmp.26608.4b3efe116888",
+    "so/trabalhos/t2/Rep-Sor/simulador_memoria.py.tmp.26608.383387cd93bb",
+    "so/trabalhos/t2/Rep-Sor/entrada.txt",
+    "so/trabalhos/t2/Rep-Sor/simulador_memoria.py",
+    "so/trabalhos/t2/Rep-Sor",
+    "so/trabalhos/t2/New folder",
+    "pdj/aula03.md",
     "poa/aula03.md",
     "mn/aula04.md",
     "es2/aula02.md",
