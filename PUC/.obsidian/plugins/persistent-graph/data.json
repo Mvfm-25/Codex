@@ -1403,7 +1403,7 @@
   "automaticallyRestoreNodePositions": true,
   "enableSaveOptions": true,
   "enableWorkspaces": false,
-  "timesShowedRestoredNotification": 0,
+  "timesShowedRestoredNotification": 1,
   "showSaveNotification": true,
   "enableGraphSimulationCommands": false,
   "enableAutoSave": true,

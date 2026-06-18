@@ -40,9 +40,19 @@
               "icon": "orbit",
               "title": "Global 3D Graph"
             }
+          },
+          {
+            "id": "cc9063a578dbe007",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -105,10 +115,10 @@
             "id": "ee8ffb173457bb49",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "3d-graph-view-global",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "orbit",
+              "title": "Global 3D Graph"
             }
           }
         ]
@@ -225,7 +235,7 @@
       "3d-graph-new:Global 3D Graph": false
     }
   },
-  "active": "1fef64acbed75899",
+  "active": "cc9063a578dbe007",
   "lastOpenFiles": [
     "Index.md",
     "so/trabalhos/t2/resumo.md",
