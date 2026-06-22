@@ -1,11 +1,14 @@
 {
+  "permissions": {
+    "allow": [
+      "PowerShell($d=\"C:\\\\GDM-05\\\\Codex\\\\PUC\\\\mn\\\\trabalhos\\\\t2\"; if\\(\\(Get-Command javac -ErrorAction SilentlyContinue\\)\\){javac \"$d\\\\InterpolacaoNewton.java\"; if\\($?\\){java -cp $d InterpolacaoNewton}}else{\"javac nao encontrado no PATH\"})",
+      "Bash(javac InterpolacaoNewton.java)",
+      "Bash(java InterpolacaoNewton)",
+      "Bash(python3 -c ' *)"
+    ]
+  },
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "voicetree"
-  ],
-  "permissions": {
-    "allow": [
-      "PowerShell($d=\"C:\\\\GDM-05\\\\Codex\\\\PUC\\\\mn\\\\trabalhos\\\\t2\"; if\\(\\(Get-Command javac -ErrorAction SilentlyContinue\\)\\){javac \"$d\\\\InterpolacaoNewton.java\"; if\\($?\\){java -cp $d InterpolacaoNewton}}else{\"javac nao encontrado no PATH\"})"
-    ]
-  }
+  ]
 }
