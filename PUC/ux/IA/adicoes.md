@@ -468,3 +468,105 @@ O Gulf de Evaluation é por isso que developers não encontram os problemas test
 | 4 | Catastrófico | Urgente — bloqueia completamente |
 
 Para um protótipo acadêmico: focar em severidade 3-4 nas iterações iniciais. Severidade 1-2 é refinamento pós-validação de fluxo.
+
+---
+
+## Aula 25 — Métodos de Coleta de Dados com Usuários
+
+### Atitudinal vs Comportamental, Qualitativo vs Quantitativo
+
+As notas listam seis métodos com prós e contras, mas o que organiza todos eles são dois eixos clássicos da pesquisa em UX (formalizados por Christian Rohrer, no NN/g):
+
+- **Atitudinal × Comportamental:** o que as pessoas *dizem* (entrevistas, questionários) vs o que elas *fazem* (estudos de campo, testes de uso). Os dois divergem com frequência — usuários racionalizam.
+- **Qualitativo × Quantitativo:** entender *por quê/como* (poucos participantes, dados ricos: entrevistas, investigação contextual) vs medir *quanto/quantos* (muitos participantes, dados estatísticos: questionários).
+
+Encaixando a lista da aula: entrevistas e investigação contextual são **qualitativos**; questionários são **quantitativos**; estudos de campo e diários capturam **comportamento em contexto**. Escolher o método é escolher um ponto nesses eixos conforme a pergunta de pesquisa.
+
+### Validade Ecológica — o Trunfo dos Estudos de Campo
+
+A "validade ecológica" citada como vantagem dos estudos de campo é um conceito formal: o grau em que os resultados se transferem para o **contexto real de uso**, não para um laboratório artificial. Um teste em laboratório controla variáveis (alta validade *interna*) mas pode falhar em prever o comportamento real (baixa validade *ecológica*); o estudo de campo faz o trade-off inverso. Os **diários** são uma forma de capturar uso longitudinal *in situ* a baixo custo, justamente por preservarem o contexto.
+
+### Viés do Entrevistador e Perguntas Indutoras
+
+A desvantagem "evitar perguntas que induzam respostas" aponta para um problema metodológico sério: o **viés de resposta**. Os principais cuidados:
+
+- **Perguntas indutoras (*leading questions*):** "Você não achou essa tela confusa?" sugere a resposta. A forma neutra é "Como foi sua experiência com essa tela?".
+- **Viés de aquiescência:** tendência a concordar com o entrevistador, sobretudo em entrevistas presenciais.
+- **Viés de desejabilidade social:** o participante diz o que acha que se espera dele.
+
+É por isso que questionários precisam de avaliadores experientes (as perguntas ficam congeladas e replicadas para muitos) e entrevistadores precisam de treino (precisam improvisar sem enviesar). **Grupos de foco** acrescentam o **pensamento de grupo**: vozes dominantes calam as demais — daí o "dispara ideias" ser também um risco.
+
+---
+
+## Aula 26 — Acessibilidade Digital
+
+### Modelo Médico vs Modelo Social da Deficiência
+
+A distinção apresentada pela palestrante é o pilar conceitual da área. Vale precisar:
+
+| | Modelo Médico | Modelo Social |
+|---|---|---|
+| O que é deficiência | uma condição/limitação **do indivíduo** a ser curada | resultado da interação entre o impedimento e as **barreiras** do ambiente |
+| Quem se adapta | a pessoa ao meio | o **meio** à pessoa |
+| Implicação para design | acomodações pontuais | ambiente desenhado para todos desde o início |
+
+O modelo social desloca a responsabilidade do indivíduo para a sociedade ("todos somos responsáveis") e é a base legal e ética da acessibilidade. No Brasil, a **Lei Brasileira de Inclusão (Lei 13.146/2015)** adota explicitamente essa visão — e é por isso que o TEA é "pessoa com deficiência para todos os efeitos legais", como a Bruna citou.
+
+### Deficiências Permanentes, Temporárias e Situacionais
+
+O ponto "quem precisa de acessibilidade: idosos, condições temporárias, ambientes precários" é a ideia da Microsoft de **espectro de habilidade**: toda limitação tem três formas. Exemplo para "um braço":
+
+- **Permanente:** amputação.
+- **Temporária:** braço quebrado/engessado.
+- **Situacional:** segurar um bebê no colo.
+
+A lição de design: recursos de acessibilidade beneficiam **todo mundo** em algum momento (o *curb-cut effect* — a rampa feita para cadeirantes serve carrinho de bebê, mala com rodinha, entregador). Acessibilidade não é nicho.
+
+### As WCAG e os Limites do Software
+
+O exemplo dos narradores digitais (leitores de tela) e a observação de que "há coisas que software não resolve" merecem o arcabouço técnico: as **WCAG (Web Content Accessibility Guidelines)** do W3C. Elas organizam tudo em quatro princípios — o acrônimo **POUR**:
+
+- **Perceptível:** texto alternativo em imagens, legendas em vídeo, contraste suficiente.
+- **Operável:** tudo acessível por teclado, sem depender de mouse (atende a deficiência física *e* leitores de tela).
+- **Compreensível:** linguagem clara, comportamento previsível.
+- **Robusto:** compatível com tecnologias assistivas (HTML semântico, atributos ARIA).
+
+O leitor de tela "lê" a estrutura semântica do HTML — por isso `<button>` e `alt` corretos importam mais que aparência. E a Bruna tem razão sobre os limites: o software pode garantir a operação **por teclado** (e aí entram hardwares assistivos como switches, *eye-tracking*, sopro-e-sucção), mas o **dispositivo de entrada físico** está fora do alcance de quem faz o site — a responsabilidade é compartilhada com a tecnologia assistiva.
+
+---
+
+## Aula 27 — Avaliação Heurística na Prática (T3 / VanGo)
+
+### As 10 Heurísticas de Nielsen
+
+A tarefa "a cada observação, associar uma das dez heurísticas" usa as **10 Heurísticas de Usabilidade de Jakob Nielsen** (1994), o método de avaliação mais usado da área:
+
+1. **Visibilidade do status do sistema** — o sistema informa o que está acontecendo (ex.: VanGo mostrando a van se movendo no mapa em tempo real).
+2. **Correspondência entre sistema e mundo real** — linguagem e conceitos familiares ao usuário (pais, não jargão técnico).
+3. **Controle e liberdade do usuário** — "saídas de emergência", desfazer/cancelar.
+4. **Consistência e padrões** — mesma ação, mesma palavra; seguir convenções da plataforma.
+5. **Prevenção de erros** — evitar que o erro aconteça é melhor que mensagem de erro.
+6. **Reconhecimento em vez de memorização** — opções visíveis, não decoradas.
+7. **Flexibilidade e eficiência de uso** — atalhos para experientes sem atrapalhar novatos.
+8. **Estética e design minimalista** — sem informação irrelevante competindo por atenção.
+9. **Ajudar a reconhecer, diagnosticar e recuperar de erros** — mensagens em linguagem clara, com solução.
+10. **Ajuda e documentação** — quando necessária, fácil de buscar e orientada à tarefa.
+
+### Avaliação Heurística — Por Que Individual Depois Consolidado
+
+O fluxo descrito (avaliar individualmente, depois consolidar em grupo) **não é arbitrário** — é o protocolo recomendado por Nielsen. A razão é estatística: avaliadores isolados encontram conjuntos *diferentes* de problemas, e juntar as listas captura muito mais que qualquer um sozinho. Nielsen estimou que **3 a 5 avaliadores** independentes encontram cerca de **75% dos problemas de usabilidade** — daí a consolidação após o trabalho individual ser parte essencial do método, não burocracia.
+
+### Severidade — o que Falta na Lista de Observações
+
+Uma avaliação heurística madura não só associa cada problema a uma heurística; ela **classifica a severidade** de cada achado, combinando frequência, impacto e persistência, tipicamente numa escala 0–4 (de "não é problema" a "catástrofe — corrigir antes de lançar"). É isso que transforma uma lista de observações numa **priorização acionável** para o stakeholder — útil para a apresentação à VanGo, onde nem tudo pode ser corrigido de uma vez.
+
+---
+
+### Referências para ir além
+
+- **Nielsen, J. — "10 Usability Heuristics for User Interface Design"** (nngroup.com) — a fonte primária, com exemplos atualizados.
+- **Nielsen & Landauer (1993), "A mathematical model of the finding of usability problems"** — origem do número mágico "3 a 5 avaliadores".
+- **W3C — Web Content Accessibility Guidelines (WCAG) 2.2** (w3.org/WAI) — o padrão técnico de acessibilidade, com o modelo POUR.
+- **Microsoft — *Inclusive Design Toolkit*** (inclusive.microsoft.design) — origem do espectro permanente/temporário/situacional.
+- **Rohrer, C. — "When to Use Which User-Experience Research Methods"** (NN/g) — o mapa dos eixos atitudinal/comportamental e quali/quanti.
+- **Lei Brasileira de Inclusão (Lei nº 13.146/2015)** — base legal do modelo social no Brasil.
