@@ -504,3 +504,73 @@ A separação entre **estado do jogo** e **lógica do jogo** é a arquitetura m�
 | `isinstance(x, Tipo)` | `x is Tipo` |
 
 O que muda estruturalmente: GDScript é event-driven — lógica vive em `_ready()`, `_process()`, `_input()` em vez de um loop explícito. A lógica Python de simulação de jogo (estado, entidades, colisões) porta quase diretamente; input e rendering precisam ser adaptados para o paradigma de nodos e sinais do Godot.
+
+---
+
+## Aula 14 — A Godot e a Arquitetura de Nós
+
+### O Modelo de Cena: Árvore de Nós
+
+A Godot foi escolhida como engine do semestre, então vale fixar sua ideia central, que difere da Unity (GameObject + Components): na Godot, **tudo é um nó** (*Node*), e um jogo é uma **árvore de nós** (*SceneTree*). Cada nó é uma peça com uma responsabilidade — `Sprite2D` desenha, `CollisionShape2D` colide, `Camera2D` enquadra — e nós ganham comportamento composto por *aninhamento* e *herança*, não por anexar componentes. Uma **cena** é uma sub-árvore salva em arquivo (`.tscn`) que pode ser instanciada como peça reutilizável (um inimigo, uma bala). Essa composição por árvore é o que torna "mudar a hierarquia de nós" tão poderoso quanto se verá nas próximas aulas.
+
+### Representação UTF do Mapa e Geração Procedural de Cavernas
+
+A "geração de cavernas com representação UTF do mapa" das notas é **geração procedural de conteúdo** (PCG). A técnica clássica para cavernas orgânicas é **autômato celular**: parte-se de uma grade aleatória de paredes/vazios e aplica-se algumas iterações de uma regra de vizinhança (uma célula vira parede se a maioria dos 8 vizinhos é parede). Em poucos passos o ruído aleatório se "assenta" em cavernas conectadas e arredondadas. Manipular canais **RGB** do sprite para distinguir parede de chão (como nas notas) é uma forma de *debug* de PCG: visualizar a grade lógica antes de ter arte de verdade — separar a **representação de dados** do mapa da sua **renderização** é boa prática que paga depois.
+
+---
+
+## Aula 15 — Câmera 2D, Window e Viewport
+
+### SRU, SRP e a "Regra de Três" da Câmera
+
+Os termos resgatados de CG são o coração do que o `Camera2D` automatiza. **SRU** (Sistema de Referência do Universo / *world space*) são as coordenadas do mundo do jogo — onde os objetos "realmente" estão. **SRP** (Sistema de Referência do Dispositivo / *screen space*) são pixels na tela. A câmera define uma **window** (a região retangular do mundo que está sendo observada) e a engine a mapeia para o **viewport** (a região da tela onde isso é desenhado). A transformação é uma composição de translação + escala — a "regra de três" das notas:
+
+$$x_{\text{tela}} = (x_{\text{mundo}} - x_{\text{window}})\cdot\frac{\text{largura}_{\text{viewport}}}{\text{largura}_{\text{window}}}$$
+
+Quando o redimensionamento da janela "quebra a renderização" (o bug que o Cohen mostrou), é porque a razão de aspecto do viewport mudou sem ajustar a window — exatamente o problema de *aspect ratio* dos códigos OpenGL de CG. A Godot oferece modos de *stretch* (`viewport`, `canvas_items`) e *aspect* (`keep`, `expand`) justamente para resolver isso de forma declarativa.
+
+### Camera Follow, Limites e Smoothing (o "delay")
+
+Os três efeitos demonstrados são recursos prontos do `Camera2D`, e cada um tem um nome técnico:
+
+- **Camera follow** = tornar a câmera filha do nó do jogador na árvore. Como filhos herdam a transformação do pai, a câmera segue de graça — daí "zero linhas de código". É a manifestação direta da herança de transformações da árvore de nós.
+- **Limites de câmera** (*camera limits*) = *clamping* da posição da câmera a um retângulo, impedindo que ela mostre "fora do mapa". Útil para não revelar o vazio além das bordas da fase.
+- **Smoothing / *position smoothing*** = o "delay de acompanhamento". Em vez de a câmera saltar para a posição alvo, ela **interpola** suavemente a cada frame (tipicamente um *lerp*: `pos += (alvo - pos) * fator`). É o "câmera-man físico" das notas, e a observação ao Cadu está certa: smoothing reforça a *sensação* de velocidade e peso do personagem.
+
+### V-Sync — Por Que é Recomendado
+
+A recomendação de **V-Sync** (sincronização vertical) merece o porquê: a GPU desenha quadros num ritmo independente do monitor; quando um novo quadro é trocado *no meio* da varredura da tela, vê-se **screen tearing** (uma "costura" horizontal onde metade da tela mostra o quadro novo e metade o antigo). V-Sync força a troca de buffer a acontecer só no *vertical blank* do monitor, eliminando o tearing — ao custo de prender o frame rate à taxa de atualização (60 Hz → 60 FPS) e adicionar um pouco de latência de entrada. É o trade-off padrão: imagem limpa vs latência mínima.
+
+---
+
+## Aula 16 — Ciclo de Vida de Nós e Troca de Cenas
+
+### `free()` vs `queue_free()` — e Por Que a Diferença Importa
+
+A regra do Cohen ("assim como criamos, destruímos") evita **vazamento de memória**: nós removidos da árvore mas nunca liberados continuam ocupando RAM. As duas formas têm semântica distinta e não-intercambiável na prática:
+
+| | `free()` | `queue_free()` |
+|---|---|---|
+| Quando libera | **imediatamente**, na hora da chamada | no fim do frame atual, em fila |
+| Risco | se o nó (ou um ancestral) ainda está sendo processado neste frame, gera *crash*/acesso inválido | seguro: espera todo o processamento do frame terminar |
+| Uso recomendado | casos controlados, fora do ciclo de sinais | **o padrão** para destruir nós durante o jogo |
+
+A razão de `queue_free()` existir: durante um frame, a engine percorre a árvore chamando `_process`/sinais; deletar um nó *no meio* dessa varredura corromperia a iteração. A fila adia a remoção para um momento seguro. Regra prática: na dúvida, `queue_free()`.
+
+### Liberar o que Saiu da Tela — `VisibleOnScreenNotifier2D`
+
+O exemplo dos **decals** de tiro e das "caixinhas liberadas ao sair da viewport" é uma técnica de gestão de recursos: objetos efêmeros (partículas, projéteis, marcas) acumulam-se e degradam a performance se nunca somem. O `VisibleOnScreenNotifier2D` emite o sinal `screen_exited` quando o nó deixa o campo de visão da câmera, e conectá-lo a `queue_free()` faz a limpeza automática. É o mesmo princípio do **limite de decals** do TF2 citado nas notas: jogos impõem um teto de objetos descartáveis para não esgotar memória/GPU — aqui, em vez de um teto fixo, libera-se por visibilidade.
+
+### Troca de Cenas e a "Gambiarra" das Transições
+
+A troca de cenas (`change_scene_to_file` / `change_scene_to_packed`) descarrega a cena atual e carrega outra — é o mecanismo para menu, game over e troca de fase. O motivo de transições "limpas" darem trabalho (a "gambiarra" das notas) é que a troca padrão é **abrupta e síncrona**: a cena antiga some e a nova aparece de uma vez, e durante o carregamento de cenas grandes o jogo *trava*. Fazer um *fade* suave exige manter um nó **persistente** *acima* da cena trocada (um *autoload*/singleton com um `CanvasLayer` por cima de tudo) para animar a transição enquanto a cena por baixo é substituída — e, para cenas pesadas, **carregamento em segundo plano** (`ResourceLoader` em *thread*) para não congelar. Daí a fama de "muita gambiarra": a engine dá o corte seco de graça, mas a transição polida você monta por cima.
+
+---
+
+### Referências para ir além
+
+- **Documentação oficial da Godot — *Your first 2D game* e *Nodes and scenes*** (docs.godotengine.org) — a base da árvore de nós e do ciclo de vida.
+- **Godot Docs — `Camera2D`, `Viewport` e *Multiple resolutions*** — window/viewport, limites, smoothing e modos de stretch.
+- **Godot Docs — *Nodes and scene instances: freeing nodes*** — a distinção `free()` vs `queue_free()` e `VisibleOnScreenNotifier2D`.
+- **Sebastian Lague — "Procedural Cave Generation" (série no YouTube)** — autômatos celulares para cavernas, exatamente a técnica das notas.
+- **Robert Nystrom, *Game Programming Patterns* (gratuito em gameprogrammingpatterns.com)** — *Game Loop*, *Update Method* e *Object Pool* (alternativa a destruir/recriar nós o tempo todo).

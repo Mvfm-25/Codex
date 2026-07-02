@@ -616,3 +616,197 @@ $$M^k \to \pi\mathbf{1}^T \quad \text{quando } k \to \infty$$
 Todas as colunas de $M^k$ convergem para $\pi$ — independente da coluna inicial. É matematicamente exato o que JB demonstrou empiricamente com o vetor $S$ variando o ponto de início.
 
 **Quando falha**: "mas pode se tornar falso" nas notas ocorre em cadeias com **estados absorventes** (como nos Lemmings) ou quando a cadeia é periódica — alternâncias forçadas entre dois estados nunca convergem para equilíbrio estático.
+
+---
+
+## Aula 23 — Interpolação Polinomial e a Forma de Newton
+
+### Existência e Unicidade — Por Que o Grau "É uma Regra"
+
+As notas registram que com 4 pontos o grau é 3 e que "isso é uma regra, não escolhemos". O teorema por trás disso é central:
+
+> **Teorema (Unicidade do interpolador polinomial).** Dados $n+1$ pontos $(x_0,y_0),\ldots,(x_n,y_n)$ com **abscissas distintas**, existe **um e somente um** polinômio $p$ de grau $\le n$ tal que $p(x_i)=y_i$ para todo $i$.
+
+A prova é álgebra linear pura. Procurar $p(x)=a_0+a_1x+\cdots+a_nx^n$ que passe por todos os pontos é resolver o sistema $V\mathbf{a}=\mathbf{y}$, onde $V$ é a **matriz de Vandermonde**:
+
+$$V=\begin{pmatrix}1 & x_0 & x_0^2 & \cdots & x_0^n\\ 1 & x_1 & x_1^2 & \cdots & x_1^n\\ \vdots & & & & \vdots\\ 1 & x_n & x_n^2 & \cdots & x_n^n\end{pmatrix}, \qquad \det V=\prod_{i<j}(x_j-x_i)$$
+
+Como as abscissas são distintas, $\det V\neq 0$, então o sistema tem solução única. É exatamente por isso que o JB não "escolhe" o grau: o número de pontos fixa a dimensão do espaço e, com ele, o polinômio.
+
+### Diferenças Divididas — o que o JB Fez "no Martelo"
+
+A "diferença entre diferenças" que apareceu nas notas tem nome formal: **diferenças divididas de Newton**. Definição recursiva:
+
+$$f[x_i]=y_i,\qquad f[x_i,\ldots,x_{i+k}]=\frac{f[x_{i+1},\ldots,x_{i+k}]-f[x_i,\ldots,x_{i+k-1}]}{x_{i+k}-x_i}$$
+
+O polinômio interpolador na **forma de Newton** é
+
+$$p(x)=f[x_0]+f[x_0,x_1](x-x_0)+f[x_0,x_1,x_2](x-x_0)(x-x_1)+\cdots$$
+
+O coeficiente $-\tfrac{4}{15}$ que apareceu nas notas é precisamente $f[x_0,x_1,x_2]$. A grande vantagem operacional — a que o JB citou ("não precisa de espaçamentos iguais") — é que **adicionar um novo ponto não invalida o trabalho anterior**: basta acrescentar um termo, calculando só a nova diferença dividida. O custo total é $O(n^2)$ para montar a tabela e $O(n)$ por avaliação (algoritmo de Horner aninhado).
+
+### Extrapolação e o Fenômeno de Runge
+
+O JB chamou extrapolação de "perigosa", mas sem dizer por quê. O perigo tem nome: o **fenômeno de Runge**. Carl Runge mostrou (1901) que interpolar $f(x)=\frac{1}{1+25x^2}$ em pontos **igualmente espaçados** com polinômios de grau alto faz o erro *explodir* nas bordas do intervalo:
+
+$$\max_{x\in[-1,1]}|f(x)-p_n(x)|\to\infty \quad\text{quando } n\to\infty$$
+
+A intuição: o polinômio é forçado a passar exatamente pelos pontos no meio, mas para isso oscila violentamente perto das extremidades. Aumentar o grau **piora** o resultado. Por isso, na prática, prefere-se interpolação por partes (**splines**, que o JB citou de CG) ou nós de Chebyshev em vez de equiespaçados. Extrapolar (avaliar *fora* do intervalo dos dados) é o caso extremo desse problema: lá não há nenhum ponto "ancorando" o polinômio, e ele diverge sem controle.
+
+---
+
+## Aula 24 — Interpolação de Lagrange
+
+### Os Polinômios de Base de Lagrange
+
+A "função que dá importância ao ponto" construída no martelo é o **polinômio de base de Lagrange**. Para o nó $x_i$:
+
+$$\ell_i(x)=\prod_{\substack{j=0\\ j\neq i}}^{n}\frac{x-x_j}{x_i-x_j}$$
+
+Note a estrutura exata do que o JB escreveu para $P_6$: o numerador $(x-2)(x-3)(x-8)$ zera em todos os outros nós, e o denominador $(6-2)(6-3)(6-8)$ é a normalização que faz $\ell_i(x_i)=1$ — nada de "$-24$ conjurado do nada". A propriedade-chave é a **delta de Kronecker**:
+
+$$\ell_i(x_j)=\delta_{ij}=\begin{cases}1 & i=j\\ 0 & i\neq j\end{cases}$$
+
+Daí o interpolador é a combinação linear $p(x)=\sum_{i=0}^{n} y_i\,\ell_i(x)$, e cada $y_i$ aparece "puro" como peso — exatamente o "$1\cdot P_2 + 4\cdot P_3 + 5\cdot P_6 + 2\cdot P_8$" das notas.
+
+### Por Que Lagrange? A Forma Baricêntrica (o "O QUE" que faltou)
+
+O JB disse que Lagrange "tem a ver com o aspecto computacional, mas não sabemos **o quê**". A resposta concreta é a **forma baricêntrica**. Pré-computa-se uma vez os pesos
+
+$$w_i=\frac{1}{\prod_{j\neq i}(x_i-x_j)}$$
+
+e então cada avaliação fica
+
+$$p(x)=\frac{\displaystyle\sum_{i=0}^{n}\frac{w_i}{x-x_i}\,y_i}{\displaystyle\sum_{i=0}^{n}\frac{w_i}{x-x_i}}$$
+
+Vantagens reais sobre Newton: (1) com os nós **fixos**, mudar os valores $y_i$ não exige recalcular nada além do numerador — útil quando se reinterpola muitas vezes nos mesmos $x_i$; (2) custa $O(n)$ por ponto avaliado após o $O(n^2)$ inicial dos pesos; (3) é **numericamente estável**, ao contrário da forma clássica. Essa é a "hiper-repetitividade" que o JB mencionou: as multiplicações repetidas são fatoradas nos $w_i$ calculados uma só vez.
+
+### Newton ≡ Lagrange — Por Que Dão o Mesmo
+
+O JB "expandiu as contas" e mostrou empiricamente que batem. A razão formal é a **unicidade** da Aula 23: ambos produzem um polinômio de grau $\le n$ que passa pelos mesmos $n+1$ pontos. Como esse polinômio é único, Newton e Lagrange são apenas **bases diferentes para escrever o mesmo objeto** — Newton usa $\{1,(x-x_0),(x-x_0)(x-x_1),\ldots\}$, Lagrange usa $\{\ell_0,\ldots,\ell_n\}$. Mudou a roupa, não o corpo.
+
+---
+
+## Aula 25 — Otimização Contínua e Gradiente Descendente
+
+### O Gradiente: Definição e Por Que Aponta "Montanha Acima"
+
+O gradiente de $f:\mathbb{R}^n\to\mathbb{R}$ é o vetor das derivadas parciais:
+
+$$\nabla f=\left(\frac{\partial f}{\partial x_1},\ldots,\frac{\partial f}{\partial x_n}\right)$$
+
+A afirmação do JB de que ele "aponta para onde sobe mais depressa" é um teorema, não folclore. A taxa de variação de $f$ numa direção unitária $\mathbf{u}$ é a **derivada direcional** $D_{\mathbf{u}}f=\nabla f\cdot\mathbf{u}=\|\nabla f\|\cos\theta$. Isso é máximo quando $\theta=0$, ou seja, quando $\mathbf{u}$ aponta na direção de $\nabla f$. Logo $-\nabla f$ é a direção de descida mais íngreme — o "rolar montanha abaixo" do Schneider.
+
+### A "Fração Pequenina" Tem Nome: Taxa de Aprendizado
+
+A iteração é
+
+$$\mathbf{p}_{k+1}=\mathbf{p}_k-\eta\,\nabla f(\mathbf{p}_k)$$
+
+O $\eta$ ("a fração pequenina") é a **taxa de aprendizado** (*learning rate*). É o parâmetro mais sensível do método:
+
+| $\eta$ grande demais | $\eta$ pequeno demais |
+|---|---|
+| Passos saltam por cima do vale; pode **divergir** (oscila e explode) | Convergência **lenta** demais; pode travar antes de chegar |
+
+Para funções com gradiente Lipschitz de constante $L$, garante-se convergência se $0<\eta<\tfrac{2}{L}$. Os "baby steps" das notas não são preguiça: são a condição para não passar do ponto. É exatamente o $\eta$ que IAs ajustam no treino (e variantes como Adam o adaptam automaticamente).
+
+### Mínimo Local vs Global — e o Papel da Convexidade
+
+A queixa "não garante o ponto mais baixo da montanha" é o cerne da otimização: gradiente descendente encontra um **mínimo local** (onde $\nabla f=\mathbf{0}$), não necessariamente o **global**. Há uma classe especial onde os dois coincidem: as **funções convexas**. Se $f$ é convexa, *todo* mínimo local é global, e o método converge para a resposta certa de qualquer ponto inicial. Fora desse caso (a "montanha cheia de vales"), o resultado depende de onde o Schneider foi jogado — por isso o método "se vira e devolve uma resposta só", como o JB disse. O método que devolve *todos* os mínimos e que ele prefere é justamente o da Aula 27 (Branch & Bound com intervalos).
+
+---
+
+## Aula 26 — Diferenciação Automática (Modo Reverso)
+
+### O que Essa "Quebra em Pedacinhos" Realmente É
+
+O procedimento das notas — quebrar $f$ em $f_1,f_2,\ldots$ e propagar derivadas — é **diferenciação automática** (AD), e *não* é nenhuma das duas alternativas que se costuma imaginar:
+
+- **Não é simbólica** (como derivar à mão e simplificar): não há explosão de expressões.
+- **Não é numérica** (como $\frac{f(x+h)-f(x)}{h}$): não há erro de truncamento nem escolha de $h$.
+
+AD avalia a **derivada exata** (até o arredondamento de ponto flutuante) reaplicando a **regra da cadeia** sobre o **grafo computacional** — cada $f_i$ é um nó, cada operação uma aresta.
+
+### Modo Reverso = Backpropagation
+
+A Aula 25 (segundo as notas) fez o **modo progressivo/direto** (*forward mode*): propaga derivadas dos inputs para frente. Esta aula faz o **modo regressivo** (*reverse mode*), que é literalmente o **backpropagation** das redes neurais. Começa-se do fim com $\frac{\partial f}{\partial f_6}=1$ (a derivada da saída em relação a si mesma — por isso o "1" no fim do grafo) e propaga-se *para trás*:
+
+$$\frac{\partial f}{\partial f_i}=\sum_{j:\,i\to j}\frac{\partial f}{\partial f_j}\cdot\frac{\partial f_j}{\partial f_i}$$
+
+Os $\overline{f_i}=\frac{\partial f}{\partial f_i}$ são chamados **adjuntos**. Foi exatamente o que as notas computaram: $\frac{\partial f}{\partial f_2}=1\cdot\frac{\partial f_6}{\partial f_2}=-F_5/F_2^2$.
+
+### Forward vs Reverse — Quando Usar Cada
+
+| | Forward (progressivo) | Reverse (regressivo) |
+|---|---|---|
+| Propaga | inputs → saída | saída → inputs |
+| Uma passada dá | derivada da saída inteira em relação a **1 input** | derivada de **1 saída** em relação a **todos os inputs** |
+| Custo p/ $f:\mathbb{R}^n\to\mathbb{R}^m$ | $O(n)\times$ custo de $f$ | $O(m)\times$ custo de $f$ |
+| Ideal quando | poucos inputs, muitas saídas | **muitos inputs, uma saída** |
+
+É por isso que o treino de redes neurais usa modo reverso: a *loss* é **uma** saída escalar e os parâmetros são **milhões** de inputs — uma única passada para trás dá o gradiente inteiro a custo proporcional ao de uma avaliação direta. Esse é o "como e porque IAs usam" que o JB deixou em aberto.
+
+---
+
+## Aula 27 — Aritmética Intervalar e Otimização Global
+
+### A Aritmética de Moore (1966)
+
+O "número novo" é o **intervalo** $[a,b]=\{x\in\mathbb{R}: a\le x\le b\}$, e a teoria é a **aritmética intervalar** de Ramon Moore. As operações são definidas para que o resultado contenha *todos* os resultados possíveis:
+
+$$[a,b]+[c,d]=[a+c,\,b+d]$$
+$$[a,b]-[c,d]=[a-d,\,b-c]$$
+$$[a,b]\cdot[c,d]=[\min(ac,ad,bc,bd),\,\max(ac,ad,bc,bd)]$$
+
+A garantia central é a **propriedade da inclusão**: se $F$ é a extensão intervalar de $f$, então $f([a,b])\subseteq F([a,b])$. É exatamente o que o JB repetiu: "garante apenas que o resultado **não está fora** disso aqui". O cosseno de um intervalo devolve um intervalo, e o verdadeiro valor está garantidamente dentro.
+
+### O Problema da Dependência (a tal "incerteza")
+
+A "certa incerteza" que o JB citou é o **problema da dependência** (*dependency problem*): a aritmética intervalar **superestima** quando uma variável aparece mais de uma vez, porque trata cada ocorrência como independente. O exemplo clássico:
+
+$$[1,2]-[1,2]=[1-2,\,2-1]=[-1,1]\neq[0,0]$$
+
+Mesmo sabendo que é $x-x=0$, o intervalo não "sabe" que são o mesmo $x$. Por isso $F([a,b])$ pode ser bem mais largo que a imagem real $f([a,b])$ — o resultado é conservador, nunca errado.
+
+### Branch & Bound para Otimização Global
+
+A divisão sucessiva do intervalo em pedaços menores é **Branch & Bound** aplicado a otimização contínua. O algoritmo:
+
+1. **Branch:** parte o domínio (a "caixa") em subintervalos.
+2. **Bound:** avalia $F$ em cada subintervalo, obtendo uma cota inferior e superior do mínimo ali.
+3. **Poda:** se a cota *inferior* de uma caixa já é maior que a melhor cota *superior* encontrada, descarta a caixa — "lá todo mundo está mais alto", como nas notas.
+4. Repete nos sobreviventes até a largura ficar abaixo da tolerância.
+
+A vantagem decisiva sobre o gradiente descendente da Aula 25: como cada caixa **garante** conter (ou não) o mínimo, o método **não cai em mínimo local** — ele certifica o **mínimo global** (o $-0.379485$ das notas), preço de ser computacionalmente mais pesado. Este é o método que o JB "gosta bem mais".
+
+---
+
+## Aula 28 — Equações Diferenciais e o Método de Euler
+
+### EDOs e o Problema de Valor Inicial
+
+Uma **equação diferencial ordinária** (EDO) relaciona uma função desconhecida com suas derivadas, como o $f(x)+f'(x)=x$ das notas. A incógnita é a *função inteira*, não um número. O caso que o método de Euler resolve é o **problema de valor inicial** (PVI):
+
+$$y'(t)=g(t,y),\qquad y(t_0)=y_0$$
+
+O "$f(6)=31$" das notas é a condição inicial $y_0$. O **Teorema de Picard-Lindelöf** garante que, se $g$ é Lipschitz em $y$, existe uma única solução numa vizinhança — é o que justifica "reconstruir a função" a partir de um único ponto conhecido.
+
+### O Método de Euler
+
+A ideia "ando pouquinho e uso a derivada para saber a inclinação" é o **método de Euler** (1768), o integrador numérico mais antigo:
+
+$$y_{n+1}=y_n+h\,g(t_n,y_n),\qquad t_{n+1}=t_n+h$$
+
+onde $h$ é o "delta" das notas. Geometricamente: a cada passo segue-se a **reta tangente** por um pedacinho. É "literalmente integrar quando $h$ é pequeno" porque é a soma de Riemann à esquerda da EDO.
+
+### Ordem, Erro e Por Que "Não Existe Almoço de Graça"
+
+O acúmulo de erro que o JB descreveu tem estrutura precisa. Distinguem-se:
+
+- **Erro local de truncamento:** o erro de *um* passo, que para Euler é $O(h^2)$.
+- **Erro global:** o acumulado ao longo de todo o intervalo, que para Euler é $O(h)$ — daí ser de **primeira ordem**.
+
+É exatamente o que as notas registraram: dividir $h$ por 10 divide o erro global por 10 (ordem 1); um método de ordem $p$ divide o erro por $10^p$. Métodos de ordem alta — **Runge-Kutta de 4ª ordem (RK4)** é o cavalo de batalha — fazem várias avaliações de $g$ por passo para cancelar termos de erro, atingindo erro global $O(h^4)$.
+
+O "Yoshida / método de Verlet" citado no fim aponta para os **integradores simpléticos**, usados em mecânica orbital: em vez de só minimizar erro pontual, eles **conservam a energia** do sistema ao longo de milhões de passos. Euler comum "perde a órbita" porque injeta ou drena energia a cada passo; Verlet/Yoshida mantêm o planeta na órbita por serem construídos para preservar a estrutura geométrica do sistema hamiltoniano — o jeito sério de prever corpos celestes a longo prazo.

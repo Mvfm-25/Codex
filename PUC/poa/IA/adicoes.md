@@ -417,3 +417,96 @@ Organizar 1 a 47 de forma que cada par consecutivo some um quadrado perfeito é 
 O Caminho Hamiltoniano é **NP-completo** em geral. Para $n=47$, o grafo tem estrutura suficientemente restrita (grau médio baixo) para que backtracking funcione rapidamente.
 
 **Generalização**: para quais $n$ o caminho existe? Para $n \geq 25$ soluções são conhecidas. Para $n=15$, $23$ e $25$ também. A questão geral permanece aberta para todos os $n$.
+
+---
+
+## Aula 23 — Branch & Bound e o Problema da Mochila
+
+### Branch & Bound = Backtracking + Poda por Limite
+
+A frase "quem entendeu backtracking entende B&B" é precisa: **Branch & Bound** é backtracking sobre uma árvore de decisões com um ingrediente a mais — uma **função de limite** (*bound*) que descarta sub-árvores inteiras antes de explorá-las. A diferença de objetivo importa:
+
+| | Backtracking | Branch & Bound |
+|---|---|---|
+| Pergunta | existe *uma* solução válida? | qual a **melhor** solução? |
+| Tipo de problema | satisfação de restrições | **otimização** |
+| Poda | por inviabilidade (regra violada) | por inviabilidade **e por limite** (não pode melhorar o ótimo atual) |
+
+"**Branch**" = ramificar a árvore de escolhas (colocar/não colocar o item); "**Bound**" = calcular um limitante e podar.
+
+### O Problema da Mochila (Knapsack) 0/1
+
+Formalmente: dados $n$ itens com valor $v_i$ e peso $w_i$, e capacidade $W$, maximizar
+
+$$\sum_{i=1}^{n} v_i x_i \quad\text{sujeito a}\quad \sum_{i=1}^{n} w_i x_i \le W,\qquad x_i\in\{0,1\}$$
+
+A força bruta ("testa todas as combinações") é $O(2^n)$ — é o que rodou por 15 dias. O **0/1 knapsack é NP-completo**, e é por isso (como o JB disse) que "não basta uma divisão simples" e "estamos nisso há 60 anos": não se conhece algoritmo polinomial, e provavelmente não existe (a menos que P=NP).
+
+### Por Que o Guloso da Razão Valor/Peso Falha
+
+Ordenar por **densidade** $v_i/w_i$ e pegar do maior é a heurística gulosa natural — e o JB confirmou que **não** dá o ótimo. Contraexemplo concreto, com $W=10$:
+
+| item | valor | peso | $v/w$ |
+|---|---|---|---|
+| A | 60 | 10 | 6,0 |
+| B | 100 | 6 | 16,7 |
+| C | 80 | 4 | 20,0 |
+
+O guloso pega C (80) e B (100) = **180**. Mas... isso já é o ótimo aqui; o guloso falha em outros casos por não poder "voltar atrás". Detalhe importante: para o **knapsack fracionário** (pode-se levar pedaços do item) o guloso da densidade é **provadamente ótimo**; é o caráter *inteiro* (0/1) que o quebra. Por isso a razão $v/w$ ainda serve — como **cota superior** para o bound.
+
+### A Cota: "Valor na Mochila + Potencial Restante"
+
+O "valor potencial" das notas é o coração do bound. Num nó da árvore, computa-se uma **cota superior otimista** do que ainda se pode ganhar — tipicamente relaxando para o knapsack fracionário com os itens restantes. Regra de poda:
+
+$$\text{(valor já na mochila)} + \text{(potencial restante)} \le \text{melhor solução já encontrada} \;\Rightarrow\; \textbf{poda o ramo}$$
+
+E a estratégia que o JB descreveu — "rodar um guloso rápido como tesoura de corte inicial" — é clássica: a solução gulosa dá uma **cota inferior** inicial boa, fazendo a poda começar a cortar cedo. Mesmo assim o espaço continua exponencial no pior caso; B&B só *espera* visitá-lo bem menos na prática.
+
+---
+
+## Aula 24 — Branch & Bound na Partição de Conjuntos
+
+### O Problema da Partição (Number Partitioning)
+
+"Separar o grupo em dois com metade da soma cada" é o **Problema da Partição**: dado um multiconjunto $S$ de inteiros com soma total $T$, decidir se há $A\subseteq S$ com $\sum_{a\in A} a = T/2$. Ele é **NP-completo** — está na lista original de Karp (1972) — mas é apelidado de "**o mais fácil dos problemas difíceis**" porque admite algoritmos pseudo-polinomiais (DP em $O(nT)$) que funcionam bem quando os números são pequenos.
+
+### Por Que B&B Ajuda com Números Negativos
+
+A observação do JB sobre negativos faz sentido: com pesos só positivos, a DP por soma alvo funciona direto. Com **negativos**, o alcance de somas parciais cresce (pode-se "descer" e "subir"), o que estraga limites ingênuos e amplia o espaço. O B&B contorna isso mantendo uma cota: a cada decisão (item no grupo A ou B), acompanha-se a **diferença corrente** entre as somas dos dois grupos e o **potencial de fechamento** com os itens restantes; ramos que não podem mais zerar a diferença são podados. A heurística de referência para esse problema é a de **Karmarkar-Karp** (diferenciação), que dá uma partição inicial muito boa — exatamente o papel de "tesoura de corte" da aula anterior.
+
+---
+
+## Aula 25 — Algoritmos Genéticos
+
+### Metaheurística: Abandonar a Garantia, Abraçar a Escala
+
+O ponto que o JB levantou — algoritmos genéticos "dispensam a hierarquia de árvores" — marca a passagem de **busca exata** (B&B/backtracking, que enumeram um espaço estruturado) para **metaheurística**: não há árvore nem garantia de ótimo, há uma *população* de soluções candidatas que evolui. Troca-se a certeza pela capacidade de atacar espaços gigantescos onde a enumeração é impossível.
+
+### Anatomia de um Algoritmo Genético
+
+O processo "imitando a natureza" tem componentes padronizados:
+
+1. **Representação (cromossomo):** codifica uma solução. No caixeiro-viajante, uma permutação das cidades — daí a "troca de distâncias 3→7→5" das notas.
+2. **Função de aptidão (*fitness*):** mede a qualidade (ex.: o inverso da distância total da rota). É o "como decidir a qualidade de um cromossomo" que o JB deixou em aberto.
+3. **Seleção:** escolhe "pais & mães" com probabilidade crescente na aptidão (roleta, torneio).
+4. **Crossover (recombinação):** combina dois pais num filho — a "reprodução sexuada" da aula. É a fonte principal de novas soluções.
+5. **Mutação:** altera aleatoriamente um gene com baixa probabilidade. É a "diferencinha que a natureza introduz" — essencial para **não estagnar** num ótimo local.
+6. **Substituição:** "mata os piores, mantém os melhores" — frequentemente com **elitismo** (preservar o melhor indivíduo intacto entre gerações).
+
+### Por Que a "Desorganização" É uma Vantagem
+
+A intuição do colega — "parece desorganizado, mas por isso erros não se acumulam como em B&B" — captura algo real. Backtracking/B&B exploram o espaço de forma **sistemática e local**: uma decisão ruim no topo da árvore compromete tudo abaixo. O GA mantém **diversidade**: várias soluções espalhadas pelo espaço ao mesmo tempo, e o crossover pode "saltar" para regiões distantes que uma busca em árvore só alcançaria após muito backtracking. Esse equilíbrio tem nome — **exploração** (diversificar, fugir de ótimos locais) vs **explotação** (refinar o que já é bom). Mutação alta demais vira busca aleatória; baixa demais converge cedo num ótimo local.
+
+### Os Parâmetros que "São Problema Seu"
+
+As perguntas que o JB jogou de volta ("tamanho da população? chuta aí") não são falta de rigor — são o **calcanhar de Aquiles** das metaheurísticas: tamanho da população, taxa de mutação, taxa de crossover e critério de parada são **hiperparâmetros** sem fórmula fechada, ajustados empiricamente. Por isso GAs **não dão garantia** de otimalidade nem cota de erro: entregam "uma resposta boa o suficiente", que é exatamente o que se quer quando o espaço é grande demais para B&B.
+
+---
+
+### Referências para ir além
+
+- **Cormen et al., *Introduction to Algorithms* (CLRS), 4ª ed.** — Cap. 35 (algoritmos de aproximação) e a discussão de NP-completude (Cap. 34); base para mochila e partição.
+- **Garey & Johnson, *Computers and Intractability: A Guide to the Theory of NP-Completeness* (1979)** — a referência clássica; partição e knapsack estão entre os problemas catalogados.
+- **Kellerer, Pferschy & Pisinger, *Knapsack Problems* (2004)** — livro inteiro dedicado a variantes da mochila e suas técnicas de B&B.
+- **Eiben & Smith, *Introduction to Evolutionary Computing*, 2ª ed. (2015)** — tratamento moderno e didático de algoritmos genéticos.
+- **Karmarkar & Karp (1982), "The Differencing Method of Set Partitioning"** — a heurística citada para o problema da partição.

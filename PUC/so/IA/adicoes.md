@@ -438,3 +438,76 @@ Dois modelos para endereçar os registradores descritos nas notas (Data-In, Data
 **Port-Mapped I/O**: dispositivos têm espaço de endereçamento separado da RAM; instruções especiais `IN`/`OUT` em x86 para acessar portas. Padrão histórico do IBM PC.
 
 **Memory-Mapped I/O**: registradores de dispositivo mapeados em endereços RAM normais; CPU usa as mesmas instruções de leitura/escrita da memória. Domina em arquiteturas RISC (ARM) e em todo hardware moderno. Em Linux, `mmap()` sobre `/dev/mem` é a base dos drivers que acessam registradores — é MMIO exposto ao userspace.
+
+---
+
+## Aula 28 — Interface do Sistema de Arquivos
+
+### O que "Espaço de Endereçamento Lógico Contíguo" Realmente Significa
+
+A definição dos slides — arquivo como "espaço de endereçamento lógico contíguo mapeado pelo SO para dispositivos físicos" — é densa, mas o ponto é a palavra **lógico**. O arquivo *parece* uma sequência de bytes de 0 a $N$, contígua e sem buracos, para quem o lê. **Fisicamente**, esses bytes podem estar espalhados em blocos não-adjacentes no disco. O SO mantém a **abstração** (a 1ª característica citada) traduzindo o offset lógico em endereços físicos via estruturas como a tabela de blocos do inode. É a mesma ideia da memória virtual, aplicada ao armazenamento: o programa vê um espaço linear limpo; o SO esconde a bagunça física.
+
+### Metadados, o Inode e Por Que Nome ≠ Arquivo
+
+Os atributos listados (nome, ID, tipo, local, tamanho, proteção) são **metadados** — dados *sobre* o arquivo, guardados separadamente do conteúdo. Em sistemas Unix, eles vivem numa estrutura chamada **inode**, identificada pelo "ID numérico interno" das notas. Consequência crucial e contraintuitiva: **o nome não faz parte do arquivo**. O nome mora no *diretório*, que é apenas uma tabela `nome → número de inode`. Isso explica:
+
+- **Hard links:** dois nomes podem apontar para o mesmo inode — o arquivo só some quando o último link é removido (por isso o inode guarda um *contador de links*).
+- **Renomear é barato:** muda só a entrada de diretório, não toca no conteúdo.
+- **O "tipo" pela extensão é só convenção:** em Unix o tipo real não está no `.txt`; o SO descobre o conteúdo por outros meios (*magic numbers*). A extensão é uma dica para humanos e para o shell, não uma verdade imposta.
+
+### As Operações são Primitivas, e o "Seek" Move um Ponteiro
+
+As operações (criar, ler/escrever, reposicionar, deletar, truncar) são as **chamadas de sistema** que toda linguagem embrulha. O detalhe que as notas tocaram — "reposicionar = o famoso seek" — é exatamente isso: cada arquivo aberto tem um **ponteiro de posição corrente** (*file offset*) na tabela de arquivos abertos do processo. `read`/`write` avançam esse ponteiro; `lseek` o move sem ler nada (permite **acesso aleatório**, pular direto ao byte 5000). E a distinção que os slides fizeram entre **truncar** (zera conteúdo, mantém o inode e os atributos) e **deletar** (remove a entrada de diretório e libera os blocos) é precisamente a diferença entre esvaziar o arquivo e fazê-lo deixar de existir.
+
+---
+
+## Aula 29 — File Locking e Concorrência Destrutiva
+
+### Race Condition e Seção Crítica — a Formalização do "Dá Errado"
+
+A "concorrência destrutiva" dos slides é a **race condition**: o resultado final depende da *ordem* não-determinística em que threads/processos intercalam acessos a um dado compartilhado. O exemplo do banco é canônico porque `saldo = saldo + 100` **não é atômico** — compila em três passos (ler, somar, gravar):
+
+```
+P1: lê saldo (100)            P2: lê saldo (100)
+P1: soma 100 → 200            P2: soma 50 → 150
+P1: grava 200                 P2: grava 150   ← os 100 de P1 sumiram (lost update)
+```
+
+A região de código que toca o recurso compartilhado é a **seção crítica**. A regra é que no máximo um fluxo pode estar nela por vez — **exclusão mútua**.
+
+### A Intuição "Lock é igual a Semáforo" — Quase
+
+A desconfiança das notas está certa em espírito: locks e semáforos resolvem o mesmo problema (exclusão mútua), mas não são a mesma coisa.
+
+| | Lock / Mutex | Semáforo |
+|---|---|---|
+| Estado | binário (livre/ocupado) | contador $\ge 0$ |
+| Dono | **tem dono** — só quem travou destrava | sem dono — qualquer um faz `signal` |
+| Uso típico | proteger uma seção crítica | controlar acesso a $N$ recursos / sinalização entre processos |
+
+O **file lock** é o mecanismo de exclusão aplicado a *arquivos*, mediado pelo SO (`flock`/`fcntl` em Unix), para coordenar **processos distintos** — não apenas threads dentro de um programa.
+
+### Por Que "Forçar Execução Sequencial" Incomoda (e a Resposta: Locks de Leitura/Escrita)
+
+O desconforto das notas — "o lock serializa quem rodava em paralelo" — é uma observação real sobre **contenção**: a seção crítica vira um gargalo, e o paralelismo vale só *fora* dela. A mitigação é exatamente a tabela de tipos de lock que o Fillipo mostrou — o **readers-writer lock**:
+
+| Estado atual | Pedido de leitura | Pedido de escrita |
+|---|---|---|
+| Livre | permitido | permitido |
+| **Shared (leitura)** | permitido | bloqueado |
+| **Exclusive (escrita)** | bloqueado | bloqueado |
+
+A ideia: **leituras não conflitam entre si** (ninguém altera o dado), então *muitos* leitores podem entrar ao mesmo tempo — só a escrita exige exclusividade total. Isso recupera paralelismo em cargas dominadas por leitura, que é o caso comum. O preço é a possibilidade de **starvation** (inanição): um fluxo contínuo de leitores pode adiar indefinidamente um escritor, problema que implementações justas resolvem dando prioridade ao escritor que está esperando.
+
+### O Perigo que os Slides Não Mencionaram: Deadlock
+
+Locks resolvem a race condition, mas introduzem um risco novo. Se P1 trava o arquivo A e espera B, enquanto P2 trava B e espera A, ninguém avança: **deadlock**. Ele exige quatro condições simultâneas (Coffman): exclusão mútua, posse-e-espera, não-preempção e espera circular. A prevenção mais simples e prática é impor uma **ordem global** de aquisição de locks (sempre travar A antes de B) — eliminando a espera circular. Vale lembrar disso sempre que um processo precise de mais de uma trava ao mesmo tempo.
+
+---
+
+### Referências para ir além
+
+- **Silberschatz, Galvin & Gagne, *Operating System Concepts*, 10ª ed.** — Cap. 13–14 (interface e implementação de sistemas de arquivos) e Cap. 6–7 (sincronização, deadlocks).
+- **Tanenbaum & Bos, *Modern Operating Systems*, 4ª ed.** — Cap. 4 (file systems) e Cap. 2 (mutual exclusion, semáforos).
+- **`man 2 fcntl` e `man 2 flock`** (Linux) — a API real de file locking, com a distinção entre locks consultivos (*advisory*) e mandatórios.
+- **Arpaci-Dusseau, *Operating Systems: Three Easy Pieces* (gratuito, ostep.org)** — capítulos de concorrência e de persistência, com a melhor explicação intuitiva de locks e inodes.
