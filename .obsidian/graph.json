@@ -55,6 +55,48 @@
         "a": 1,
         "rgb": 5395168
       }
+    },
+    {
+      "query": "path:PUC/cc  ",
+      "color": {
+        "a": 1,
+        "rgb": 11621088
+      }
+    },
+    {
+      "query": "path:PUC/hcr  ",
+      "color": {
+        "a": 1,
+        "rgb": 13537978
+      }
+    },
+    {
+      "query": "path:PUC/lso  ",
+      "color": {
+        "a": 1,
+        "rgb": 14701138
+      }
+    },
+    {
+      "query": "path:PUC/mf  ",
+      "color": {
+        "a": 1,
+        "rgb": 14725458
+      }
+    },
+    {
+      "query": "path:PUC/sma  ",
+      "color": {
+        "a": 1,
+        "rgb": 11657298
+      }
+    },
+    {
+      "query": "path:PUC/ss  ",
+      "color": {
+        "a": 1,
+        "rgb": 5431378
+      }
     }
   ],
   "collapse-display": true,
@@ -67,6 +109,6 @@
   "repelStrength": 20,
   "linkStrength": 1,
   "linkDistance": 227,
-  "scale": 0.027544571397322037,
+  "scale": 0.04170939161159519,
   "close": true
 }

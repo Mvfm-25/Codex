@@ -52,3 +52,47 @@ banner: "![[32banner.webp]]"
 	5. [06/07] **Sistemas Operacionais** - T2.2
 	6. [09/07] **Experiência Do Usuário** - T3.2
 	7. [10/07] **Projeto Desenvolvimento De Jogos** - T3.2
+---
+
+# PUC 2026/2
+## [03/08/2026][mvfm]
+- Decidi escrever no mesmo arquivo por pura conveniência, nada de mais.
+
+### Cadeiras
+- Todas as cadeiras do semestre. Clique no nome da cadeira para ser redirecionado para o índice correspondente.
+	1. [Construção de Compiladores](./cc/cc-index.md)
+	2. **ONLINE** - [Humanismo & Cultura Religiosa](./hcr/hcr-index.md)
+	3. [Laboratório de Sistemas Operacionais](./lso/lso-index.md)
+	4. [Métodos Formais para Compputação](./mf/mf-index.md) 
+	5. [Métodos Numéricos](./mn/mn-index.md)
+	6. [Segurança de Sistemas](./ss/ss-index.md)
+	7. **ONLINE** - [Simulação & Métodos Analíticos](./sma/sma-index.md)
+
+### Entregas - Cronograma
+- Cronograma esse semestre vai parecer bem repetitivo, mas isso se dá por conta dos módulos online das cadeiras EAD.
+
+- **Agosto**
+	1. [05/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	2. [12/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	3. [19/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	4. [26/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+---
+- **Setembro**
+	1. [02/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	2. [09/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	3. [16/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	4. [23/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	5. [30/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+---
+- **Outubro**
+	1. [07/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	2. [14/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	3. [21/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	4. [28/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+---
+- **Novembro**
+	1. [04/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	2. [11/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	3. [18/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+---
+- **Dezembro**

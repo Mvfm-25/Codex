@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/mn/aula26.md",
+                "file": "PUC/Index.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula26"
+              "title": "Index"
             }
           }
         ],
@@ -60,7 +60,7 @@
                 "autoReveal": true
               },
               "icon": "lucide-folder-closed",
-              "title": "Files"
+              "title": "Explorador de arquivos"
             }
           },
           {
@@ -104,7 +104,7 @@
               "type": "graph",
               "state": {},
               "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "Visualização em gráfico"
             }
           }
         ]
@@ -208,23 +208,36 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
-      "bases:Create new base": false,
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Criar nova base": false,
       "obsidian-kanban:Create new board": false,
       "obsidian-excalidraw-plugin:New drawing": false,
       "pexels-banner:🚩 Pixel Banner Menu": false
     }
   },
-  "active": "da49053cdb5df263",
+  "active": "4ab974ec33b10d99",
   "lastOpenFiles": [
+    "PUC/Index.md",
+    "PUC/sma/sma-index.md",
+    "PUC/ss/ss-index.md",
+    "PUC/mf/mf-index.md",
+    "PUC/lso/lso-index.md",
+    "PUC/hcr/hcr-index.md",
+    "PUC/cc/cc-index.md",
+    "PUC/sma",
+    "PUC/ss",
+    "PUC/mf",
+    "PUC/lso",
+    "PUC/hcr",
+    "PUC/cc",
+    "PUC/mn/aula26.md",
     "PUC/mn/aula27.md",
     "PUC/mn/aula28.md",
-    "PUC/mn/aula26.md",
     "PUC/mn/aula25.md",
     "PUC/mn/aula23.md",
     "PUC/mn/aula21.md",
@@ -241,12 +254,6 @@
     "PUC/mn/trabalhos/t2/relatorio.md",
     "PUC/ux/trabalhos/t3/relatorioPessoal.md",
     "PUC/ux/trabalhos/t3/relatorioPessoal.pdf",
-    "PUC/ux/trabalhos/t3/relatorioPessoal.md.tmp.4621.2b60c5540fcf",
-    "PUC/ux/trabalhos/t3/relatorioPessoal.md.tmp.4621.2aad11711ccd",
-    "PUC/ux/trabalhos/t3/relatorioPessoal.md.tmp.4621.110407d682f3",
-    "PUC/ux/trabalhos/t3/relatorioPessoal.md.tmp.4621.0cef8d60c02c",
-    "PUC/ux/trabalhos/t3/relatorioPessoal.md.tmp.4621.befdf816e222",
-    "PUC/ux/trabalhos/t3/relatorioPessoal.md.tmp.4621.d8b652725ff7",
     "PUC/ux/ux-index.md",
     "PUC/ux/trabalhos/t3/assets-VanGO/createDriver.png",
     "PUC/ux/trabalhos/t3/assets-VanGO/AutoCompleteCar.png",
@@ -255,15 +262,8 @@
     "PUC/ux/trabalhos/t3/assets-VanGO/PassengerDependencies.png",
     "PUC/ux/trabalhos/t3/assets-VanGO/DependenciesSettings.png",
     "PUC/ux/trabalhos/t3/consolidacao.md",
-    "PUC/Index.md",
     "PUC/so/aula30.md",
     "PUC/pdj/aula06.md",
-    "PUC/pdj/aula09.md",
-    "PUC/pdj/aula17.md",
-    "PUC/pdj/aula18.md",
-    "PUC/pdj/aula15.md",
-    "PUC/poa/aula25.md",
-    "PUC/poa/poa-index.md",
     "PUC/assets/regressivo.png",
     "PUC/assets/progressivo.png",
     "PUC/assets/Screenshot from 2026-06-18 21-19-53.png",
