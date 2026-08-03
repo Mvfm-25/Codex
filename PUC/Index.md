@@ -79,20 +79,30 @@ banner: "![[32banner.webp]]"
 ---
 - **Setembro**
 	1. [02/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	2. [09/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	3. [16/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	4. [23/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	5. [30/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	2. [02/09] **Construção de Compiladores** - T1 [Prático]
+	3. [09/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	4. [09/09] **Construção de Compiladores** - P1
+	4. [16/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	5. [22/09] **Métodos Formais para Computação** - P1
+	5. [23/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	6. [30/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
 ---
 - **Outubro**
-	1. [07/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	2. [14/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	3. [21/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	4. [28/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	1. [01/10] **Métodos Numéricos** - P1
+	2. [07/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	3. [14/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	4. [19/10] **Construção de Compiladores** - P2
+	5. [21/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	6. [21/10] **Construção de Compiladores** - T2 [Apresentção]
+	7. [28/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
 ---
 - **Novembro**
 	1. [04/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
 	2. [11/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
 	3. [18/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	4. [23/11] **Construção de Compiladores** - T3 [Apresentação]
+	5. [25/11] **Construção de Compiladores** - P3
 ---
 - **Dezembro**
+	1. [01/12] **Métodos Formais para Computação** - P2
+	2. [01/12] **Métodos Numéricos** - P2
