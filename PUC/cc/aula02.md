@@ -1,0 +1,63 @@
+# Construção de Compiladores
+## [05/08/2026][mvfm]
+---
+### Revisão dos Exercícios de Revisão
+- Agustini está fazendo uma pequena revisão da [lista](obsidian://open?vault=Codex&file=PUC%2Fcc%2Fatividades%2FExercicioRevLF.pdf)
+- Começando pela questão 3 :
+	- Alfabeto : **Conjunto finito de símbolos**
+		- A1 = {0,1} ; A2 = {a, b, c} ; A3 = ASCII ; 
+		- Todos esses são alfabetos!
+	- Sentença : **Sequência de símbolos, não necessariamente válida.**
+		- S1 = 0001,10 ; S2 = aabb ; S3 = joão
+		- Uma simples concatenação de símbolos.
+		- A validação de sentençaas acaba sendo o trabalho dos compiladores que vamos ver esse semestre.
+	- Linguagem : **Conjunto de sentenças. Não necessariamente finito.**
+		- L1 : Todas as sentenças definidas por determinado alfabeto.;
+		- Definições bem simples por enquanto.
+- Clinistar(?) -> * Símbolo que representa o **vazio, vazio concatenado símbolo, símbolo concatenado a vazio**.
+- Questão 4 : **Para que servem as gramáticas?**
+	- A gramática é um conjunto de regras? Ela é formada por : (**T, N, P, S**).
+		- Terminas, um alfabeto. Simplesmente um conjunto de símbolos como definido anteriormente.
+		- Não terminais. {E, T, F} Expressão, Termo & Fator.
+		- Produções, {E ->E + T, E -> T, T -> T * F} Pelo o que entendi, as setinhas são simplesmente '*equivalente à*'. Um conjunto de regras. 
+		- Símbolo inicial.
+	- A para que servem as gramáticas? Para definir o conjunto de sentenças válidas da linguagem.
+	- Justamente a validação que o Agustini comentou que o compilador vai fazer.
+- Questão 5 : **Quais diferentes tipos de gramáticas? O que os diferencia?**
+	- '**Uma parte mais chata*'
+	- Gramáticas Irreristritas
+		- Sensíveis ao Contexto
+			- Livres de Contexto
+				- Regulares.
+	- A hierarquia dos nomes das gramáticas IMPORTA. 
+	- Agustini dá um contexto histórico, relembrando a importância do Minsky & Chomsky.
+	- As diferenças aparecem de fato na formatação das produções de cada gramática, assim como (mas não necessariamente) tendo '*reconhecedores*' diferentes.
+	- '*O que tem de importante nas Gramáticas Sensíveis ao Contexto & Restritas?*' Nenhuma. Obrigado problema de parada.
+- '*Gramáticas são geradores.*'
+- Waow. Mas os reconhecedores são mais legais pois conseguem determinar '*se está correto*' aquilo que foi gerado pelos geradores.
+- Questão 6 : '**O que é uma gramática L(G)?**'
+	- Todos os programas que podem ser escritos da linguagem G.
+- Questão 7 : '**O que é uma derivação? O que significa dizer que uma gramática G deriva de uma sentença  's'?**'
+	- Uma derivação é : Regra de re-escrita. COmo partir de tal ponto e chegar no outro tal ponto.
+		- '*Troca um n do lado esquerdo por um alpha do lado direito.*'
+	- Sentença : Seq de símbolos justapostos do alfabeto ; Forma Sentencial : Sequencia de símbolos (T U N)* [ terminal ou não terminal ]
+	- E -> E + E
+	-	| E * E
+	- 	| 1
+	-	| 2
+	-	| 3
+	-	| (E)
+- Ou seja, na sentença (E + E), podemos derivar das seguintes maneiras :
+	- ( (E) + E )
+	- ( (1) + E )
+	- ( (1) + 3 )
+- L(G) = {P | S -> *P}
+	- Pertence caso :  partindo do símbolo incial, eu consigo chegar em zero ou mais derivações de p.
+- Árvores de Definição - Representação gráfica do processo de derivação.
+	- Começa pelo símbolo incial, e **sai** andando por aí, vendo as derivações possíveis
+	- Escolhendo ou a alternativa da esquerda, ou da direita quando possível.
+
+### O que cai na prova P1, direto de Agustini
+- O que é ambiguidade? Quando que uma gramática é ambígua?
+	- Quando existir mais que uma única árvore de derivação.
+- '*Não tem como acompanhar a disciplina sem ter visto Matrix.*'
