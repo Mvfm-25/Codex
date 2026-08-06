@@ -61,3 +61,4 @@
 - O que é ambiguidade? Quando que uma gramática é ambígua?
 	- Quando existir mais que uma única árvore de derivação.
 - '*Não tem como acompanhar a disciplina sem ter visto Matrix.*'
+- Expressões regulares são geradoras, Automatos Finitos são reconhecedores.
