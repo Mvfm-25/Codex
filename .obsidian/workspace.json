@@ -27,7 +27,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/cc/aula02.md",
+                "file": "PUC/lso/aula02.md",
                 "mode": "preview",
                 "source": false
               },
@@ -39,16 +39,18 @@
             "id": "1cde26707efb909c",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "markdown",
               "state": {
-                "file": "PUC/cc/atividades/ExercicioRevLF.pdf"
+                "file": "PUC/lso/lso-index.md",
+                "mode": "preview",
+                "source": false
               },
-              "icon": "lucide-file-text",
-              "title": "ExercicioRevLF"
+              "icon": "lucide-file",
+              "title": "lso-index"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -234,20 +236,24 @@
       "pexels-banner:🚩 Pixel Banner Menu": false
     }
   },
-  "active": "4ab974ec33b10d99",
+  "active": "d88c48b1389a694f",
   "lastOpenFiles": [
-    "PUC/cc/atividades/ExercicioRevLF.pdf",
-    "PUC/cc/aula02.md",
     "PUC/cc/cc-index.md",
+    "PUC/lso/aula02.md",
+    "PUC/cc/aula02.md",
+    "PUC/lso/lso-index.md",
+    "PUC/ss/ss-index.md",
+    "PUC/lso/aula01.md",
+    "PUC/ss/aula02.md",
+    "PUC/assets/cifras.png",
+    "PUC/assets/modelos_ataque.png",
+    "PUC/cc/atividades/ExercicioRevLF.pdf",
     "atividades",
     "PUC/Index.md",
-    "PUC/lso/lso-index.md",
-    "PUC/lso/aula01.md",
     "PUC/cc/aula01.md",
     "PUC/ux/ux-index.md",
     "PUC/assets/aplso.png",
     "PUC/sma/sma-index.md",
-    "PUC/ss/ss-index.md",
     "PUC/mf/mf-index.md",
     "PUC/hcr/hcr-index.md",
     "PUC/sma",
@@ -271,7 +277,6 @@
     "PUC/poa/aula23.md",
     "PUC/poa/aula24.md",
     "PUC/mn/aula24.md",
-    "PUC/mn/trabalhos/t2/relatorio.md",
     "PUC/ux/trabalhos/t3/assets-VanGO/createDriver.png",
     "PUC/ux/trabalhos/t3/assets-VanGO/AutoCompleteCar.png",
     "PUC/ux/trabalhos/t3/assets-VanGO/DeleteRoute.png",
@@ -279,8 +284,6 @@
     "PUC/ux/trabalhos/t3/assets-VanGO/PassengerDependencies.png",
     "PUC/ux/trabalhos/t3/assets-VanGO/DependenciesSettings.png",
     "PUC/assets/regressivo.png",
-    "PUC/assets/progressivo.png",
-    "PUC/assets/Screenshot from 2026-06-18 21-19-53.png",
     "PUC/Untitled.canvas"
   ]
 }
