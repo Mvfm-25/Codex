@@ -27,7 +27,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/lso/aula02.md",
+                "file": "PUC/mf/aula02.md",
                 "mode": "preview",
                 "source": false
               },
@@ -36,17 +36,17 @@
             }
           },
           {
-            "id": "1cde26707efb909c",
+            "id": "e79c7ebb30cd4255",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/lso/lso-index.md",
-                "mode": "preview",
+                "file": "PUC/mf/mf-index.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "lso-index"
+              "title": "mf-index"
             }
           }
         ],
@@ -236,12 +236,15 @@
       "pexels-banner:🚩 Pixel Banner Menu": false
     }
   },
-  "active": "d88c48b1389a694f",
+  "active": "4ab974ec33b10d99",
   "lastOpenFiles": [
-    "PUC/cc/cc-index.md",
-    "PUC/lso/aula02.md",
-    "PUC/cc/aula02.md",
+    "PUC/mf/aula02.md",
+    "PUC/mf/mf-index.md",
     "PUC/lso/lso-index.md",
+    "PUC/mf/atividades/ExerciciosEspecificacao.pdf",
+    "PUC/lso/aula02.md",
+    "PUC/cc/cc-index.md",
+    "PUC/cc/aula02.md",
     "PUC/ss/ss-index.md",
     "PUC/lso/aula01.md",
     "PUC/ss/aula02.md",
@@ -254,7 +257,6 @@
     "PUC/ux/ux-index.md",
     "PUC/assets/aplso.png",
     "PUC/sma/sma-index.md",
-    "PUC/mf/mf-index.md",
     "PUC/hcr/hcr-index.md",
     "PUC/sma",
     "PUC/ss",
@@ -270,13 +272,10 @@
     "PUC/mn/aula21.md",
     "PUC/poa/provas/p2/lista.pdf",
     "PUC/poa/IA/adicoes.md",
-    "PUC/poa/provas/p2/p22024jpeg",
     "PUC/poa/aula20.md",
     "PUC/poa/aula21.md",
     "PUC/poa/aula22.md",
     "PUC/poa/aula23.md",
-    "PUC/poa/aula24.md",
-    "PUC/mn/aula24.md",
     "PUC/ux/trabalhos/t3/assets-VanGO/createDriver.png",
     "PUC/ux/trabalhos/t3/assets-VanGO/AutoCompleteCar.png",
     "PUC/ux/trabalhos/t3/assets-VanGO/DeleteRoute.png",
