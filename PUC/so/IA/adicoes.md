@@ -505,6 +505,86 @@ Locks resolvem a race condition, mas introduzem um risco novo. Se P1 trava o arq
 
 ---
 
+## Aula 27 — O Subsistema de Software de E/S
+
+Aula de atividade prática em grupo — as notas guardam só a logística. Vale usar o espaço para preencher o vão curricular exato em que ela cai: a Aula 26 terminou no **hardware** de E/S (polling, interrupções, DMA) e a Aula 28 começa na **interface** do sistema de arquivos (`open`, `read`, `lseek`). Entre as duas existe uma camada inteira de software — a menos ensinada e uma das mais cobradas da disciplina.
+
+### As Quatro Camadas Entre o `read()` e o Prato do Disco
+
+Um `read()` não conversa com o dispositivo. Ele atravessa uma pilha, e cada camada existe para esconder uma bagunça específica da camada de baixo:
+
+| Camada | Onde roda | Responsabilidade |
+|---|---|---|
+| **Software de E/S no nível do usuário** | userspace | Bibliotecas (`stdio`, `fopen`/`fprintf`) e *spooling*. É quem faz o buffer de linha do `printf`. |
+| **Software de E/S independente de dispositivo** | kernel | Nomeação uniforme (`/dev/sda`), proteção, tamanho de bloco unificado, **buffering**, **caching**, alocação. É a camada que faz disco e pendrive parecerem a mesma coisa. |
+| **Device drivers** | kernel | O único código que conhece os registradores concretos daquele controlador. Traduz "ler bloco 4711" em escritas específicas de hardware. |
+| **Tratadores de interrupção** | kernel | Acordam o driver quando o DMA da Aula 26 termina. Rodam em contexto de interrupção — não podem bloquear. |
+
+A regra que organiza tudo: **o driver é a única parte que muda por dispositivo**. É por isso que adicionar hardware novo ao Linux significa escrever um driver, e não recompilar o kernel inteiro — e é por isso que drivers respondem pela maior parte do código-fonte de um SO moderno.
+
+### Buffering, Caching e Spooling — Três Coisas que Parecem Uma
+
+Confundir os três é erro clássico de prova. Os três guardam dados em memória, mas resolvem problemas diferentes:
+
+| Técnica | Problema que resolve | Exemplo |
+|---|---|---|
+| **Buffering** | **Descompasso de velocidade e de tamanho** entre produtor e consumidor. Os dados vão passar de qualquer jeito; o buffer só suaviza o fluxo. | Placa de rede entrega pacotes de 1500 B; a aplicação quer 64 KB de uma vez. |
+| **Caching** | **Latência de acesso repetido**. Guarda uma *cópia* de dado que já existe em outro lugar, apostando em **localidade**. | *Page cache* do Linux: o segundo `read()` do mesmo bloco não toca no disco. |
+| **Spooling** | **Dispositivo não-compartilhável**. Serializa acessos concorrentes a um recurso que não pode ser intercalado. | Fila de impressão: duas páginas não podem sair intercaladas no papel. |
+
+A distinção mais fina, e a que costuma cair: **buffer guarda a única cópia do dado; cache guarda uma cópia redundante**. Perder um cache custa performance; perder um buffer perde dado. É exatamente por isso que `sync()`/`fsync()` existem — o *page cache* funciona como buffer de escrita (*write-back*), e um desligamento abrupto com dados sujos ainda não descarregados perde escritas que a aplicação já considerava concluídas.
+
+### Escalonamento de Disco: Por Que a Ordem dos Pedidos Importa
+
+Num HDD, o custo dominante não é ler — é o **seek time**, mover o braço até a trilha certa. Como vários processos pedem blocos ao mesmo tempo, a fila pode ser reordenada. Usando o exemplo canônico (cabeça em 53, fila `98, 183, 37, 122, 14, 124, 65, 67`, disco de 0 a 199):
+
+| Algoritmo | Ideia | Movimento total | Problema |
+|---|---|---|---|
+| **FCFS** | Atende na ordem de chegada. | **640** | Ignora a geometria; vai e volta à toa. |
+| **SSTF** | Sempre o pedido mais próximo. | **236** | **Starvation**: um pedido distante pode nunca ser atendido. É o guloso e, como todo guloso, míope. |
+| **SCAN** (*elevador*) | Varre até uma ponta, inverte, varre de volta. | **236** | Quem está logo atrás da cabeça espera uma varredura inteira. |
+| **C-SCAN** | Varre só numa direção; ao chegar ao fim, volta ao início sem atender. | **382** | Movimento maior, mas **tempo de espera muito mais uniforme**. |
+
+O nome *elevador* não é analogia solta: é literalmente a política de um elevador, e a intuição de que ele é "justo" é a mesma. C-SCAN parece pior pelo número, mas otimiza **variância**, não média — e em sistema interativo previsibilidade vale mais que throughput bruto.
+
+**O detalhe moderno que inverte a conclusão:** em **SSD não existe seek**. Não há braço nem trilha; o custo de acesso é uniforme. Todo esse esforço vira desperdício de CPU, e por isso o escalonador padrão do Linux para NVMe é o `none` (fila simples). O gargalo migrou para outros lugares — *write amplification*, coleta de lixo do controlador e o `TRIM`, que avisa ao SSD quais blocos o sistema de arquivos já não usa. Um algoritmo pode estar formalmente correto e mesmo assim ser obsoleto porque a premissa de hardware evaporou.
+
+---
+
+## Aula 30 — Devolução da P2 e Consolidação do Módulo 2
+
+### Por Que a Prova Sem Colinha Saiu Melhor
+
+A observação das notas — 10,0 na prova sem colinha, 9,0 na prova com — está registrada como piada, mas é um resultado bem documentado e vale entender, porque muda como estudar para a PS.
+
+O mecanismo é o **testing effect** (ou *retrieval practice*): **recuperar** uma informação da memória fortalece o traço mnemônico muito mais do que **revê-la**. Estudar sabendo que não haverá consulta força recuperação ativa durante o preparo; estudar sabendo que haverá colinha permite terceirizar a recuperação para o papel — e o preparo vira leitura, que é o modo mais fraco de estudar.
+
+O agravante é a **ilusão de fluência**: reler material conhecido *parece* aprendizado porque o texto passa fácil e sem atrito. Essa facilidade é lida pelo cérebro como domínio, e é justamente por isso que a sensação "eu sei isso" e o desempenho real descolam — a impressão de ter errado a P1 apesar do 10,0 é a mesma ilusão operando na direção contrária. A linha de pesquisa de Robert Bjork sobre **dificuldades desejáveis** formaliza a ideia: condições que tornam o estudo mais difícil no curto prazo produzem retenção melhor no longo.
+
+O que isso implica na prática: a colinha ajuda a **não travar** (protótipos de API, condições de Coffman, fórmulas), mas o preparo tem que ser feito **como se ela não existisse** — resolvendo questões antigas de memória antes de consultar qualquer coisa. A colinha é rede de segurança, não substituta de estudo, e escrevê-la é mais útil que consultá-la, porque escrever exige decidir o que importa.
+
+### Escopo Consolidado do Módulo 2
+
+A P1 cobriu processos, threads e sincronização (Aula 20). A P2 e a PS cobrem o que veio depois:
+
+| Bloco | Conceitos centrais | Onde cai a conta |
+|---|---|---|
+| **Gerência de memória** (Aula 21) | Hierarquia, espaço de endereçamento virtual, tradução lógico→físico, MMU, fragmentação interna vs. externa | Cálculo de endereço: dividir em número de página + deslocamento |
+| **Substituição de páginas** (Aula 22) | FIFO, LRU, ótimo (Belady), anomalia de Belady, *thrashing* | Simular a string de referência e **contar page faults** |
+| **Hardware de E/S** (Aula 26) | Polling vs. interrupção vs. DMA, port-mapped vs. memory-mapped I/O | Comparação conceitual: quem consome CPU e por quê |
+| **Software de E/S** (Aula 27) | Camadas, buffering/caching/spooling, escalonamento de disco | Movimento total da cabeça por algoritmo |
+| **Sistemas de arquivos** (Aulas 28–29) | Arquivo como espaço lógico contíguo, inode, metadados, hard links, `lseek`, file locking, readers-writer | Distinguir truncar vs. deletar; identificar a seção crítica |
+
+### Os Erros Clássicos deste Módulo
+
+1. **Confundir fragmentação interna com externa.** Interna é espaço desperdiçado *dentro* de um bloco alocado (paginação sofre disso); externa é espaço livre *entre* blocos, grande no total mas fragmentado demais para servir (alocação contígua sofre disso).
+2. **Achar que LRU sempre ganha de FIFO.** Não sempre — e a **anomalia de Belady** (mais quadros gerando *mais* page faults) atinge FIFO, não LRU. Saber *qual* algoritmo sofre a anomalia é a pergunta, não saber que ela existe.
+3. **Tratar page fault como erro.** É evento normal de memória virtual: o SO carrega a página e reexecuta a instrução. O erro é *thrashing* — faltas tão frequentes que o sistema só pagina e não progride.
+4. **Dizer que o nome é parte do arquivo.** O nome mora no diretório; o arquivo é o inode (Aula 28). Toda questão sobre hard link depende disso.
+5. **Contar o retorno do C-SCAN como zero.** O movimento de volta ao início conta no total, e é exatamente por isso que o número dele é maior que o do SCAN.
+
+---
+
 ### Referências para ir além
 
 - **Silberschatz, Galvin & Gagne, *Operating System Concepts*, 10ª ed.** — Cap. 13–14 (interface e implementação de sistemas de arquivos) e Cap. 6–7 (sincronização, deadlocks).

@@ -23,16 +23,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "so/trabalhos/t2/resumo.md",
+                "file": "pdj/trabalhos/t2/MANUAL.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "resumo"
+              "title": "MANUAL"
             }
           },
           {
-            "id": "d0c1824d05a3bf6d",
+            "id": "cc9063a578dbe007",
             "type": "leaf",
             "state": {
               "type": "3d-graph-view-global",
@@ -42,17 +42,45 @@
             }
           },
           {
-            "id": "cc9063a578dbe007",
+            "id": "6fd36730a91baaba",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "es2/provas/g2/resumo-revisao.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "resumo-revisao"
+            }
+          },
+          {
+            "id": "3f0fce43ee9277c2",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "es2/provas/g2/revisao_p1_respostas.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "revisao_p1_respostas"
+            }
+          },
+          {
+            "id": "d17bc5d0f53409b2",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "es2/provas/g2/revisao_p2_respostas.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "revisao_p2_respostas"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -235,29 +263,36 @@
       "3d-graph-new:Global 3D Graph": false
     }
   },
-  "active": "cc9063a578dbe007",
+  "active": "d17bc5d0f53409b2",
   "lastOpenFiles": [
-    "Index.md",
+    "es2/provas/g2/revisao_p1_respostas.pdf",
+    "es2/provas/g2/revisao_p2_respostas.pdf",
+    "es2/provas/g2/resumo-revisao.md",
+    "es2/atividades/revisao-Claude.md",
+    "es2/atividades/revisaop1.pdf",
+    "es2/atividades/resolucaoAtividades.md",
+    "es2/provas/g2/resumo-revisao.md.tmp.25620.6bc687f31a30",
+    "es2/provas/g2/p2.txt",
+    "es2/provas/g2/p1.txt",
+    "es2/atividades/microsservicos3.pdf",
+    "es2/provas/g2",
+    "es2/provas",
+    "es2/atividades/servicos.pdf",
+    "ux/trabalhos/t3/consolidacao.md",
+    "mn/atividades/resolucao-markov-em-diante.md",
+    "pdj/trabalhos/t2/MANUAL.md",
     "so/trabalhos/t2/resumo.md",
+    "Index.md",
     "pdj/aula14.md",
     "pdj/aula06.md",
     "poa/poa-index.md",
     "ux/aula26.md",
     "ux/ux-index.md",
-    "so/trabalhos/t2/explica.pdf",
-    "so/trabalhos/t2/enunciado.pdf",
-    "so/trabalhos/t2/Rep-Sor/entrada.txt.tmp.26608.4b3efe116888",
-    "so/trabalhos/t2/Rep-Sor/simulador_memoria.py.tmp.26608.383387cd93bb",
-    "so/trabalhos/t2/Rep-Sor/entrada.txt",
-    "so/trabalhos/t2/Rep-Sor/simulador_memoria.py",
-    "so/trabalhos/t2/Rep-Sor",
-    "so/trabalhos/t2/New folder",
     "pdj/aula03.md",
     "poa/aula03.md",
     "mn/aula04.md",
     "es2/aula02.md",
     "pdj/aula04.md",
-    "Untitled.canvas",
-    "Untitled.base"
+    "Untitled.canvas"
   ]
 }

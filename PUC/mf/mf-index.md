@@ -15,3 +15,6 @@
 	- Aula introdutória da disciplina.
 - [Aula02](./aula02.md)
 	- Revisão de lógica de predicados, sendo específico com o cliente & design by contract.
+---
+### Adições IA
+- [Material complementar gerado por IA](./IA/adicoes.md)

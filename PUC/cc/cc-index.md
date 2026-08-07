@@ -15,3 +15,6 @@
 	- Apresentação da disciplina, breve revisão em Línguagens & Automatos
 - [Aula02](./aula02.md)
 	- Continuação da revisão de Linguagens & Automatos.
+---
+### Adições IA
+- [Material complementar gerado por IA](./IA/adicoes.md)

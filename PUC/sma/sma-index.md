@@ -9,3 +9,6 @@
 - [Cronograma do semestre](https://www.canva.com/design/DAGdfR8QM3s/E1s2jUVnxCnI4LZot-bR_A/view?embed)
 - [Módulo 01](./m1.md)
 	- Apresentação da disciplina, rebisão breve de **probabilidade & estatística**.
+---
+### Adições IA
+- [Material complementar gerado por IA](./IA/adicoes.md)

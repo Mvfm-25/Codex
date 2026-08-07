@@ -42,6 +42,12 @@
 	- Revisão de algoritmos de escadaria (busca por largura vs. profundidade) e missão de implementar solver de **Sudoku** via Backtracking.
 - [Aula 22](./aula22.md)
 	- Revisão das soluções de **Sudoku** por Backtracking puro e novo problema de organizar 1→47 com somas quadradas.
+- [Aula 23](./aula23.md)
+	- Introdução ao **Branch & Bound** — poda por valor potencial no problema da **mochila** (NP-Completo), heurísticas e guloso como corte inicial.
+- [Aula 24](./aula24.md)
+	- Aplicação de **Branch & Bound** ao problema da partição de conjuntos em dois times de soma igual, incluindo o caso com números negativos.
+- [Aula 25](./aula25.md)
+	- **Algoritmos Genéticos** — população, cruzamento e seleção por gerações como alternativa não-hierárquica a Backtracking e B&B.
 ---
 ### Arquivos
 **Trabalhos**

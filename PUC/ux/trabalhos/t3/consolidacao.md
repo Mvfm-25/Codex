@@ -1,5 +1,5 @@
 # Experiência do Usuário
-## [23-06-26][mvfm]
+## [23-06-26] - Grupo 07
 ---
 ### Consolidação
 #### No que concordamos, no que discordamos. Principais 10.
@@ -20,7 +20,7 @@
 	> O passageiro precisa decidir se aceita a rota sem dispor da informação central para essa decisão : o próprio trajeto.
 
 - 2. Falta de termos de uso.
-	- Na abertura do aplicativo, o usuário — independentemente de ser passageiro ou motorista — não é apresentado aos termos e condições de uso.
+	- Na abertura do aplicativo, o usuário, independentemente de ser passageiro ou motorista, não é apresentado aos termos e condições de uso.
 
 	> **Heurística :** #10 — Ajuda e documentação · **Severidade :** 3 (Grave)
 	> Além do impacto sobre a confiança do usuário, a ausência de termos de uso é uma lacuna legal relevante para um aplicativo que lida com transporte de pessoas.

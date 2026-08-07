@@ -17,3 +17,6 @@
 	- Aula introdutória da disciplina.
 - [Aula02](./aula02.md)
 	- Aula de revisão, conceitos fundamentais & iniciais de Sistemas Operacionais.
+---
+### Adições IA
+- [Material complementar gerado por IA](./IA/adicoes.md)

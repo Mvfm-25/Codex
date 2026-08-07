@@ -42,6 +42,16 @@
 	- **Interpolação de Newton** — estimativa de valores entre pontos conhecidos via polinômio de grau *n-1*, com diferenças divididas e sem exigir espaçamento uniforme.
 - [Aula 24](./aula24.md)
 	- **Interpolação de Lagrange** — mesmo resultado de Newton por soma de polinômios-base com pesos por ponto; mais repetitiva, porém viável computacionalmente.
+- [Aula 25](./aula25.md)
+	- **Otimização contínua** — mínimos locais vs. globais, gradiente como vetor de derivadas parciais e o **Gradiente Descendente** com passo fracionário.
+- [Aula 26](./aula26.md)
+	- **Diferenciação automática no modo regressivo** — grafo de computação, propagação da derivada de trás para frente pela regra da cadeia.
+- [Aula 27](./aula27.md)
+	- **Aritmética intervalar** (Moore, 1966) como número e otimização global por **Branch & Bound** sobre intervalos, escapando do mínimo local.
+- [Aula 28](./aula28.md)
+	- **Equações diferenciais** e sistemas dinâmicos — **Método de Euler**, acúmulo de erro e ordem do método; Verlet e Yoshida.
+- [Aula 02 - 2026/2](./aula02-2.md)
+	- Retomada do **IEEE 754** — mantissa, expoente e sinal, ordenação de floats como string, $\pm 0$, infinitos, NaN, normalizados vs. subnormais e o bias de 127.
 ---
 ### Arquivos
 **Atividades**
@@ -65,3 +75,4 @@
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
+- [Material complementar gerado por IA — 2026/2](./IA/adicoes-2.md)

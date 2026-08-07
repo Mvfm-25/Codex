@@ -1,0 +1,27 @@
+/* ===========================================================
+   ASCII / block art  (```ascii fences)
+   Aplica-se ao modo Leitura e ao Export to PDF.
+   - line-height:1  -> fecha os vãos horizontais entre fileiras
+   - font-size      -> encolhe a arte (~80 col) p/ caber na página
+   - white-space:pre -> nunca quebra a linha
+   =========================================================== */
+
+pre:has(> code.language-ascii),
+pre:has(> code.language-ascii) code {
+  line-height: 1;          /* fileiras de █ passam a encostar         */
+  letter-spacing: 0;       /* colunas de █ passam a encostar          */
+  white-space: pre;        /* jamais quebrar/embrulhar a linha        */
+  tab-size: 1;
+}
+
+pre:has(> code.language-ascii) {
+  font-size: 15px;         /* AJUSTE AQUI: menor = cabe melhor no PDF */
+  overflow-x: auto;        /* só na tela; inofensivo no PDF           */
+  padding: 0.6em 0.8em;
+}
+
+/* O Obsidian às vezes injeta um espaçamento extra na 1ª linha;
+   isto garante que todas as fileiras tenham a mesma altura.        */
+pre:has(> code.language-ascii) code {
+  display: block;
+}

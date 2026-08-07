@@ -35,6 +35,10 @@
 	- Atividade prática em grupos (folha de exercícios).
 - [Aula 28](./aula28.md)
 	- **Interface do sistema de arquivos** — conceito e atributos de arquivos, operações básicas (criar, ler/escrever, seek, deletar, truncar), diretórios e montagem.
+- [Aula 29](./aula29.md)
+	- **File Locking** — concorrência destrutiva, race condition e seção crítica; locks *shared* vs. *exclusive* e a tabela de compatibilidade.
+- [Aula 30](./aula30.md)
+	- Devolução da **P2** e reorganização do cronograma — PS movida para 29/06, aula de revisão e devolutiva dos trabalhos.
 ---
 #### Arquivos
 **Atividades**

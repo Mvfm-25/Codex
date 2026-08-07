@@ -45,6 +45,8 @@
 	- **Extração da opinião dos usuários** — entrevistas, questionários, grupos de foco, estudos de campo, diários e investigação contextual, com vantagens & desvantagens.
 - [Aula 26](./aula26.md)
 	- Palestra de **acessibilidade digital** (Bruna Salton) — modelos médico vs. social de deficiência, quebra de barreiras e tecnologia assistiva.
+- [Aula 27](./aula27.md)
+	- Apresentação dos stakeholders do **VanGo** e escopo do T3 — avaliação heurística individual, consolidação em grupo e datas de entrega.
 ---
 #### Arquivos
 **Trabalhos — T1 (Parte 01)**
