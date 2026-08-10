@@ -15,6 +15,9 @@
 	- Apresentação da disciplina, breve revisão em Línguagens & Automatos
 - [Aula02](./aula02.md)
 	- Continuação da revisão de Linguagens & Automatos.
+- [Aula03](./aula03.md)
+	- Introdução à análise léxica.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
+
