@@ -37,3 +37,7 @@
 ### Plataformas de Hardware
 - Plataforma de Avaliação do Fornecedor System-On-Chip (SoC)
 	- Usualmente carom, mas muitos periféricos estão embutidos. Geralmente inadequado para produtos finais.
+- Módulo de Componente
+	- Pequena placa com apenas CPU/RAM/flash e alguns outros componentes principais com conectores para acessar todos os outros periféricos.
+	- Pode ser usado para criar produtos finais em pequenas e médias quantidades.
+

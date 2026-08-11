@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/lso/lso-index.md",
+                "file": "PUC/Index.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "lso-index"
+              "title": "Index"
             }
           },
           {
@@ -239,6 +239,7 @@
   "active": "d88c48b1389a694f",
   "lastOpenFiles": [
     "PUC/lso/aula03.md",
+    "PUC/lso/lso-index.md",
     "PUC/cc/aula03.md",
     "PUC/cc/atividades/meuLexico/meuLexico.flex",
     "PUC/cc/atividades/meuLexico/Pessoa.java",
@@ -260,24 +261,13 @@
     "PUC/mf/IA",
     "PUC/lso/IA/adicoes.md",
     "PUC/cc/IA/adicoes.md",
-    "PUC/lso/lso-index.md",
     "PUC/assets/comp_estatica.png",
     "PUC/assets/arvore_sintatica.png",
     "PUC/assets/arvore_feia.gif",
-    "PUC/lso/lso-index.md",
-    "PUC/assets/comp_estatica.png",
-    "PUC/assets/comp_v_intr.png",
-    "PUC/assets/multi-pass.png",
-    "PUC/assets/fases_front.png",
-    "PUC/cc/aula03.md",
-    "PUC/assets/arvore_sintatica.png",
-    "PUC/assets/arvore_feia.gif",
-    "PUC/assets/historico_compiladores.png",
     "PUC/mn/aula02-2.md",
     "PUC/mn/aula03.md",
     "PUC/mf/aula02.md",
     "PUC/mf/mf-index.md",
-    "PUC/mf/atividades/ExerciciosEspecificacao.pdf",
     "PUC/lso/aula02.md",
     "PUC/cc/cc-index.md",
     "PUC/cc/aula02.md",
@@ -293,14 +283,6 @@
     "PUC/sma/sma-index.md",
     "PUC/hcr/hcr-index.md",
     "PUC/mn/aula26.md",
-    "PUC/mn/aula27.md",
-    "PUC/mn/aula28.md",
-    "PUC/mn/aula25.md",
-    "PUC/mn/aula23.md",
-    "PUC/mn/aula21.md",
-    "PUC/poa/provas/p2/lista.pdf",
-    "PUC/poa/IA/adicoes.md",
-    "PUC/poa/aula20.md",
     "PUC/Untitled.canvas"
   ]
 }
