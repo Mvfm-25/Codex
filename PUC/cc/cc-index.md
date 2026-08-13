@@ -17,6 +17,8 @@
 	- Continuação da revisão de Linguagens & Automatos.
 - [Aula03](./aula03.md)
 	- Introdução à análise léxica.
+- [Aula04](./aula04.md)
+	- Continuação de análise léxica. Atividades(?)
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
