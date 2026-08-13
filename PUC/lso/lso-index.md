@@ -18,7 +18,7 @@
 - [Aula02](./aula02.md)
 	- Aula de revisão, conceitos fundamentais & iniciais de Sistemas Operacionais.
 - [Aula03](./aula03.md)
-	- ???
+	- Conceitos fundamentais de sistemas embarcados, kernel linux.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
