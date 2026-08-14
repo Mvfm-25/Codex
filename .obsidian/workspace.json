@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/lso/aula04.md",
+                "file": "PUC/mn/aula04-2.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula04"
+              "title": "aula04-2"
             }
           }
         ],
@@ -129,7 +129,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "PUC/pdj/aula02.md",
+                "file": "PUC/mn/aula04-2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -139,7 +139,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for aula02"
+              "title": "Backlinks"
             }
           },
           {
@@ -200,8 +200,7 @@
               "title": "Outline of aula02"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -224,9 +223,14 @@
   },
   "active": "e79c7ebb30cd4255",
   "lastOpenFiles": [
+    "PUC/mn/aula02-2.md",
+    "PUC/mn/aula04-2.md",
+    "PUC/mn/aula04.md",
+    "PUC/mn/aula03.md",
+    "PUC/mn/aula05.md",
+    "PUC/lso/aula04.md",
     "PUC/lso/aula03.md",
     "PUC/assets/buildroot_geral.png",
-    "PUC/lso/aula04.md",
     "PUC/lso/lso-index.md",
     "PUC/cc/cc-index.md",
     "PUC/cc/aula04.md",
@@ -258,8 +262,6 @@
     "PUC/mf/IA/adicoes.md",
     "PUC/lso/IA/adicoes.md",
     "PUC/cc/IA/adicoes.md",
-    "PUC/mn/aula02-2.md",
-    "PUC/mn/aula03.md",
     "PUC/mf/aula02.md",
     "PUC/mf/mf-index.md",
     "PUC/lso/aula02.md",
@@ -267,8 +269,6 @@
     "PUC/ss/ss-index.md",
     "PUC/lso/aula01.md",
     "PUC/ss/aula02.md",
-    "PUC/cc/aula01.md",
-    "PUC/ux/ux-index.md",
     "PUC/Untitled.canvas"
   ]
 }

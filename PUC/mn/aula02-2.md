@@ -4,7 +4,7 @@
 ### Ventos 90km/h
 - Primeira aula de métodos numéricos no novo semestre marcada por um alerta vermelho de tempora com ventos de 90km/h.
 - Imagina ficar preso na universidade devido uma crise metereológica.
-- '*Pessoal deve pitis e saiu correndo.*'
+- '*Pessoal teve pitis e saiu correndo.*'
 - IEE 754 novamente!
 	- Saudade, na real.
 	- Lida apenas com armazenamento em binário, criado em 1985.
