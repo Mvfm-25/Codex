@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/mn/aula04-2.md",
+                "file": "PUC/mf/aula05.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula04-2"
+              "title": "aula05"
             }
           }
         ],
@@ -223,8 +223,17 @@
   },
   "active": "e79c7ebb30cd4255",
   "lastOpenFiles": [
-    "PUC/mn/aula02-2.md",
+    "PUC/assets/atrec.png",
+    "PUC/mf/mf-index.md",
+    "PUC/assets/ind01.png",
+    "PUC/mf/aula05.md",
+    "PUC/cc/atividades/jflex_manual.pdf",
+    "PUC/cc/aula05.md",
+    "PUC/Index.md",
+    "PUC/cc/atividades/meuLexico.zip",
+    "PUC/cc/aula04.md",
     "PUC/mn/aula04-2.md",
+    "PUC/mn/aula02-2.md",
     "PUC/mn/aula04.md",
     "PUC/mn/aula03.md",
     "PUC/mn/aula05.md",
@@ -233,7 +242,6 @@
     "PUC/assets/buildroot_geral.png",
     "PUC/lso/lso-index.md",
     "PUC/cc/cc-index.md",
-    "PUC/cc/aula04.md",
     "PUC/lso/atividades/embedded-linux-slides.pdf",
     "PUC/lso/atividades",
     "PUC/assets/er.png",
@@ -247,15 +255,11 @@
     "PUC/cc/atividades/GeradoresECompiladores.pdf",
     "PUC/mf/atividades/ExerciciosEspecificacao.pdf",
     "PUC/mf/atividades/RevisaoLogica.pdf",
-    "PUC/Index.md",
     "PUC/cc/aula03.md",
     "PUC/cc/atividades/meuLexico/meuLexico.flex",
     "PUC/cc/atividades/meuLexico/Pessoa.java",
-    "PUC/cc/atividades/meuLexico",
-    "PUC/cc/atividades/jflex_manual.pdf",
     "PUC/assets/multi-pass.png",
     "PUC/assets/historico_compiladores.png",
-    "PUC/assets/fases_front.png",
     "PUC/ss/IA/adicoes.md",
     "PUC/sma/IA/adicoes.md",
     "PUC/mn/IA/adicoes-2.md",
@@ -263,12 +267,8 @@
     "PUC/lso/IA/adicoes.md",
     "PUC/cc/IA/adicoes.md",
     "PUC/mf/aula02.md",
-    "PUC/mf/mf-index.md",
     "PUC/lso/aula02.md",
     "PUC/cc/aula02.md",
-    "PUC/ss/ss-index.md",
-    "PUC/lso/aula01.md",
-    "PUC/ss/aula02.md",
     "PUC/Untitled.canvas"
   ]
 }
