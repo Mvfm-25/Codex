@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/cc/aula06.md",
+                "file": "PUC/lso/aula06.md",
                 "mode": "preview",
                 "source": false
               },
@@ -220,10 +220,11 @@
       "pexels-banner:🚩 Pixel Banner Menu": false
     }
   },
-  "active": "da49053cdb5df263",
+  "active": "4ab974ec33b10d99",
   "lastOpenFiles": [
-    "PUC/Index.md",
+    "PUC/lso/aula06.md",
     "PUC/cc/aula06.md",
+    "PUC/Index.md",
     "PUC/assets/restrictions.png",
     "PUC/mn/aula05-2.md",
     "PUC/assets/abordagens.png",
@@ -267,7 +268,6 @@
     "PUC/mn/IA/adicoes-2.md",
     "PUC/mf/IA/adicoes.md",
     "PUC/lso/IA/adicoes.md",
-    "PUC/cc/IA/adicoes.md",
     "PUC/Untitled.canvas"
   ]
 }
