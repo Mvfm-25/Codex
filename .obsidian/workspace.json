@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/lso/aula06.md",
+                "file": "PUC/mn/aula06-2.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula06"
+              "title": "aula06-2"
             }
           },
           {
@@ -220,7 +220,7 @@
       "pexels-banner:🚩 Pixel Banner Menu": false
     }
   },
-  "active": "4ab974ec33b10d99",
+  "active": "da49053cdb5df263",
   "lastOpenFiles": [
     "PUC/lso/aula06.md",
     "PUC/cc/aula06.md",
