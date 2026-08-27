@@ -17,6 +17,8 @@
 	- Contexto histórico & breve especificação de como a máquina alemã **Enigma** funcionava e como matemáticos Poloneses & uma equipe de especialistas Britânicos decrifraram a máquina.
 - [Aula04](./aula04.md)
 	- Contexto histórico & funcionamento de múltiplas cifras clássicas.
+- [Aula06](./aula06.md)
+	- Introdução a cifra OTP, atividade prática no final da aula.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
