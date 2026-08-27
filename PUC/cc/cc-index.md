@@ -19,6 +19,12 @@
 	- Introdução à análise léxica.
 - [Aula04](./aula04.md)
 	- Continuação de análise léxica. Atividades(?)
+- [Aula05](./aula05.md)
+	- Solução de atividades práticas, uso do Jflex.
+- [Aula06](./aula06.md)
+	- Introdução à análise Sintática.
+- [Aula08](./aula08.md)
+	- Re-introdução de conceitos fundamentais para análise Sintática, atividade prática. 
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
