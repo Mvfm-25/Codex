@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/ss/aula06.md",
+                "file": "PUC/mn/aula06-2.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula06"
+              "title": "aula06-2"
             }
           },
           {
@@ -222,18 +222,22 @@
   },
   "active": "da49053cdb5df263",
   "lastOpenFiles": [
+    "PUC/mn/atividades/atividadesDeCodigo/cotasEmJava.java~",
+    "PUC/mn/aula05-2.md",
+    "PUC/mn/atividades/atividadesDeCodigo/cotasEmJava.class",
+    "PUC/mn/aula06-2.md",
+    "PUC/mn/aula08-2.md",
+    "PUC/mn/atividades/atividadesDeCodigo/cotasEmJava.java",
+    "PUC/ss/aula06.md",
     "PUC/assets/one-time-pad.png",
     "PUC/cc/aula08.md",
-    "PUC/ss/aula06.md",
     "PUC/assets/uso_la.png",
     "PUC/assets/uso_top-down.png",
     "PUC/assets/em_pilhas.png",
-    "PUC/mn/aula06-2.md",
     "PUC/lso/aula06.md",
     "PUC/cc/aula06.md",
     "PUC/Index.md",
     "PUC/assets/restrictions.png",
-    "PUC/mn/aula05-2.md",
     "PUC/assets/abordagens.png",
     "PUC/lso/aula01.md",
     "PUC/mn/aula05.md",
@@ -259,15 +263,10 @@
     "PUC/lso/atividades",
     "PUC/assets/er.png",
     "PUC/ss/aula03.md",
-    "PUC/assets/Pq.png",
     "PUC/cc/atividades/SolucaoDeAtividades.pdf",
     "PUC/cc/atividades/GeradoresECompiladores.pdf",
     "PUC/mf/atividades/ExerciciosEspecificacao.pdf",
-    "PUC/mf/atividades/RevisaoLogica.pdf",
     "PUC/cc/aula03.md",
-    "PUC/cc/atividades/meuLexico/meuLexico.flex",
-    "PUC/cc/atividades/meuLexico/Pessoa.java",
-    "PUC/ss/IA/adicoes.md",
     "PUC/Untitled.canvas"
   ]
 }
