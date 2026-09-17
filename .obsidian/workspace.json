@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/cc/aula13.md",
+                "file": "PUC/ss/aula14.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula13"
+              "title": "aula14"
             }
           },
           {
@@ -223,9 +223,16 @@
   },
   "active": "da49053cdb5df263",
   "lastOpenFiles": [
+    "PUC/cc/aula14.md",
+    "PUC/ss/aula14.md",
+    "PUC/ss/aula14.md[",
+    "PUC/assets/exemplo_clr1.png",
+    "PUC/assets/exemplo_clr.png",
+    "PUC/mf/aula13.md",
+    "PUC/ss/aula13.md",
+    "PUC/cc/aula13.md",
     "PUC/assets/pontos.png",
     "PUC/Index.md",
-    "PUC/cc/aula13.md",
     "PUC/mn/aula06-2.md",
     "PUC/cc/aul13.md",
     "PUC/mf/aula11.md~",
@@ -253,22 +260,15 @@
     "PUC/mf/aula02.md",
     "PUC/mf/aula05.md",
     "PUC/assets/atrec.png",
-    "PUC/assets/ind01.png",
     "PUC/cc/atividades/jflex_manual.pdf",
     "PUC/cc/aula05.md",
     "PUC/cc/atividades/meuLexico.zip",
     "PUC/cc/aula04.md",
     "PUC/mn/aula02-2.md",
     "PUC/mn/aula04.md",
-    "PUC/mn/aula03.md",
-    "PUC/lso/aula04.md",
-    "PUC/lso/aula03.md",
-    "PUC/assets/buildroot_geral.png",
     "PUC/lso/atividades/embedded-linux-slides.pdf",
     "PUC/lso/atividades",
-    "PUC/assets/er.png",
     "PUC/cc/atividades/SolucaoDeAtividades.pdf",
-    "PUC/cc/atividades/GeradoresECompiladores.pdf",
     "PUC/Untitled.canvas"
   ]
 }
