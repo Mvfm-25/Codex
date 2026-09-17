@@ -15,6 +15,14 @@
 	- Aula introdutória da disciplina.
 - [Aula02](./aula02.md)
 	- Revisão de lógica de predicados, sendo específico com o cliente & design by contract.
+- [Aula05](./aula05.md)
+	- Exercícios de **conjuntos indutivos & equações recursivas** — axiomas, regras de inferência e os três passos (base, indução e fecho).
+- [Aula08](./aula08.md)
+	- Definições **indutivas & recursivas sobre listas** — regra da lista vazia e do construtor `E : L`.
+- [Aula11](./aula11.md)
+	- Introdução ao provador de teoremas **Isabelle** — arquivos `.thy`, `datatype nat` (`0 | Suc`) e definições `primrec` / `fun`.
+- [Aula13](./aula13.md)
+	- Aula de atividades — funções recursivas (POT2, FAT, FIB, SOMA, MULT) e prova por indução em Isabelle, com caso base e passo indutivo.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
