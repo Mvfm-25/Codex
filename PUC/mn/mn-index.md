@@ -52,6 +52,18 @@
 	- **Equações diferenciais** e sistemas dinâmicos — **Método de Euler**, acúmulo de erro e ordem do método; Verlet e Yoshida.
 - [Aula 02 - 2026/2](./aula02-2.md)
 	- Retomada do **IEEE 754** — mantissa, expoente e sinal, ordenação de floats como string, $\pm 0$, infinitos, NaN, normalizados vs. subnormais e o bias de 127.
+- [Aula 04 - 2026/2](./aula04-2.md)
+	- Bits de exceção e modos de arredondamento do **IEEE 754**, números **subnormais**, registradores de 80 bits e o epsilon de máquina.
+- [Aula 05 - 2026/2](./aula05-2.md)
+	- **Polinômios** — grau e coeficientes, série de **Taylor**, ausência de fórmula para grau ≥ 5, raízes complexas, regra de **Descartes** e cotas de **Cauchy & Lagrange**.
+- [Aula 06 - 2026/2](./aula06-2.md)
+	- Raízes complexas visualizadas no plano, avaliação eficiente por **forma de Horner** e método da **bisecção**.
+- [Aula 08 - 2026/2](./aula08-2.md)
+	- Aula de exercícios — folhas de atividades entregues.
+- [Aula 09 - 2026/2](./aula09-2.md)
+	- Solução de equações — **bisecção**, método da **secante** (convergência pela razão áurea) e **Método de Newton** com convergência quadrática.
+- [Aula 10 - 2026/2](./aula10-2.md)
+	- **Método de Aberth** — todas as raízes de um polinômio de uma vez, evolução de **Weierstrass** com repulsores entre os "newtons".
 ---
 ### Arquivos
 **Atividades**

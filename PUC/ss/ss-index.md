@@ -19,6 +19,10 @@
 	- Contexto histórico & funcionamento de múltiplas cifras clássicas.
 - [Aula06](./aula06.md)
 	- Introdução a cifra OTP, atividade prática no final da aula.
+- [Aula13](./aula13.md)
+	- Estrutura da prova — conceitos de criptografia, **One-Time-Pad**, cifras de bloco (DES, 3DES, AES, *Meet-In-The-Middle*) e Pentest de rede.
+- [Aula14](./aula14.md)
+	- Apresentação do **TSE** sobre a urna eletrônica — auditoria do código-fonte, testes públicos de segurança e o **Módulo de Segurança Embarcado**.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

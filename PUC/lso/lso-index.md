@@ -19,6 +19,12 @@
 	- Aula de revisão, conceitos fundamentais & iniciais de Sistemas Operacionais.
 - [Aula03](./aula03.md)
 	- Conceitos fundamentais de sistemas embarcados, kernel linux.
+- [Aula04](./aula04.md)
+	- Ambientes de desenvolvimento (Codespace, nativo, VM, Docker) e introdução ao **Buildroot** como build system de Linux embarcado.
+- [Aula06](./aula06.md)
+	- Build do Buildroot e execução no **QEMU** via `start-qemu.sh`; configuração de rede — switch virtual, **NAT** e port forwarding.
+- [Aula07](./aula07.md)
+	- Etapa 1.3 do tutorial — medição de desempenho de rede com **iperf**.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

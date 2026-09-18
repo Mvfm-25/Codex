@@ -25,6 +25,10 @@
 	- Introdução à análise Sintática.
 - [Aula08](./aula08.md)
 	- Re-introdução de conceitos fundamentais para análise Sintática, atividade prática. 
+- [Aula13](./aula13.md)
+	- Análise sintática ascendente — shift-reduce, itens LR(0), closure & go-to, e conflitos shift-reduce / reduce-reduce (dangling else).
+- [Aula14](./aula14.md)
+	- Tabelas **Action & GoTo**, limites do LR(0) e a adição de lookahead — SLR(1), LR(1) canônico e LALR(1).
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
