@@ -7,6 +7,13 @@
 - T2
 	- ?
 ---
+### Provas
+- [P1 — Simulado](./provas/p1/SIMULADO.md)
+	- Simulado com gabarito comentado, seguindo a estrutura anunciada na Aula13. Dissertativas ancoradas em casos reais — Enigma, VENONA & WEP, Deep Crack & 2DES, engajamento de pentest.
+	- **Parte IV** cobre o material de revisão depositado na pasta : *Padding Oracle Attack*, funções resumo (Merkle–Damgård & Davies–Meyer) e cifras clássicas — com os **dois exercícios práticos resolvidos**.
+- [Material de revisão (PDFs)](./provas/p1/)
+	- Decks e listas entregues pelo professor para a P1.
+---
 ### Aulas
 - [Cronograma do Semestre]()
 - [Aula02](./aula02.md)

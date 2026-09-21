@@ -257,6 +257,96 @@ $$c = m \oplus \mathrm{PRG}(k, \text{nonce})$$
 
 ---
 
+## Aula 11 — Maleabilidade do CBC e o *Padding Oracle Attack*
+
+Esta é a aula que fecha o argumento aberto na Aula 02 : **confidencialidade não é integridade**. O CBC esconde o conteúdo e, ainda assim, permite que um atacante o modifique cirurgicamente — e, com um oráculo de padding, permite decifrá-lo inteiro sem jamais tocar na chave.
+
+### Primeiro : por que o CBC é maleável
+
+A decifragem em CBC é
+
+$$m_i = D_k(c_i) \oplus c_{i-1}, \qquad c_{-1} = \mathrm{IV}$$
+
+O bloco anterior entra por **XOR**, depois da cifra. Isso tem uma consequência imediata e devastadora : alterar um bit de $c_{i-1}$ altera **exatamente o mesmo bit** de $m_i$. O atacante não precisa da chave — precisa só de aritmética.
+
+O exemplo dos slides é o caso limpo. Um pacote cifrado começa com `dest=80`, e o atacante quer que o destino vire `25` :
+
+$$m_0 = D_k(c_0) \oplus \mathrm{IV}$$
+
+Se ele quer $m_0' = m_0 \oplus \Delta$, basta enviar $\mathrm{IV}' = \mathrm{IV} \oplus \Delta$. Como $\Delta$ é a diferença entre o texto que está lá e o que ele quer pôr no lugar :
+
+$$\mathrm{IV}' = \mathrm{IV} \oplus (\texttt{...80...}) \oplus (\texttt{...25...})$$
+
+É a alternativa correta da pergunta do slide, e note **o que ela exige** : que o atacante *conheça* o texto claro daquele trecho — por isso o slide classifica o ataque como "cirúrgico". Ele não descobre nada ; ele reescreve o que já sabe estar lá.
+
+Duas observações que costumam cair em objetiva :
+
+1. **Mexer no IV é gratuito.** Alterar $c_{i-1}$ para $i \ge 1$ corrompe irremediavelmente o bloco $m_{i-1}$ — ele vira lixo, porque $D_k$ de um bloco alterado é imprevisível. Mexer **só no IV** não corrompe nada, porque o IV não é decifrado : ele só entra no XOR. Por isso o ataque do slide é feito no primeiro bloco.
+2. **Nenhuma cifra de bloco "melhor" resolve isso.** Trocar o DES pelo AES não muda nada : a maleabilidade é do **modo**, não da primitiva. A correção é autenticar o criptograma — `Encrypt-then-MAC` ou **AEAD**.
+
+### O *padding oracle* : decifrar sem a chave
+
+O ataque anterior modifica. Este **lê**, e essa é a diferença de grau que o torna notável.
+
+**O padding.** Cifras de bloco operam sobre blocos completos (16 bytes no AES), então a última porção da mensagem é completada. No PKCS#7, completa-se com $p$ bytes cujo valor é o próprio $p$ : falta 1 byte ⇒ `01` ; faltam 2 ⇒ `02 02` ; faltam 5 ⇒ `05 05 05 05 05`. Ao decifrar, o sistema **valida** esse padding antes de entregar a mensagem.
+
+**O oráculo.** Se o sistema reage de forma **distinguível** quando o padding está errado, ele virou um oráculo. Os slides listam as três formas em que isso acontece, e as três são reais :
+
+- um **erro explícito** — o clássico `403` para padding inválido vs. `404` para padding válido mas mensagem inválida ;
+- a **ausência** de uma resposta esperada ;
+- uma **demora** diferente na resposta — o canal lateral de tempo, que é o que sobra depois que alguém "corrige" o bug unificando as mensagens de erro.
+
+Um bit de resposta por consulta. É tudo de que o ataque precisa.
+
+**A mecânica, byte a byte.** Seja $c$ o bloco alvo e $I = D_k(c)$ o **valor intermediário** — a saída da cifra, antes do XOR. O atacante controla integralmente o bloco que entra no XOR ; chame-o de $R$. O sistema decifra e obtém
+
+$$m = I \oplus R$$
+
+Para o **último byte** : o atacante fixa $R$ arbitrário e varre $R[15]$ pelos 256 valores possíveis. Quando o oráculo aceitar o padding, quase certamente é porque $m[15] = \texttt{0x01}$, logo
+
+$$I[15] = R[15] \oplus \texttt{0x01}$$
+
+Para o **penúltimo** : ele agora quer forçar o padding `02 02`. Já conhece $I[15]$, então fixa $R[15] = I[15] \oplus \texttt{0x02}$ — o que garante $m[15] = \texttt{0x02}$ — e varre $R[14]$ até o oráculo aceitar. Então $I[14] = R[14] \oplus \texttt{0x02}$. E assim por diante, com `03 03 03`, `04 04 04 04`, …
+
+Descobertos os 16 bytes de $I$, o texto claro **verdadeiro** sai de graça, usando o bloco anterior **real** :
+
+$$m_i = I \oplus c_{i-1}$$
+
+Depois, como registram os slides, "*o primeiro bloco cifrado vira IV e o segundo vira o primeiro bloco*" : repete-se o procedimento deslizando a janela, até a mensagem inteira.
+
+> **A armadilha do último byte.** A varredura de $R[15]$ pode acertar por acidente : se $m[14]$ por acaso valer `02`, o padding `02 02` também é válido. O falso positivo se elimina alterando $R[14]$ e repetindo a consulta — se ainda for aceito, o padding era mesmo `01`.
+
+**O custo, e é aqui que o ataque se justifica.** No máximo 256 consultas por byte, 16 bytes por bloco :
+
+| | Consultas |
+|---|---|
+| Por byte (pior caso / médio) | $256$ / $\approx 128$ |
+| Por bloco de 16 bytes | $\le 4096$ / $\approx 2048$ |
+| Força bruta sobre a chave AES-128 | $2^{128}$ |
+
+Alguns milhares de requisições HTTP contra $2^{128}$. **A chave nunca é atacada** — o ataque contorna a criptografia em vez de enfrentá-la, e é o exemplo mais limpo da disciplina de que *implementação é superfície de ataque*.
+
+**Em que modelo isso se enquadra.** Texto **cifrado escolhido** — CCA. O atacante submete criptogramas de sua escolha e observa a reação. É exatamente o cenário que a Aula 02 usa para justificar por que o padrão moderno é **IND-CCA2** e não algo mais fraco : o padding oracle é a prova empírica de que o adversário CCA não é uma abstração teórica.
+
+### A história real, e por que a primeira correção não bastou
+
+| Ano | Caso | O que era |
+|---|---|---|
+| 2002 | **Vaudenay** | o artigo original ; quebrou implementações de SSL/TLS, IPsec e WTLS |
+| 2010 | **ASP.NET** (MS10-070) | padding oracle em produção ; permitia ler o `web.config` da aplicação |
+| 2013 | **Lucky Thirteen** | o oráculo é **de tempo** — as mensagens de erro já eram iguais |
+| 2014 | **POODLE** | força o *downgrade* para SSLv3, cujo padding CBC é inverificável por construção |
+
+A sequência de correções descrita nos slides é a lição de engenharia :
+
+1. *"Sempre gerar o mesmo erro."* — Insuficiente : sobra o tempo de resposta, e o **Lucky Thirteen** explorou exatamente isso.
+2. *"Sempre levar o mesmo tempo de resposta."* — Necessário, mas é uma disciplina frágil de manter em código real, sujeita a otimizações de compilador e a efeitos de cache.
+3. **A correção de verdade é estrutural** : `Encrypt-then-MAC` ou **AEAD** (AES-GCM, ChaCha20-Poly1305). Com o MAC sobre o criptograma, a tag é verificada **antes** de qualquer decifragem — um criptograma adulterado é rejeitado sem que o padding chegue a ser olhado, e o oráculo deixa de existir. Não há o que vazar porque não há o que computar.
+
+Esse é o fecho do argumento de `Encrypt-then-MAC` que aparece na Aula 13 : a ordem das operações não é preferência de estilo, é o que apaga uma classe inteira de ataques.
+
+---
+
 ## Aula 13 — Consolidação para a P1: os Quatro Blocos Dissertativos
 
 As notas registram a estrutura da prova e os quatro temas dissertativos, mais a lacuna que o professor apontou (Hash & MAC). Como é aula de revisão, o material complementar mais útil é o conteúdo de cada bloco, com os números que uma resposta boa precisa ter.
@@ -416,5 +506,218 @@ O ponto é que essa propriedade é difícil de obter sem um registro **fora do s
 Isso não é uma afirmação sobre a urna brasileira ser insegura — é uma afirmação sobre **que tipo de garantia** cada arquitetura consegue oferecer. A distinção entre "é muito difícil fraudar" e "uma fraude seria necessariamente detectável" é precisamente o tipo de precisão que uma disciplina de segurança deve treinar, e é a razão de a discussão acadêmica sobre voto eletrônico continuar viva mesmo onde os sistemas funcionam bem.
 
 A frase final registrada nas notas — "*melhoria contínua é imperativa*", e a urna de 1996 ser irreconhecível frente à atual — é a postura correta, e é a mesma de qualquer sistema de segurança sério: a garantia nunca é um estado alcançado, é um processo mantido.
+
+---
+
+## Material de Revisão P1 — Funções Resumo : Merkle–Damgård, Davies–Meyer e o Oráculo Aleatório
+
+O material entregue em [provas/p1](../provas/p1/) inclui o deck completo de **funções resumo** e uma lista de exercícios de hash. A Aula 13 cobriu as três propriedades de segurança e o HMAC ; o que faltava era a **construção** — como um hash é montado, e por que montado assim.
+
+### O oráculo aleatório : a ficção que define o alvo
+
+O deck abre com a abstração de **caixa preta** : uma consulta nova recebe uma string aleatória de tamanho fixo, que fica anotada num caderno ; uma consulta repetida recebe a mesma resposta de antes. Esse é o **modelo do oráculo aleatório**, e é o comportamento ideal que um hash deveria ter.
+
+Ele é **impossível**, e a razão é de contagem. O espaço de mensagens é infinito ; o de saídas tem $2^n$ elementos. Pelo **princípio da casa dos pombos**, colisões não apenas existem — existem em quantidade infinita, e nenhum projeto as elimina. Daí a reformulação prática que o deck enuncia :
+
+> Não se exige que colisões não existam. Exige-se que seja **computacionalmente inviável** encontrá-las.
+
+Vale saber que o modelo tem um limite conhecido : **Canetti, Goldreich e Halevi (1998)** construíram esquemas demonstravelmente seguros no modelo do oráculo aleatório e inseguros com **qualquer** função de hash concreta. Provas nesse modelo são, portanto, heurísticas fortes — não garantias. É a razão de a literatura distinguir "seguro no ROM" de "seguro no modelo padrão".
+
+### O paradoxo do aniversário, com a fórmula
+
+O deck de cifras clássicas traz a aproximação que a Aula 13 usou sem enunciar :
+
+$$P_2(m, n) \approx 1 - e^{-n^2 / 2m}$$
+
+onde $m$ é o número de valores possíveis e $n$ o de amostras. Com $m = 365$ :
+
+| $n$ | $P_2$ |
+|---|---|
+| 23 | 0,507 |
+| 30 | 0,706 |
+
+A transposição para hash é direta : $m = 2^n$ saídas possíveis, e a probabilidade de colisão passa de $1/2$ quando o número de amostras chega a $\approx 1{,}18\sqrt{m} = 1{,}18 \cdot 2^{n/2}$. É **exatamente** de onde vem o expoente $n/2$ — não é convenção, é a mesma conta dos aniversários com outro $m$.
+
+### Merkle–Damgård : do bloco para a mensagem
+
+Uma **função de compressão** $h$ processa tamanho fixo : recebe $n + b$ bits (o estado encadeado mais um bloco de mensagem) e devolve $n$. Merkle–Damgård a estende para mensagens arbitrárias :
+
+$$H_0 = \mathrm{IV}, \qquad H_i = h(H_{i-1}, m_i), \qquad H(m) = H_t$$
+
+O último bloco é o **PB** (*padding block*) do diagrama, e sua estrutura importa :
+
+$$\underbrace{1\,0\,0\,0\ldots0}_{\text{separador}} \;\|\; \underbrace{\text{comprimento da mensagem}}_{64 \text{ bits}}$$
+
+Incluir o **comprimento** ali é o *reforço de Merkle–Damgård*, e não é decorativo : sem ele, mensagens de tamanhos diferentes colidem trivialmente por construção do padding. Com ele, vale o teorema que o deck enuncia :
+
+> **Teorema (Merkle–Damgård).** Se a função de compressão $h$ é resistente a colisão, então $H$ é resistente a colisão.
+
+A prova é uma indução para trás, e é curta o suficiente para valer a pena : dada uma colisão $H(m) = H(m')$ com $m \ne m'$, comparem-se os estados encadeados a partir do **último** bloco. Ou em algum ponto entradas diferentes de $h$ produziram a mesma saída — e essa é uma colisão de $h$, contradição — ou todas as entradas coincidem em todos os passos, e então $m = m'$, contradição. O reforço de comprimento é o que fecha o caso em que as mensagens têm tamanhos diferentes.
+
+**O preço da construção.** $H(m)$ **é** o estado interno ao fim do processamento. Quem conhece $H(m)$ e $|m|$ pode continuar a iteração e calcular $H(m \,\|\, \text{padding} \,\|\, s)$ para $s$ arbitrário, **sem conhecer $m$**. Esse é o **ataque de extensão de comprimento**, e é precisamente por isso que o MAC ingênuo $H(k \,\|\, m)$ é quebrado e o HMAC precisa da construção aninhada — o ponto já registrado na Aula 13, agora com a causa estrutural visível.
+
+O **SHA-3 / Keccak** não sofre disso : ele usa construção **esponja**, em que o estado interno é maior que a saída, e a truncagem final destrói a informação necessária para continuar. SHA-512/256 escapa pelo mesmo motivo.
+
+### Davies–Meyer : da cifra de bloco para a função de compressão
+
+Falta um andar : de onde vem $h$? Do **Davies–Meyer**, usado em MD5, SHA-1 e SHA-2 :
+
+$$h(H, m) = E(m, H) \oplus H$$
+
+O detalhe contraintuitivo, e o que mais confunde na hora do exercício : **a mensagem é a chave**, e o estado encadeado é o texto claro. Os tamanhos batem — entrada de $h$ = tamanho da chave + tamanho do bloco ; saída = tamanho do bloco.
+
+**Por que o $\oplus H$ no fim.** Sem ele, $h(H,m) = E(m,H)$ seria **invertível** : conhecendo $m$, qualquer um calcula $D(m, \cdot)$ e caminha para trás na cadeia, construindo pré-imagens à vontade. O XOR de realimentação (*feed-forward*) é o que torna a função unidirecional. É um item de uma linha que decide uma questão de prova.
+
+**Black, Rogaway e Shrimpton (2002)** analisaram as 64 construções possíveis desse tipo e mostraram que, no modelo da cifra ideal, Davies–Meyer atinge o ótimo : $\approx 2^n$ consultas para pré-imagem e $2^{n/2}$ para colisão.
+
+Duas notas práticas : o *key schedule* roda **a cada bloco**, o que é caro — e é a razão de o SHA-2 usar uma cifra dedicada (SHACAL-2) em vez do AES. E, como o atacante controla a chave, o que importa aqui é a segurança da cifra sob **chaves relacionadas**, um requisito muito mais forte do que se pede numa cifra usada apenas para cifrar.
+
+> Os três exercícios de hash do material estão resolvidos, com todos os estados intermediários, na **Parte IV** do [SIMULADO](../provas/p1/SIMULADO.md).
+
+### Senhas : por que *salt* é boa prática e não solução
+
+O deck fecha com um alerta que costuma ser lido rápido demais :
+
+> *Hashear a senha com salt é apenas boa prática. Torna difícil recuperar a senha, não impossível.*
+
+O **salt** resolve um problema específico e apenas ele : impede a **amortização** do ataque. Sem salt, uma tabela arco-íris calculada uma vez serve para todos os vazamentos do mundo, e senhas iguais produzem hashes iguais — o que denuncia quem repete senha. Com salt único por usuário, cada senha exige um ataque próprio.
+
+O que o salt **não** resolve é o **ataque de dicionário**, e a razão é entropia. Dados $H(pw, salt)$ e o $salt$ — que é público e vaza junto —, o atacante testa candidatos até acertar. Isso é viável porque senhas humanas têm entropia baixíssima : seis letras minúsculas são $26^6 \approx 3 \times 10^8 \approx 2^{28}$, o que uma GPU varre em frações de segundo contra um SHA puro.
+
+Daí a diferença já apontada na Aula 13, agora com o motivo completo : para senhas usa-se **bcrypt, scrypt ou Argon2**, funções de **derivação** deliberadamente lentas e com custo de memória ajustável. Elas não aumentam a entropia da senha — elas aumentam o custo de **cada** tentativa, deslocando $2^{28}$ tentativas baratas para $2^{28}$ tentativas caras. Velocidade é vantagem do atacante offline ; a defesa é tirá-la dele.
+
+A lista de vazamentos do deck mostra o estado real da prática :
+
+| Ano | Caso | Como as senhas estavam |
+|---|---|---|
+| 2010 | Gawker Media | 1,3 milhão em **texto claro** |
+| 2012 | LinkedIn | 6,5 milhões em **hash sem salt** |
+| 2012 | Yahoo Voices | meio milhão em **texto claro** |
+| 2012 | IEEE | 100 mil em **texto claro** |
+
+E a consequência que fecha o tema da Aula 13 : uma colisão em hash de assinatura de código não é hipótese. O **Flame** (2012) forjou um certificado que aparentava vir da Microsoft explorando uma colisão de MD5 no serviço de licenciamento do Terminal Server.
+
+---
+
+## Material de Revisão P1 — Cifras Clássicas : Confusão, Difusão e o Método de Friedman
+
+O deck de cifras clássicas entregue para a P1 abre com um critério que a Aula 04 usou implicitamente sem nomear, e é o critério que organiza a disciplina inteira.
+
+### Confusão e difusão : o critério de Shannon
+
+| | **Confusão** | **Difusão** |
+|---|---|---|
+| Mecanismo | substituição | transposição / permutação |
+| Objetivo | tornar a relação entre **chave** e criptograma o mais complexa possível | espalhar a **redundância** do texto claro por todo o criptograma |
+| Sozinha, cai por | análise de frequência | frequências intactas denunciam a cifra |
+
+O deck usa esse par para explicar cada fracasso clássico, e a leitura é a mesma em toda a linha :
+
+- **Substituição monoalfabética** oferece confusão e **nenhuma** difusão. Cada letra guarda sua estatística ⇒ análise de frequência.
+- **Transposição** oferece difusão e **nenhuma** confusão. As contagens de letras ficam idênticas às do texto claro ⇒ a própria preservação a denuncia.
+- **Vigenère** tem um pouco dos dois, e é por isso que durou três séculos. Mas, nas palavras do deck, "*a transposição não distribui as informações de maneira aleatória*" — sobra padrão, e padrão é o que o Kasiski e o índice de coincidência exploram.
+
+> **Lição :** uma cifra segura combina confusão **e** difusão, e produz criptograma indistinguível de aleatório.
+
+É literalmente o critério que a Aula 02 enuncia como definição formal de segurança — o deck chega nele por outro caminho. E é o que as cifras modernas fazem, em rodadas :
+
+| | Confusão | Difusão |
+|---|---|---|
+| **AES** (rede SP) | `SubBytes` (S-box não linear) | `ShiftRows` + `MixColumns` |
+| **DES** (Feistel) | S-boxes | permutação `P` + estrutura Feistel |
+
+Nenhuma rodada isolada é segura ; a segurança vem da **composição repetida** (10 rodadas no AES-128, 16 no DES). A métrica que se usa para verificar se a composição funcionou é o **efeito avalanche** : virar **um** bit da entrada deve virar aproximadamente **metade** dos bits da saída. É o mesmo critério que o deck de hash cita como propriedade de uma função resumo criptográfica.
+
+### A taxonomia completa das substituições
+
+A Aula 04 cobriu as duas primeiras ; o deck lista quatro :
+
+| Tipo | Como funciona | Exemplo | Como cai |
+|---|---|---|---|
+| **Monoalfabética** | um alfabeto fixo | César, ROT13 | frequência de letras |
+| **Polialfabética** | vários alfabetos alternados | Vigenère | Kasiski / IC, depois César $m$ vezes |
+| **Homofônica** | um símbolo do claro ↦ **vários** possíveis | Zodiac Z408, cifras de Beale | frequências achatadas de propósito ⇒ exige digramas e contexto |
+| **Poligrâmica** | substitui **grupos** de letras | Playfair, Hill | frequência de digramas / álgebra linear |
+
+Duas notas de vocabulário. O slide escreve "*monofônicas*" para o terceiro tipo — o termo consagrado é **homofônica** (vários símbolos cifrados correspondem ao mesmo claro), e é assim que aparece na bibliografia ; vale escrever o nome certo na prova. E o ponto conceitual : a substituição homofônica é a primeira ideia clássica que ataca a análise de frequência **na raiz**, distribuindo as letras comuns por vários símbolos para achatar a distribuição. Não basta — resta a estrutura de digramas —, mas é o ancestral direto da exigência moderna de saída indistinguível de aleatório.
+
+### ROT13, e a pergunta "por que não ROT14?"
+
+A pergunta do slide tem resposta de uma linha : **13 = 26/2**, então ROT13 é uma **involução** — aplicá-la duas vezes devolve o original. Cifrar e decifrar são a mesma operação, o que permite uma única função, um único comando, nenhum parâmetro. Com ROT14 seria preciso ROT12 para desfazer.
+
+E o ponto que a resposta deve conter : ROT13 **não é criptografia**, porque não tem chave. É ofuscação — esconder *spoilers* e piadas ofensivas na Usenet —, e a propriedade desejada era conveniência, não sigilo. Curiosamente, a mesma autorreciprocidade que torna o ROT13 conveniente é a que condenou a **Enigma** (Aula 03) : o refletor foi adotado pela mesma razão de comodidade operacional. A propriedade é a mesma ; o que muda é que uma delas pretendia ser segura.
+
+### O método de Friedman, operacionalmente
+
+A Aula 04 apresentou o índice de coincidência como ferramenta de **triagem** — que tipo de cifra está na frente. O deck mostra o segundo uso, que é mais fino : **determinar o comprimento da chave** de um Vigenère.
+
+O procedimento :
+
+1. Escolha um candidato $m$ para o comprimento da chave.
+2. Reescreva o criptograma em $m$ colunas, tomando uma letra a cada $m$ :
+   $$c^{(1)} = c_1 c_{m+1} c_{2m+1}\ldots \qquad c^{(2)} = c_2 c_{m+2} c_{2m+2}\ldots$$
+3. Calcule o IC de **cada coluna** separadamente.
+4. Se $m$ estiver certo, cada coluna foi cifrada por **uma única** César — logo todas devem dar $\mathrm{IC} \approx 0{,}065$ (inglês) ou $0{,}072$ (português). Se $m$ estiver errado, as colunas misturam deslocamentos diferentes e parecem aleatórias : $\mathrm{IC} \approx 0{,}038$.
+
+O valor aleatório sai de uma conta de uma linha :
+
+$$\mathrm{IC}_{\text{aleatório}} = \sum_{i=0}^{25}\left(\tfrac{1}{26}\right)^2 = 26 \cdot \tfrac{1}{676} = \tfrac{1}{26} \approx 0{,}0385$$
+
+A tabela do deck é o método em ação :
+
+| $m$ | IC por coluna | Veredito |
+|---|---|---|
+| 1 | 0,043 | baixo |
+| 2 | 0,052 ; 0,051 | baixo |
+| 3 | 0,050 ; 0,059 ; 0,045 | irregular |
+| 4 | 0,049 ; 0,053 ; 0,052 ; 0,051 | baixo |
+| **5** | **0,071 ; 0,063 ; 0,070 ; 0,083 ; 0,062** | **todas altas ⇒ $m = 5$** |
+| 6 | 0,034 ; 0,050 ; 0,048 ; 0,038 ; 0,045 ; 0,048 | baixo |
+| 7 | 0,033 ; 0,041 ; 0,038 ; 0,046 ; 0,041 ; 0,040 ; 0,047 | baixo |
+
+O que se procura é a linha em que **todas** as colunas sobem juntas — não a maior média. Achado $m = 5$, cada coluna vira uma César isolada, e 26 tentativas por coluna encerram o problema.
+
+> **Detalhe que decide questão :** **múltiplos** do comprimento verdadeiro também dão IC alto (com $m = 5$ correto, $m = 10$ e $m = 15$ igualmente funcionam, com metade e um terço dos dados por coluna). Toma-se sempre o **menor** $m$ que faz todas as colunas subirem.
+
+Friedman ainda deixou uma estimativa fechada, útil quando se quer um chute inicial sem varrer $m$ :
+
+$$m \approx \frac{0{,}027\,N}{(N-1)\cdot \mathrm{IC} - 0{,}038\,N + 0{,}065}$$
+
+**Kasiski ou Friedman?** Os dois, e são complementares :
+
+| | **Kasiski** (1863) | **Friedman** (década de 1920) |
+|---|---|---|
+| Natureza | combinatória — MDC das distâncias entre repetições | estatística — IC por coluna |
+| Precisa de | repetições de 3+ letras no criptograma | volume de texto |
+| Falha quando | o texto é curto ou há poucas repetições | o texto é curto demais para a estatística |
+| Automatizável | sim, mas sensível a coincidências espúrias | sim, e é o método usado na prática |
+
+Na prática roda-se Kasiski para obter candidatos e Friedman para confirmar.
+
+### Os quatro modelos de ataque, com âncoras históricas
+
+A Aula 02 lista a escada COA → KPA → CPA → CCA. O deck dá a cada degrau um caso concreto, e é isso que transforma a lista em resposta dissertativa :
+
+| Modelo | Caso do deck | O que o torna aquele modelo |
+|---|---|---|
+| **COA** — só criptograma | Enigma : "elos e correntes" | análise puramente estrutural do tráfego, sem texto claro |
+| **KPA** — claro conhecido | Enigma : os *cribs* | boletins meteorológicos previsíveis, **observados**, não escolhidos |
+| **CPA** — claro escolhido | **Batalha de Midway** (1942) | ver abaixo |
+| **CCA** — cifrado escolhido | "ataque na hora do almoço" | acesso temporário a um oráculo de decifragem |
+
+**Midway** merece o parágrafo, porque é o exemplo canônico de CPA e raramente é contado direito. A inteligência americana lia parcialmente o código naval japonês **JN-25** e sabia que um grande ataque visava um alvo chamado `AF` — sem saber qual era. A hipótese era Midway. Para confirmar, ordenaram que Midway transmitisse **em texto claro**, por um canal que sabiam monitorado, que sua usina de dessalinização havia quebrado. Dias depois, o tráfego japonês cifrado informava que `AF` estava com falta de água. Confirmado o alvo, os porta-aviões americanos esperaram a frota japonesa na emboscada que virou a guerra no Pacífico.
+
+Isso é exatamente a definição de **texto claro escolhido** : o atacante **injeta** um texto claro de sua escolha no sistema e observa o criptograma resultante. O detalhe que costuma ser cobrado é que a injeção não precisa ser direta — basta induzir o alvo a cifrar algo conhecido.
+
+E o **"ataque na hora do almoço"** (*lunchtime attack*) é o apelido do **CCA1**, o modelo não-adaptativo : o atacante tem acesso à máquina de decifragem por um período limitado — enquanto o operador almoça — e depois precisa trabalhar só com o que coletou. Distingue-se do **CCA2** (adaptativo), em que o acesso ao oráculo continua depois de ver o criptograma alvo. É contra o CCA2 que se exige segurança hoje, e o **padding oracle** da Aula 11 é justamente um oráculo CCA2 na vida real : o servidor responde para sempre, não só na hora do almoço.
+
+### Referências para ir além
+
+- **Serge Vaudenay, "Security Flaws Induced by CBC Padding" (EUROCRYPT 2002)** — o artigo original do padding oracle. Curto e legível.
+- **Ivan Damgård, "A Design Principle for Hash Functions"** e **Ralph Merkle, "One Way Hash Functions and DES"** (ambos CRYPTO 1989) — os dois artigos independentes que fundam a construção.
+- **Black, Rogaway & Shrimpton, "Black-Box Analysis of the Block-Cipher-Based Hash-Function Constructions" (CRYPTO 2002)** — a análise das 64 variantes que justifica Davies–Meyer.
+- **Cryptopals, conjuntos 2 e 3** — os desafios 16 (*bit-flipping* em CBC) e 17 (*padding oracle*) implementam exatamente esta aula. Fazer o 17 uma vez vale mais que ler o ataque cinco vezes.
+- **Friedrich Kasiski, *Die Geheimschriften und die Dechiffrir-Kunst* (1863)** e **William Friedman, *The Index of Coincidence and Its Applications in Cryptography* (1922)** — as duas fontes primárias da criptanálise de Vigenère.
+- **`hashcat` e `John the Ripper`** — rodar um ataque de dicionário contra SHA-256 e depois contra bcrypt, na mesma máquina, torna a diferença de custo por tentativa impossível de esquecer.
 
 ---
