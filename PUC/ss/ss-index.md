@@ -33,4 +33,6 @@
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
+- [Dicionário de conceitos](./IA/dicionario.md)
+	- 112 verbetes em ordem alfabética, tirados das adições e do simulado da P1 : conceito, área e caso de uso. Tem índice por área para revisar um bloco da prova de cada vez.
 
