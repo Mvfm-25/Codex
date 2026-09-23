@@ -4,31 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "86b556ac915e7cfa",
+        "id": "83ddf5dd21149942",
         "type": "tabs",
         "children": [
           {
-            "id": "eb9b7756ecb96d55",
+            "id": "872ea988ed9ff520",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/mf/aula14.md",
+                "file": "PUC/cc/aula16.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula14"
-            }
-          },
-          {
-            "id": "2e41bfca9829d783",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "aula16"
             }
           }
         ]
@@ -217,25 +207,36 @@
       "pexels-banner:🚩 Pixel Banner Menu": false
     }
   },
-  "active": "eb9b7756ecb96d55",
+  "active": "872ea988ed9ff520",
   "lastOpenFiles": [
+    "PUC/cc/cc-index.md",
+    "PUC/Index.md",
+    "PUC/cc/aula13.md",
+    "PUC/cc/aula14.md",
+    "PUC/cc/aula16.md",
+    "PUC/mn/aula15-2.md",
+    "PUC/ss/provas/p1/SIMULADO.md",
+    "PUC/ss/aula13.md",
+    "PUC/ss/IA/dicionario.md",
+    "PUC/ss/provas/p1/SS___Exercício_Hash.pdf",
+    "PUC/mn/aula15.md",
+    "PUC/mn/aula14-2.md",
+    "PUC/assets/felpudas.jpg",
+    "PUC/assets/felpudas1.jpg",
+    "PUC/mn/aula14.md",
+    "PUC/mf/aula14.md",
     "PUC/assets/prova_quest4.png",
     "PUC/assets/esp_max.png",
-    "PUC/mf/aula14.md",
     "PUC/mf/aula13.md",
     "PUC/mf/IA/adicoes.md",
     "PUC/assets/natalinas.png",
     "PUC/mf/atividades/RevisaoP1.pdf",
     "PUC/mn/aula05.md",
     "16-09-2026.md",
-    "PUC/Index.md",
     "PUC/ss/aula14.md",
-    "PUC/cc/aula14.md",
     "PUC/ss/aula14.md[",
     "PUC/assets/exemplo_clr1.png",
     "PUC/assets/exemplo_clr.png",
-    "PUC/ss/aula13.md",
-    "PUC/cc/aula13.md",
     "PUC/assets/pontos.png",
     "PUC/mn/aula06-2.md",
     "PUC/cc/aul13.md",
@@ -251,20 +252,9 @@
     "PUC/assets/one-time-pad.png",
     "PUC/cc/aula08.md",
     "PUC/assets/uso_la.png",
-    "PUC/assets/uso_top-down.png",
-    "PUC/assets/em_pilhas.png",
-    "PUC/lso/aula06.md",
-    "PUC/cc/aula06.md",
-    "PUC/assets/restrictions.png",
-    "PUC/lso/aula01.md",
-    "PUC/mn/aula04-2.md",
-    "PUC/mf/mf-index.md",
-    "PUC/mf/aula02.md",
-    "PUC/mf/aula05.md",
     "PUC/cc/atividades/jflex_manual.pdf",
     "PUC/cc/atividades/meuLexico.zip",
     "PUC/lso/atividades/embedded-linux-slides.pdf",
-    "PUC/lso/atividades",
     "PUC/Untitled.canvas"
   ]
 }
