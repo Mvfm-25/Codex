@@ -64,6 +64,12 @@
 	- Solução de equações — **bisecção**, método da **secante** (convergência pela razão áurea) e **Método de Newton** com convergência quadrática.
 - [Aula 10 - 2026/2](./aula10-2.md)
 	- **Método de Aberth** — todas as raízes de um polinômio de uma vez, evolução de **Weierstrass** com repulsores entre os "newtons".
+- [Aula 14 - 2026/2](./aula14-2.md)
+	- Revisão de **Gauss-Jacobi**, **Gauss-Seidel** (que perdeu para o Jacobi no programa do JB), o método em blocos da Agatha e a volta das criaturas felpudas.
+- [Aula 15 - 2026/2](./aula15-2.md)
+	- **Decomposição LU** — fatorar $A = LU$ para resolver o sistema das criaturas felpudas com vários pontos de partida, por substituição progressiva e regressiva.
+- [Aula 16 - 2026/2](./aula16-2.md)
+	- **Mínimos quadrados** — derivação das equações normais para o modelo $ax^2 + bx + c + d\cos x$, e o aviso de que modelos com $e^{bx}$ não geram sistema linear.
 ---
 ### Arquivos
 **Atividades**
@@ -79,6 +85,8 @@
 	- Laboratório — interpolação polinomial.
 - [Resolução dos ExLabs](./atividades/exlab-resolucao.md)
 	- Resolução passo a passo dos ExLabs 1–3, ligando cada questão ao conteúdo formal das aulas.
+- [Lista de Exercícios 2026/2](./atividades/lista-2.md)
+	- Objetivas + 5 questões de cálculo com gabarito comentado, uma por bloco (IEEE 754, polinômios, solução de equações, sistemas lineares, mínimos quadrados). Ancoradas em casos reais — Bolsa de Vancouver, *Quake III*, o sistema em que o Seidel diverge na aula14, e Ceres.
 **Trabalhos**
 - [T1 — Enunciado](./trabalhos/t1/t1.pdf)
 	- Enunciado do primeiro trabalho.
@@ -88,3 +96,5 @@
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
 - [Material complementar gerado por IA — 2026/2](./IA/adicoes-2.md)
+- [Dicionário de conceitos — 2026/2](./IA/dicionario-2.md)
+	- 87 verbetes em ordem alfabética, tirados das aulas `-2`, de `adicoes-2.md` e da lista : conceito, área e caso de uso. Tem índice por área para revisar um bloco de cada vez.
