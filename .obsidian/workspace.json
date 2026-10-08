@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/ss/aula19.md",
+                "file": "PUC/ss/aula20.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aula19"
+              "title": "aula20"
             }
           }
         ]
@@ -209,6 +209,11 @@
   },
   "active": "a1e4ad5304932607",
   "lastOpenFiles": [
+    "PUC/assets/geradores.png",
+    "PUC/assets/uso_fermat.png",
+    "PUC/cc/aula20.md",
+    "PUC/cc/atividades/mini-global-byaccj.zip",
+    "PUC/ss/aula19.md",
     "PUC/assets/inverso.png",
     "PUC/assets/mdc.png",
     "PUC/mn/atividades/lista-2-prova.md",
@@ -246,15 +251,10 @@
     "PUC/pdj/aula16.md",
     "PUC/cc/aula16.md",
     "PUC/cc/cc-index.md",
-    "PUC/Index.md",
-    "PUC/cc/aula13.md",
     "PUC/ss/provas/p1/SS___Exercício_Hash.pdf",
     "PUC/assets/felpudas.jpg",
     "PUC/assets/felpudas1.jpg",
-    "PUC/assets/prova_quest4.png",
-    "PUC/assets/esp_max.png",
     "PUC/mf/atividades/RevisaoP1.pdf",
-    "PUC/ss/aula14.md[",
     "PUC/Untitled.canvas"
   ]
 }
