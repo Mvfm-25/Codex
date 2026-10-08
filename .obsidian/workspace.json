@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "PUC/ss/aula20.md",
+                "file": "PUC/lso/aula20.md",
                 "mode": "preview",
                 "source": false
               },
@@ -209,6 +209,9 @@
   },
   "active": "a1e4ad5304932607",
   "lastOpenFiles": [
+    "PUC/assets/runqueue.webp",
+    "PUC/assets/scheduler.webp",
+    "PUC/ss/aula20.md",
     "PUC/assets/geradores.png",
     "PUC/assets/uso_fermat.png",
     "PUC/cc/aula20.md",
@@ -250,10 +253,7 @@
     "PUC/mn/aula16.md",
     "PUC/pdj/aula16.md",
     "PUC/cc/aula16.md",
-    "PUC/cc/cc-index.md",
     "PUC/ss/provas/p1/SS___Exercício_Hash.pdf",
-    "PUC/assets/felpudas.jpg",
-    "PUC/assets/felpudas1.jpg",
     "PUC/mf/atividades/RevisaoP1.pdf",
     "PUC/Untitled.canvas"
   ]
