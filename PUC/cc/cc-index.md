@@ -30,6 +30,10 @@
 - [Aula14](./aula14.md)
 	- Tabelas **Action & GoTo**, limites do LR(0) e a adição de lookahead — SLR(1), LR(1) canônico e LALR(1).
 ---
+### Resumos
+- [Resumo — Análise Semântica](./IA/resumo-analise-semantica.md)
+	- TDS (atributos, SDD/SDT, S/L-atribuídas), BYACC/J, tabela de símbolos, escopos e verificação de tipos.
+---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
 
