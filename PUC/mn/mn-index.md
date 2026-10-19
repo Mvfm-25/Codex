@@ -87,6 +87,8 @@
 	- Resolução passo a passo dos ExLabs 1–3, ligando cada questão ao conteúdo formal das aulas.
 - [Lista de Exercícios 2026/2](./atividades/lista-2.md)
 	- Objetivas + 5 questões de cálculo com gabarito comentado, uma por bloco (IEEE 754, polinômios, solução de equações, sistemas lineares, mínimos quadrados). Ancoradas em casos reais — Bolsa de Vancouver, *Quake III*, o sistema em que o Seidel diverge na aula14, e Ceres.
+- [Lista no formato da prova 2026/2](./atividades/lista-2-prova.md)
+	- Três simulados de 7 questões curtas, copiando a estrutura da G2 do JB ([folhas da prova](./provas/p1-2026-2/)) sobre o conteúdo das aulas `-2`. Resposta recolhível logo abaixo de cada questão.
 **Trabalhos**
 - [T1 — Enunciado](./trabalhos/t1/t1.pdf)
 	- Enunciado do primeiro trabalho.
