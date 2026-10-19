@@ -70,6 +70,8 @@
 	- **Decomposição LU** — fatorar $A = LU$ para resolver o sistema das criaturas felpudas com vários pontos de partida, por substituição progressiva e regressiva.
 - [Aula 16 - 2026/2](./aula16-2.md)
 	- **Mínimos quadrados** — derivação das equações normais para o modelo $ax^2 + bx + c + d\cos x$, e o aviso de que modelos com $e^{bx}$ não geram sistema linear.
+- [Aula 17 - 2026/2](./aula17.md)
+	- Revisão pré-prova — de onde saem as matrizes **L** e **U** a partir de Gauss e como **mínimos quadrados** pode cair na prova (ajuste de reta).
 ---
 ### Arquivos
 **Atividades**

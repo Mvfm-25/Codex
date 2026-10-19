@@ -23,6 +23,12 @@
 	- Introdução ao provador de teoremas **Isabelle** — arquivos `.thy`, `datatype nat` (`0 | Suc`) e definições `primrec` / `fun`.
 - [Aula13](./aula13.md)
 	- Aula de atividades — funções recursivas (POT2, FAT, FIB, SOMA, MULT) e prova por indução em Isabelle, com caso base e passo indutivo.
+- [Aula14](./aula14.md)
+	- Revisão para a P1 — definição indutiva de árvores "natalinas", especificação recursiva de `max` com pré/pós-condições e prova por indução.
+- [Aula17](./aula17.md)
+	- **Lógica de Floyd-Hoare** — triplas `(|P|) C (|Q|)`, linguagem imperativa simplificada, pré-condição mais fraca e introdução ao **Dafny**.
+- [Aula20](./aula20.md)
+	- Correção da P1 e **arrays no Dafny**.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

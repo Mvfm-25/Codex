@@ -25,6 +25,12 @@
 	- Build do Buildroot e execução no **QEMU** via `start-qemu.sh`; configuração de rede — switch virtual, **NAT** e port forwarding.
 - [Aula07](./aula07.md)
 	- Etapa 1.3 do tutorial — medição de desempenho de rede com **iperf**.
+- [Aula16](./aula16.md)
+	- Registro de progresso no repositório da disciplina — desafio 1 da etapa 2.2 resolvido.
+- [Aula20](./aula20.md)
+	- **Escalonamento no Linux** — classes de escalonamento, tutorial 3.0 (**SCHED_LOW_IDLE**), princípios do scheduler e a **runqueue**.
+- [Aula22](./aula22.md)
+	- Funcionamento de **debuggers** via *function tracing* e a arquitetura do **GDBServer**.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)

@@ -29,6 +29,16 @@
 	- Análise sintática ascendente — shift-reduce, itens LR(0), closure & go-to, e conflitos shift-reduce / reduce-reduce (dangling else).
 - [Aula14](./aula14.md)
 	- Tabelas **Action & GoTo**, limites do LR(0) e a adição de lookahead — SLR(1), LR(1) canônico e LALR(1).
+- [Aula16](./aula16.md)
+	- Correção de exercícios de **CLR(1)** com lookahead, raciocínio shift/reduce na pilha e por que a recursão à esquerda é preferível.
+- [Aula17](./aula17.md)
+	- **BYACC/J** na prática (módulo de análise ascendente) e aviso da **P2** em 19/10.
+- [Aula18](./aula18.md)
+	- **Tradução dirigida por sintaxe** — gramáticas de atributos, atributos sintetizados & herdados, SDD S/L-atribuídas e árvore sintática anotada.
+- [Aula20](./aula20.md)
+	- Introdução à **verificação semântica** — por que a gramática não basta, tabela de símbolos, escopos e sistemas de tipos; validade não é correção.
+- [Aula21](./aula21.md)
+	- Revisão pré-prova da **P2** e atividade preparatória.
 ---
 ### Resumos
 - [Resumo — Análise Semântica](./IA/resumo-analise-semantica.md)

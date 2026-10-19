@@ -30,6 +30,14 @@
 	- Estrutura da prova — conceitos de criptografia, **One-Time-Pad**, cifras de bloco (DES, 3DES, AES, *Meet-In-The-Middle*) e Pentest de rede.
 - [Aula14](./aula14.md)
 	- Apresentação do **TSE** sobre a urna eletrônica — auditoria do código-fonte, testes públicos de segurança e o **Módulo de Segurança Embarcado**.
+- [Aula17](./aula17.md)
+	- **Gestão de riscos** com professor convidado — níveis estratégico/tático/operacional, pessoas-processos-tecnologia, GRC e Risco = Probabilidade × Impacto.
+- [Aula18](./aula18.md)
+	- Correção da P1.
+- [Aula19](./aula19.md)
+	- **Aritmética modular** para criptografia assimétrica — notação $Z_n$, MDC, co-primos e inverso modular.
+- [Aula20](./aula20.md)
+	- Teoremas de **Fermat** e **Euler**, equações lineares em $Z_n$ e geradores de grupos cíclicos.
 ---
 ### Adições IA
 - [Material complementar gerado por IA](./IA/adicoes.md)
