@@ -2,14 +2,20 @@
 ## Professor : [Júlio Henrique Machado]()
 ---
 ### Provas / Trabalhos
-- Nenhum trabalho ainda especificado no cronograma, mas a média de G1 é calculado por :
+- A média de G1 é calculada por :
 	- **$(P1 + P2 + MT) / 3$**
-- P1
-	- ?
-- P2
+- [T1](https://moodle.pucrs.br/mod/assign/view.php?id=3903823)
+	- [Definição](https://moodle.pucrs.br/course/view.php?id=96344&section=4) e [arquivo base](https://moodle.pucrs.br/mod/resource/view.php?id=3907237) no card TDE. Entrega **29/09, 23:59**.
+- T2
+	- ? — Card criado no Moodle, ainda sem enunciado.
+- P1 — 22/09
+	- [Exercícios para P1](https://moodle.pucrs.br/mod/resource/view.php?id=3789365)
+- P2 — 01/12
 	- ?
 ---
 ### Aulas
+- [Página da disciplina no Moodle](https://moodle.pucrs.br/course/view.php?id=96344)
+	- Cards : Introdução a Métodos Formais, Revisão (Lógica e Especificação), Especificações Indutivas e Recursivas, Provas por Indução, Verificação de Programas e Exercícios de Revisão para Provas.
 - [Cronograma do Semestre](https://sarc.pucrs.br/Default/Export.aspx?id=77616be2-0972-4859-a062-15e9980a0738&ano=2026&sem=2)
 - [Aula01](./aula01.md)
 	- Aula introdutória da disciplina.

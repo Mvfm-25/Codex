@@ -1,11 +1,14 @@
 # Segurança de Sistemas
 ## Professor : [Henry](https://www.escavador.com/sobre/277423044/henry-cabral-nunes)
 ---
+### Avaliação
+- **$G1 = (P1 + P2 + MT) / 3$** — P1 cobre as unidades 1, 2 e 3; P2 cobre todas; MT pode ter pesos diferentes por trabalho.
+---
 ### Trabalhos
-- T1
-	- ?
-- T2
-	- ?
+- [T1 — Trios](https://moodle.pucrs.br/mod/resource/view.php?id=3826071)
+	- Enunciado em trios, com material de apoio *Dom Casmurro*. [Entrega](https://moodle.pucrs.br/mod/assign/view.php?id=3826073) até **23/09, 23:59**.
+- [T2](https://moodle.pucrs.br/course/view.php?id=95448&section=4)
+	- Trabalho em grupo com apresentação. [Grupos T2](https://moodle.pucrs.br/mod/groupselect/view.php?id=3826076) abertos em 19/10; [entrega dos slides](https://moodle.pucrs.br/mod/assign/view.php?id=3826077) até **16/11, 16:28**.
 ---
 ### Provas
 - [P1 — Simulado](./provas/p1/SIMULADO.md)
@@ -15,7 +18,9 @@
 	- Decks e listas entregues pelo professor para a P1.
 ---
 ### Aulas
-- [Cronograma do Semestre]()
+- [Página da disciplina no Moodle](https://moodle.pucrs.br/course/view.php?id=95448)
+	- Cards : Cifras clássicas, Cifras de bloco, Integridade de mensagens, Pentest de rede, Aritmética modular, Algoritmos para troca de chaves e Criptografia assimétrica.
+- [Cronograma do Semestre](https://moodle.pucrs.br/mod/url/view.php?id=3826054)
 - [Aula02](./aula02.md)
 	- Aula incial, entedimento inicial dos fundamentos de segurança, criptografia, cifras & chaves. 
 	- Atividade prática no final.

@@ -74,37 +74,42 @@ banner: "![[32banner.webp]]"
 - **Agosto**
 	1. [05/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
 	2. [12/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	3. [19/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	4. [26/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	3. [19/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (SMA M2 - Atividade prática)
+	4. [26/08] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (SMA E1)
 ---
 - **Setembro**
-	1. [01/09] **Laboratório de Sistemas Operacionais** - T1 [Apresentação?]
-	2. [02/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	3. [02/09] **Construção de Compiladores** - T1 [Prático]
-	4. [09/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	1. [02/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (HCR UA1 & SMA M4 - Fila simples)
+	2. [03/09] **Laboratório de Sistemas Operacionais** - TP1 [SystemInfo, até 17:30]
+	3. [09/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	4. [09/09] **Construção de Compiladores** - T1 [ASDR, até 19:15 - início da P1]
 	5. [09/09] **Construção de Compiladores** - P1
-	6. [16/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	6. [16/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (SMA M6 - Filas em tandem)
 	7. [22/09] **Métodos Formais para Computação** - P1
 	8. [23/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	9. [30/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	9. [23/09] **Segurança de Sistemas** - T1 [Trios]
+	10. [29/09] **Métodos Formais para Computação** - T1
+	11. [30/09] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (HCR UA2)
 ---
 - **Outubro**
-	1. [01/10] **Laboratório de Sistemas Operacionais** - T2 [Apresentação?]
+	1. [01/10] **Laboratório de Sistemas Operacionais** - TP2 [Syscall, driver & SSTF, até 17:30]
 	2. [01/10] **Métodos Numéricos** - P1
-	3. [07/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	4. [14/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	5. [19/10] **Construção de Compiladores** - P2
-	6. [21/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	7. [21/10] **Construção de Compiladores** - T2 [Apresentção]
-	8. [28/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	3. [07/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (SMA T1)
+	4. [14/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (SMA T2)
+	5. [14/10] **Construção de Compiladores** - Tarefa de Verificação Semântica
+	6. [15/10] **Métodos Numéricos** - Trabalho sobre sistemas lineares
+	7. [19/10] **Construção de Compiladores** - P2
+	8. [21/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (SMA E2)
+	9. [21/10] **Construção de Compiladores** - T2 [Apresentção]
+	10. [28/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (HCR UA3 & SMA E3)
 ---
 - **Novembro**
 	1. [03/11] **Laboratório de Sistemas Operacionais** - T3 [Apresentação?]
 	2. [04/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
 	3. [11/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	4. [18/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	5. [23/11] **Construção de Compiladores** - T3 [Apresentação]
-	6. [25/11] **Construção de Compiladores** - P3
+	4. [16/11] **Segurança de Sistemas** - T2 [Entrega dos slides, até 16:28]
+	5. [18/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	6. [23/11] **Construção de Compiladores** - T3 [Apresentação]
+	7. [25/11] **Construção de Compiladores** - P3
 ---
 - **Dezembro**
 	1. [01/12] **Laboratório de Sistemas Operacionais** - T4 [Apresentação?]

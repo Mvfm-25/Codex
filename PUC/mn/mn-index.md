@@ -1,6 +1,9 @@
 # Métodos Numéricos
 ## Professor : João Batista
 ---
+### **Avaliação** — 2026/2
+- **$G1 = (P1 + P2 + MT) / 3$** — P1 em 01/10, P2 em 01/12.
+---
 ### **Trabalhos**
 - [T1]
 	- [N/a]
@@ -8,9 +11,13 @@
 	- [N/a]
 - [T3]
 	- [N/a]
+- [Trabalho sobre sistemas lineares — 2026/2](https://moodle.pucrs.br/mod/assign/view.php?id=3781170)
+	- Enunciado em `t2.pdf` no Moodle. Entrega **15/10, 23:55**.
 ---
 ### **Aulas**
-- [Cronograma do Semestre]()
+- [Página da disciplina no Moodle](https://moodle.pucrs.br/course/view.php?id=96346)
+	- Cards : Padrão IEEE, Solução de equações, Sistemas lineares, Cadeias de Markov, Interpolação, Otimização e Diferenciação, Sistemas dinâmicos e Listas de exercícios.
+- [Cronograma do Semestre](https://www.inf.pucrs.br/oliveira/metodos/)
 - [Aula 03](./aula03.md)
 	- Padrão **IEEE 754**, notação científica e representação binária de decimais.
 - [Aula 04](./aula04.md)
