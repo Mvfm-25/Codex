@@ -103,8 +103,8 @@ banner: "![[32banner.webp]]"
 	10. [28/10] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA (HCR UA3 & SMA E3)
 ---
 - **Novembro**
-	1. [03/11] **Laboratório de Sistemas Operacionais** - T3 [Apresentação?]
-	2. [04/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+	1. [04/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
+    2. [10/11] **Laboratório de Sistemas Operacionais** - T3 [Apresentação & Entrega]
 	3. [11/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
 	4. [16/11] **Segurança de Sistemas** - T2 [Entrega dos slides, até 16:28]
 	5. [18/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA

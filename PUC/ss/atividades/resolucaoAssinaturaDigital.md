@@ -1,0 +1,17 @@
+# Segurança de Sistemas - Atividades de Assinatura Digital
+## [28-10][mvfm]
+---
+## Segue a pipeline [HashOnline](https://hashonline.net/hashes/sha256/) -> [KeyGenerator](https://cryptotools.net/rsagen) -> [RSA Encryption](https://emn178.github.io/online-tools/rsa/encrypt/)
+
+---
+### Geração de assinaturas digitais
+Calcule a assinatura digital das seguintes mensagens usando os sites acima :
+- Tênis
+**R** :
+    59f24d54a2ad7503ab13105d389271f78fd5e096c8b2bbb6f656be1dd4f9bb062b5a425f9279ebd5719eade73c05c7acd026ad1ad0873e0fea5afa8c1e539d1b0ceefd77788e53f13977ec9d8521c7c1b74a3b38b5db379418d04e5ce796b44ae07a467b0938ac1380e1586a81ff8661cca5dcb25c2249a6030fc3b82a6029fa5ded674ba2b9ae987c104e8e1436c2926be99681410bc34c1ca244c835e8f38dc8c0900f01288d1ed37c258c11af9168e3720f2695b3201bb8d3d2c030dce25259abc5efbb309dcc2d2ae4973405aa16df3e1b80fd868ea208a9f243c56c0294bf63bbb5ba1d7de3af6a0f710e915dd00de3ba62f45bff7998adf0076cab6ad8 + Tênis
+
+- Poste
+**R** :
+    04e95ae9ee1fbd06c6b5a48fb84f2edba51312d7deb5bcd9e04daf39bd9e0578f034526ff603744434c2c5f4af407f7916cb92f59bc9a101bbe31bf67ce41bb1b8ec00ec6641bb7f3f62574a9fda49a1dd789ecd523f4eb6bcbe3ce7c0c01c7f1b086874aa8a338c5ea683476d48505a98eb9b26c85f08437d35bf4aa07cbde7c2f00f3fb6b328cc93151e51f9070cb677067859e4d5a02cd1958225883438fab7bbcf48f29872a40c00da272d806be1102b18ba700818c22d1de1b88c723028f65aea314e6777a2e01d02b411743e3e82f1e4cdc21ad9da0cce863a20169a2043aff67733b70cfa5d498e69bff5284940a3abdd78edc008747643d65f35e2bb + Poste
+---
+### Verificação de assinaturas digitais
