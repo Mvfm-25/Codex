@@ -1,0 +1,22 @@
+// t03 — atribuição é um COMANDO (como em Pascal): não produz valor,
+//       não pode aparecer dentro de expressões nem ser encadeada.
+int a;
+int b;
+int t;
+bool ok;
+
+void main() {
+    a = 10;
+    b = a * 2 + 1;          // 21
+    t = a;                  // troca a <-> b com auxiliar
+    a = b;
+    b = t;
+    write("a = ", a);       // 21
+    write("b = ", b);       // 10
+    a = a + 1;
+    a = a * a;
+    write("a = ", a);       // 484
+    ok = a > b;
+    write("ok = ", ok);     // 1
+    ;                       // comando vazio
+}

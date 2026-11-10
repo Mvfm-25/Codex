@@ -1,0 +1,18 @@
+// f02 — recursão dupla + variáveis locais em cada ativação
+int fib(int n) {
+    int a;
+    int b;
+    if (n < 2) return n;
+    a = fib(n - 1);
+    b = fib(n - 2);
+    return a + b;
+}
+
+void main() {
+    int i;
+    i = 0;
+    while (i < 15) {
+        write("fib = ", fib(i));
+        i = i + 1;
+    }
+}

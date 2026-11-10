@@ -1,0 +1,15 @@
+// f04 — procedimento (void) recursivo com 4 parâmetros, chamado como comando
+int movimentos;
+
+void hanoi(int n, int origem, int destino, int aux) {
+    if (n == 0) return;
+    hanoi(n - 1, origem, aux, destino);
+    movimentos = movimentos + 1;
+    write("disco ", n);
+    hanoi(n - 1, aux, destino, origem);
+}
+
+void main() {
+    hanoi(3, 1, 3, 2);
+    write("movimentos: ", movimentos);
+}

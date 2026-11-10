@@ -1,0 +1,5 @@
+// e01 — atribuição não é expressão: não pode aparecer dentro de uma condição
+int a;
+void main() {
+    if ((a = 1) > 0) write("ok");
+}

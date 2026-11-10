@@ -1,0 +1,15 @@
+// f01 — função recursiva com um parâmetro (OBJETIVO: implementar a geração de funções)
+int fat(int n) {
+    if (n <= 1)
+        return 1;
+    return n * fat(n - 1);
+}
+
+void main() {
+    int i;
+    i = 0;
+    while (i <= 10) {
+        write("fat = ", fat(i));
+        i = i + 1;
+    }
+}

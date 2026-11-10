@@ -1,0 +1,13 @@
+Erro: (sem) identificador >a< jah declarado  linha: 3
+Erro: geracao de codigo nao implementada: funcoes (prologo, epilogo, chamada e retorno)  linha: 5
+Erro: geracao de codigo nao implementada: acesso a parametros e variaveis locais  linha: 5
+Erro: (sem) parametro >v< repetido  linha: 7
+Erro: (sem) funcao void >imprime< nao pode retornar valor  linha: 8
+Erro: (sem) funcao >semRetorno< deve retornar um valor  linha: 11
+Erro: (sem) variavel >b< nao declarada  linha: 14
+Erro: (sem) >dobro< eh funcao, nao variavel  linha: 15
+Erro: (sem) funcao >dobro< espera 1 argumento(s), recebeu 2  linha: 16
+Erro: (sem) >a< nao eh funcao  linha: 17
+Erro: (sem) funcao void >imprime< usada em expressao  linha: 18
+Erro: (sem) variavel >c< nao declarada  linha: 19
+12 erro(s) - codigo nao gerado.

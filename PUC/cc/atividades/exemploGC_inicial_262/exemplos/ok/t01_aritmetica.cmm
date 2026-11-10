@@ -1,0 +1,20 @@
+// t01 — expressões aritméticas: precedência, associatividade, menos unário,
+//       divisão e resto inteiros (inclusive com negativos)
+int a;
+int b;
+int c;
+
+void main() {
+    a = 7;
+    b = 2;
+    write("a + b * 3      = ", a + b * 3);          // 13
+    write("(a + b) * 3    = ", (a + b) * 3);        // 27
+    write("a - b - 1      = ", a - b - 1);          // 4  (esquerda p/ direita)
+    write("a / b          = ", a / b);              // 3
+    write("a % b          = ", a % b);              // 1
+    write("-a / b         = ", -a / b);             // -3 (trunca para zero)
+    write("-a % b         = ", -a % b);             // -1
+    write("-(a - 10) * 2  = ", -(a - 10) * 2);      // 6
+    c = a * a * a - 3 * a * b + 100 / (b + 3);
+    write("c              = ", c);                  // 343 - 42 + 20 = 321
+}

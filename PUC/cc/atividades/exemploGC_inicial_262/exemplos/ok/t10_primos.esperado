@@ -1,0 +1,12 @@
+primo: 2
+primo: 3
+primo: 5
+primo: 7
+primo: 11
+primo: 13
+primo: 17
+primo: 19
+primo: 23
+primo: 29
+total: 10
+mdc(1071, 462) = 21

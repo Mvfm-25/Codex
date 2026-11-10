@@ -1,0 +1,6 @@
+// e03 — não há operadores ++ (pré ou pós-incremento): use i = i + 1;
+int i;
+void main() {
+    i = 0;
+    i++;
+}

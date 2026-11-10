@@ -1,0 +1,20 @@
+// es01 — erros semânticos (o analisador continua e lista todos)
+int a;
+bool a;                       // redeclaração
+int dobro(int x) {
+    return x + x;
+}
+void imprime(int v, int v) {  // parâmetro repetido
+    return v;                 // função void não pode retornar valor
+}
+int semRetorno() {
+    return;                   // função int deve retornar valor
+}
+void main() {
+    b = 1;                    // b não declarada
+    a = dobro;                // função usada como variável
+    a = dobro(1, 2);          // número de argumentos
+    a = a(3);                 // a não é função
+    a = imprime(1) + 1;       // função void usada em expressão
+    read(c);                  // c não declarada
+}

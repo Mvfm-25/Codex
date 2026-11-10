@@ -1,0 +1,5 @@
+// e05 — não há comando for: use while
+int i;
+void main() {
+    for (i = 0; i < 3; i = i + 1) write("", i);
+}

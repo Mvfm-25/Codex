@@ -1,0 +1,12 @@
+// t06 — as três formas de write
+int v;
+
+void main() {
+    write("so texto");
+    write(" ");
+    v = -123;
+    write(v);
+    write("valor: ", v * -2);
+    write("zero: ", 0);
+    write("grande: ", 2147483647);
+}

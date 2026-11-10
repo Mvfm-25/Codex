@@ -1,0 +1,6 @@
+// e04 — não há atribuição composta (+=): use a = a + 1;
+int a;
+void main() {
+    a = 1;
+    a += 1;
+}

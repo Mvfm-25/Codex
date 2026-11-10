@@ -1,0 +1,80 @@
+# ===== Java: build =====
+*.class
+*.jar
+*.war
+*.log
+hs_err_pid*
+target/
+build/
+out/
+bin/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ===== Geradores de scanner/parser (JFlex, CUP, ANTLR, Coco/R) =====
+# Ignore os arquivos GERADOS; versione apenas as especificações (.flex, .cup, .g4, .atg)
+Scanner.java
+Yylex.java
+Lexer.java
+Parser.java
+sym.java
+*.java~
+*.lex.java
+*.flex.bak
+*.g4.java
+**/generated/
+**/gen/
+.antlr/
+
+# ===== Saídas do compilador (assembly x86 e artefatos do montador/linker) =====
+*.asm
+*.s
+*.S
+*.nasm
+*.o
+*.obj
+*.lst
+*.map
+*.exe
+*.out
+*.elf
+*.bin
+*.com
+a.out
+# Mantenha amostras/testes esperados explícitos, se necessário:
+!tests/**/*.asm
+!examples/**/*.asm
+!examples/**/*.s
+
+# ===== Depuração / dumps =====
+core
+core.*
+*.dSYM/
+*.pdb
+*.ilk
+*.dump
+*.tmp
+*.bak
+*.swp
+*~
+
+# ===== IDEs e editores =====
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+nbproject/
+nbbuild/
+nbdist/
+*.sublime-workspace
+
+# ===== Sistema operacional =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Ambientes / segredos =====
+.env
+*.env.local

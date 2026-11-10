@@ -1,0 +1,5 @@
+max = 11
+sinal(-5) = -1
+sinal(0)  = 0
+sinal(9)  = 1
+abs(a-b)  = 7

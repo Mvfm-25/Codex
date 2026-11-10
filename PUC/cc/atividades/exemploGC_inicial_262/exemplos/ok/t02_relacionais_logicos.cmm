@@ -1,0 +1,24 @@
+// t02 — relacionais (resultado 0/1), lógicos e negação
+int x;
+int y;
+bool p;
+bool q;
+
+void main() {
+    x = 5;
+    y = 8;
+    write("x <  y : ", x < y);           // 1
+    write("x >  y : ", x > y);           // 0
+    write("x <= 5 : ", x <= 5);          // 1
+    write("y >= 9 : ", y >= 9);          // 0
+    write("x == 5 : ", x == 5);          // 1
+    write("x != 5 : ", x != 5);          // 0
+    p = x < y;
+    q = !p;
+    write("p      : ", p);               // 1
+    write("q = !p : ", q);               // 0
+    write("p && q : ", p && q);          // 0
+    write("p || q : ", p || q);          // 1
+    write("!(x > 3 && y > 3) || x == y : ", !(x > 3 && y > 3) || x == y);   // 0
+    write("!!7    : ", !!7);             // 1 (qualquer valor != 0 é verdadeiro)
+}

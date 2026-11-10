@@ -1,0 +1,5 @@
+// e09 — uma expressão sozinha não é comando (só atribuição e chamada)
+int a;
+void main() {
+    a + 1;
+}

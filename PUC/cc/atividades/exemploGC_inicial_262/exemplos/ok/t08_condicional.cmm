@@ -1,0 +1,15 @@
+// t08 — expressão condicional  c ? a : b  (aninhada à direita)
+int a;
+int b;
+int m;
+
+void main() {
+    a = 4;
+    b = 11;
+    m = a > b ? a : b;
+    write("max = ", m);                                  // 11
+    write("sinal(-5) = ", -5 < 0 ? -1 : -5 == 0 ? 0 : 1);  // -1
+    write("sinal(0)  = ", 0 < 0 ? -1 : 0 == 0 ? 0 : 1);    // 0
+    write("sinal(9)  = ", 9 < 0 ? -1 : 9 == 0 ? 0 : 1);    // 1
+    write("abs(a-b)  = ", a - b < 0 ? b - a : a - b);    // 7
+}

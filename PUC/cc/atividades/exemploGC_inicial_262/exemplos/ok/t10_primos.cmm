@@ -1,0 +1,38 @@
+// t10 — programa completo só com globais: primos até 30 e MDC iterativo
+int n;
+int d;
+bool primo;
+int x;
+int y;
+int r;
+int total;
+
+void main() {
+    n = 2;
+    total = 0;
+    while (n <= 30) {
+        d = 2;
+        primo = true;
+        while (d * d <= n && primo) {
+            if (n % d == 0) primo = false;
+            d = d + 1;
+        }
+        if (primo) {
+            write("primo: ", n);
+            total = total + 1;
+        }
+        n = n + 1;
+    }
+    write("total: ", total);                 // 10
+
+    x = 1071;
+    y = 462;
+    while (y != 0) {
+        r = x % y;
+        x = y;
+        y = r;
+    }
+    write("mdc(1071, 462) = ", x);           // 21
+    return;
+    write("depois do return: nunca");
+}

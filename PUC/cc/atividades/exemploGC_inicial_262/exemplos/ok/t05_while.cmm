@@ -1,0 +1,34 @@
+// t05 — while simples, aninhado e com condição composta
+int i;
+int j;
+int soma;
+int n;
+
+void main() {
+    i = 1;
+    soma = 0;
+    while (i <= 10) {
+        soma = soma + i;
+        i = i + 1;
+    }
+    write("soma 1..10 = ", soma);            // 55
+
+    // tabuada parcial: laços aninhados
+    i = 1;
+    while (i <= 3) {
+        j = 1;
+        while (j <= 3) {
+            write("", i * j);
+            j = j + 1;
+        }
+        i = i + 1;
+    }
+
+    // laço que não executa nenhuma vez
+    while (1 > 2) write("nunca");
+
+    // condição composta: primeiro n com n*n > 50, até 100
+    n = 0;
+    while (n * n <= 50 && n < 100) n = n + 1;
+    write("n = ", n);                        // 8
+}

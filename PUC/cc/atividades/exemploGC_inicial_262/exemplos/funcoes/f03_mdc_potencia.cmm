@@ -1,0 +1,32 @@
+// f03 — vários parâmetros, chamadas aninhadas, global alterada em função
+int chamadas;
+
+int mdc(int a, int b) {
+    chamadas = chamadas + 1;
+    if (b == 0) return a;
+    return mdc(b, a % b);
+}
+
+int pot(int base, int exp) {
+    int r;
+    r = 1;
+    while (exp > 0) {
+        r = r * base;
+        exp = exp - 1;         // altera só a cópia local do parâmetro
+    }
+    return r;
+}
+
+int max3(int a, int b, int c) {
+    return a > b ? (a > c ? a : c) : (b > c ? b : c);
+}
+
+void main() {
+    int x;
+    x = 7;
+    write("mdc(1071, 462) = ", mdc(1071, 462));
+    write("chamadas: ", chamadas);
+    write("2^10 = ", pot(2, 10));
+    write("x continua: ", x);
+    write("max3 = ", max3(pot(2, 3), mdc(18, 12), x + 2));
+}

@@ -1,0 +1,33 @@
+// t04 — if / else, aninhamento e o "else pendente" (o else casa com o if mais próximo)
+int a;
+int b;
+int c;
+int maior;
+
+void main() {
+    a = 3;
+    b = 9;
+    c = 6;
+    if (a > b)
+        maior = a;
+    else
+        maior = b;
+    if (c > maior) maior = c;
+    write("maior = ", maior);                // 9
+
+    if (a > 0)
+        if (a > 5) write("a > 5");
+        else       write("0 < a <= 5");      // é este que aparece
+
+    if (b % 2 == 0) {
+        write("b par");
+    } else {
+        write("b impar");                    // b = 9
+        if (b > 5 && c < 10) {
+            write("b > 5 e c < 10");
+        }
+    }
+
+    if (a == b) write("nunca");
+    write("fim");
+}

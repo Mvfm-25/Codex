@@ -1,0 +1,9 @@
+// t00 — faz nada
+      
+int a;
+int b;
+int c;
+
+void main() {
+
+}

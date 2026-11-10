@@ -1,0 +1,9 @@
+// e07 — não há break: controle a saída pela condição do while
+int i;
+void main() {
+    i = 0;
+    while (true) {
+        i = i + 1;
+        if (i == 3) break;
+    }
+}

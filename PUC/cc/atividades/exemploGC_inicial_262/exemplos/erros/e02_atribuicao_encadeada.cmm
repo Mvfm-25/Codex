@@ -1,0 +1,6 @@
+// e02 — atribuição não é expressão: não pode ser encadeada
+int a;
+int b;
+void main() {
+    a = b = 0;
+}

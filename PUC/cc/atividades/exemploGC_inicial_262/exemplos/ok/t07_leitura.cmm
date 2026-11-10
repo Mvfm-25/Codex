@@ -1,0 +1,12 @@
+// t07 — read (um inteiro por linha). Teste: ./run.x exemplos/ok/t07_leitura.cmm < exemplos/ok/t07_leitura.entrada
+int a;
+int b;
+
+void main() {
+    write("Informe dois numeros: ");
+    read(a);
+    read(b);
+    write("a + b = ", a + b);
+    write("a * b = ", a * b);
+    if (a > b) write("maior: ", a); else write("maior: ", b);
+}

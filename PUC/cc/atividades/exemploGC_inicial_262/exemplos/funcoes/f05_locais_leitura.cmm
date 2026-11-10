@@ -1,0 +1,18 @@
+// f05 — leitura em variável local da main e função bool. Teste com f05_locais_leitura.entrada
+bool par(int n) {
+    return n % 2 == 0;
+}
+
+void main() {
+    int n;
+    int i;
+    write("Informe um numero: ");
+    read(n);
+    write("n = ", n);
+    if (!par(n)) write("impar"); else write("par");
+    i = 0;
+    while (i < n) {
+        i = i + 1;
+        if (par(i)) write("par: ", i);
+    }
+}
