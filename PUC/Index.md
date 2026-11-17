@@ -108,10 +108,18 @@ banner: "![[32banner.webp]]"
 	3. [11/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
 	4. [16/11] **Segurança de Sistemas** - T2 [Entrega dos slides, até 16:28]
 	5. [18/11] **REALIZAÇÃO ATIVIDADES DE MÓDULO ONLINE** - HCR & SMA
-	6. [23/11] **Construção de Compiladores** - T3 [Apresentação]
-	7. [25/11] **Construção de Compiladores** - P3
+	6. [18/11] **Construção de Compiladores** - T3 [Dojo]
+	7. [23/11] **Segurança de Sistemas** - T2 [Apresentação]
+	8. [25/11] **Construção de Compiladores** - P3
+	9. [25/11]**Segurança de Sistemas** - P2
+	10. [30/11]**Construção de Compiladores** - PS
 ---
 - **Dezembro**
 	1. [01/12] **Laboratório de Sistemas Operacionais** - T4 [Apresentação?]
 	1. [01/12] **Métodos Formais para Computação** - P2
 	2. [01/12] **Métodos Numéricos** - P2
+	3. [03/12] **Métodos Formais** - PS
+	4. [07/12] **Construção de Compialdores** - G2
+	5. [07/12] **Segurança de Sistemas** - G2
+	6. [10/12] **Métodos Formais** - G2
+	7. [10/12] **Métodos Numéricos** - G2
