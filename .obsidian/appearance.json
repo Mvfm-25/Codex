@@ -1,5 +1,6 @@
 {
   "accentColor": "#00ff33",
   "cssTheme": "Prism",
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "showRibbon": true
 }
