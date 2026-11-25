@@ -16,11 +16,14 @@
 	- **Parte IV** cobre o material de revisão depositado na pasta : *Padding Oracle Attack*, funções resumo (Merkle–Damgård & Davies–Meyer) e cifras clássicas — com os **dois exercícios práticos resolvidos**.
 - [Material de revisão (PDFs)](./provas/p1/)
 	- Decks e listas entregues pelo professor para a P1.
+- [Materiais por Prova](./materiais/materiais-index.md)
+	- Conteúdo, aulas & materiais de cada prova (P1, P2 cumulativa, PS & G2), provas-exemplo e o [guia da P2](./materiais/P2.md).
 ---
 ### Aulas
 - [Página da disciplina no Moodle](https://moodle.pucrs.br/course/view.php?id=95448)
 	- Cards : Cifras clássicas, Cifras de bloco, Integridade de mensagens, Pentest de rede, Aritmética modular, Algoritmos para troca de chaves e Criptografia assimétrica.
-- [Cronograma do Semestre](https://moodle.pucrs.br/mod/url/view.php?id=3826054)
+- [Cronograma do Semestre](https://sarc.pucrs.br/Default/Export.aspx?id=fccef721-ee0a-4e61-a41c-074eb0fe9837&ano=2026&sem=2)
+	- Link direto do SARC (o antigo, `mod/url/view.php?id=3826054`, era o "CRONOGRAMA" da seção Tutoriais).
 - [Aula02](./aula02.md)
 	- Aula incial, entedimento inicial dos fundamentos de segurança, criptografia, cifras & chaves. 
 	- Atividade prática no final.

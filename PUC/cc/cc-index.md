@@ -15,6 +15,8 @@
 	- ? — Apresentação prevista para 23/11.
 ---
 ### Provas
+- [Materiais por Prova](./materiais/materiais-index.md)
+	- Conteúdo, aulas & materiais associados a cada prova (P1, P2, P3; PS & G2 cobrem tudo).
 - P1 — 09/09
 	- [Prova exemplo da parte inicial da matéria](https://moodle.pucrs.br/mod/resource/view.php?id=3887222)
 - P2 — 19/10

@@ -1,0 +1,406 @@
+{
+  "cadeira": "ss",
+  "fonte": "C:\\Users\\mvfmf\\AppData\\Local\\Temp\\claude\\0dfc5b678e178d9b\\6ed98223-c14d-4e10-aea1-157f03d112b4\\scratchpad\\exp-ss\\ss-cronograma.txt",
+  "provas": [
+    {
+      "aulas": [
+        {
+          "num": 1,
+          "data": "03/08/2026",
+          "ano": 2026,
+          "descricao": "Apresentação da disciplina",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 2,
+          "data": "05/08/2026",
+          "ano": 2026,
+          "descricao": "Aula introdutória sobre segurança",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula02.md"
+          ]
+        },
+        {
+          "num": 3,
+          "data": "10/08/2026",
+          "ano": 2026,
+          "descricao": "Cifras clássicas",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 4,
+          "data": "12/08/2026",
+          "ano": 2026,
+          "descricao": "Enigma",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula04.md"
+          ]
+        },
+        {
+          "num": 5,
+          "data": "17/08/2026",
+          "ano": 2026,
+          "descricao": "Cifras de fluxo",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 6,
+          "data": "19/08/2026",
+          "ano": 2026,
+          "descricao": "DES, 3DES, AES - Modos de operação",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula06.md"
+          ]
+        },
+        {
+          "num": 7,
+          "data": "24/08/2026",
+          "ano": 2026,
+          "descricao": "Função Resumo",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 8,
+          "data": "26/08/2026",
+          "ano": 2026,
+          "descricao": "Autenticação + Oracle padding attack",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 9,
+          "data": "31/08/2026",
+          "ano": 2026,
+          "descricao": "Pentesting - Planejamento e Escopo, Reconhecimento, Varredura e Enumeração",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 10,
+          "data": "02/09/2026",
+          "ano": 2026,
+          "descricao": "Laboratório - Pentesting",
+          "atividade": "Aula",
+          "recursos": "Retirar notebook",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": null,
+          "data": "07/09/2026",
+          "ano": 2026,
+          "descricao": "Feriado",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "logistica",
+          "notas": []
+        },
+        {
+          "num": 11,
+          "data": "09/09/2026",
+          "ano": 2026,
+          "descricao": "Laboratório - Pentesting",
+          "atividade": "Aula",
+          "recursos": "Retirar notebook",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 12,
+          "data": "14/09/2026",
+          "ano": 2026,
+          "descricao": "Dúvidas P1",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "logistica",
+          "notas": [
+            "aula13.md"
+          ]
+        },
+        {
+          "num": 13,
+          "data": "16/09/2026",
+          "ano": 2026,
+          "descricao": "Apresentação TSE - Auditório do prédio 15",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula14.md"
+          ]
+        }
+      ],
+      "nome": "P1",
+      "data": "21/09/2026",
+      "local": "Sala 305 (60 lugares)"
+    },
+    {
+      "aulas": [
+        {
+          "num": 15,
+          "data": "23/09/2026",
+          "ano": 2026,
+          "descricao": "Entrega de trabalho",
+          "atividade": "Trabalho",
+          "recursos": "Retirar notebook",
+          "tipo": "logistica",
+          "notas": []
+        },
+        {
+          "num": 16,
+          "data": "28/09/2026",
+          "ano": 2026,
+          "descricao": "Gestão de Risco",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula17.md"
+          ]
+        },
+        {
+          "num": 17,
+          "data": "30/09/2026",
+          "ano": 2026,
+          "descricao": "Correção P1",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "logistica",
+          "notas": [
+            "aula18.md"
+          ]
+        },
+        {
+          "num": 18,
+          "data": "05/10/2026",
+          "ano": 2026,
+          "descricao": "Aritmética modular",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula19.md"
+          ]
+        },
+        {
+          "num": 19,
+          "data": "07/10/2026",
+          "ano": 2026,
+          "descricao": "Aritmética modular",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula20.md"
+          ]
+        },
+        {
+          "num": null,
+          "data": "12/10/2026",
+          "ano": 2026,
+          "descricao": "Feriado",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "logistica",
+          "notas": []
+        },
+        {
+          "num": 20,
+          "data": "14/10/2026",
+          "ano": 2026,
+          "descricao": "Troca de chaves - MERKLE + DIFFIE-HELLMAN",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 21,
+          "data": "19/10/2026",
+          "ano": 2026,
+          "descricao": "Estabelecimento de chaves - RSA",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 22,
+          "data": "21/10/2026",
+          "ano": 2026,
+          "descricao": "Semana Acadêmica da PUCRS",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "logistica",
+          "notas": []
+        },
+        {
+          "num": 23,
+          "data": "26/10/2026",
+          "ano": 2026,
+          "descricao": "Estabelecimento de chaves - Curvas Elípticas",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula22.md"
+          ]
+        },
+        {
+          "num": 24,
+          "data": "28/10/2026",
+          "ano": 2026,
+          "descricao": "Assinatura digital",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula24.md"
+          ]
+        },
+        {
+          "num": null,
+          "data": "02/11/2026",
+          "ano": 2026,
+          "descricao": "Feriado",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "logistica",
+          "notas": []
+        },
+        {
+          "num": 25,
+          "data": "04/11/2026",
+          "ano": 2026,
+          "descricao": "Criptografia pós-quântica (PQC)",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 26,
+          "data": "09/11/2026",
+          "ano": 2026,
+          "descricao": "Blockchain",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": [
+            "aula25.md"
+          ]
+        },
+        {
+          "num": 27,
+          "data": "11/11/2026",
+          "ano": 2026,
+          "descricao": "Dúvidas P2",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "logistica",
+          "notas": []
+        },
+        {
+          "num": 28,
+          "data": "16/11/2026",
+          "ano": 2026,
+          "descricao": "Protocolo Whatsapp",
+          "atividade": "Aula",
+          "recursos": "",
+          "tipo": "conteudo",
+          "notas": []
+        },
+        {
+          "num": 29,
+          "data": "18/11/2026",
+          "ano": 2026,
+          "descricao": "Apresentação dos Trabalhos",
+          "atividade": "Trabalho",
+          "recursos": "",
+          "tipo": "logistica",
+          "notas": []
+        },
+        {
+          "num": 30,
+          "data": "23/11/2026",
+          "ano": 2026,
+          "descricao": "Apresentação dos Trabalhos",
+          "atividade": "Trabalho",
+          "recursos": "",
+          "tipo": "logistica",
+          "notas": []
+        }
+      ],
+      "nome": "P2",
+      "data": "25/11/2026",
+      "local": "Sala 305 (60 lugares)",
+      "cumulativa": true,
+      "inclui_provas": [
+        "P1"
+      ]
+    },
+    {
+      "nome": "PS",
+      "data": "30/11/2026",
+      "local": "Sala 305 (60 lugares)",
+      "aulas": [],
+      "cobre": "todo o conteúdo"
+    },
+    {
+      "nome": "G2",
+      "data": "07/12/2026",
+      "local": "Sala 305 (60 lugares)",
+      "aulas": [],
+      "cobre": "todo o conteúdo"
+    }
+  ],
+  "apos_ultima_prova": [
+    {
+      "num": 33,
+      "data": "02/12/2026",
+      "ano": 2026,
+      "descricao": "Dúvidas G2",
+      "atividade": "Aula",
+      "recursos": "",
+      "tipo": "logistica"
+    },
+    {
+      "num": null,
+      "data": "09/12/2026",
+      "ano": 2026,
+      "descricao": "",
+      "atividade": "Aula",
+      "recursos": "",
+      "tipo": "logistica"
+    }
+  ],
+  "notas_sem_data_no_cronograma": [],
+  "notas_sem_data_no_cabecalho": [
+    "aula03.md"
+  ]
+}
